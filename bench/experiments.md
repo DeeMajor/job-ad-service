@@ -346,3 +346,10 @@ score within the noise band of it will read either way. Added, free: `borderline
 pair are borderline (54.3 and 56.2), so "same tier, or both borderline" would read 5/5 — recorded as a hypothesis, not a result.
 Next (needs a yes): EXP-305 — a third brief, same 10-call design (~$0.15–0.20 depending on brief length), pass = 5/5 on "same tier or both
 borderline" with identical reason kinds, twin |Δ| ≤ 2 on 5/5. Not run.
+
+### DECISION — EXP-305 skipped (Andile, 2026-11-05)
+The borderline rule was written after seeing EXP-304 and would have been tested on 5 pairs; the answer either way is weak evidence and the
+rule's real value is transparency, not correctness. Recorded as such: `borderline` is a transparency feature, not a validated fix.
+Synthetic re-verification happens again only when the judge prompt, the spec weights/tiers or the redactor change. The next evidence
+about the ranker comes from Phase 2 — real pools, recruiters re-ordering our shortlist, overrides stored with reasons.
+SHORTLIST RANKER PHASE 0 CLOSED: spec 0.1.1, judge 0.1.1 (thinking off), 50 billed judge calls, $0.76. Deployed.
