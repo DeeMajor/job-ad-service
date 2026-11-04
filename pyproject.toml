@@ -1,5 +1,5 @@
 [project]
-name = "job-ad"
+name = "job-ad-service"
 version = "0.1.0"
 description = "Job-ad drafter and scorer: headless service, scorer benchmark, drafter eval (SciDLC)"
 requires-python = ">=3.10"

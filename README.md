@@ -1,4 +1,4 @@
-# Recruitment platform — job-ad drafter and scorer
+# job-ad-service — drafts and scores job advertisements
 
 Python 3.10+. A headless service that drafts job advertisements from a structured brief and scores any ad against a validated 37-metric rubric, returning a readable draft standard (level + reasons + fixes) rather than a pass/fail gate, developed with a measurement-first lifecycle (SciDLC).
 
