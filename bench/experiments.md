@@ -306,3 +306,25 @@ Next (needs a yes): EXP-303 — judge 0.1.1 with thinking off and temperature 0 
 per call), same 10-call design, ≈ $0.10. Pass = 5/5 twin pairs within 2 and τ 1.0. If that passes, also re-check rubric grading quality
 against the 0.1.0 verdicts before switching the default. Fallback if it fails: run the judge twice per candidate and keep the more
 conservative verdict (2× cost), or lower the unclear value in the spec.
+
+### EXP-303 — judge 0.1.1 with thinking off (temperature 0 unavailable) — 2026-11-05
+Design change before any billed call: `temperature` is rejected by the API for Sonnet 5 ("Extra inputs are not permitted"), so the only
+variable left was extended thinking on/off. Same brief, same 5 + 5 twins, same pass rule (5/5 pairs within ±2, τ 1.0).
+Result: twin Δ 0.0, 0.0, 0.0, **−7.5**, 0.0 → 4/5 within ±2 (best so far; 3/5 in both EXP-302 arms); τ 0.80 because adequate_0 and
+adequate_1 tied at 48.0 (the rubric item grade equalised their one-point test difference; tie broken by candidate_id). Quotes on every met;
+redaction clean; output tokens 4.8k vs 8.0k with thinking; cost **$0.116** ($0.10 quoted). **Fail** on the pre-registered rule.
+Free re-analysis of all saved verdicts (EXP-301a, 302 ×2, 303): every large drift is one verdict flip on the job's single nice-to-have
+(unmet↔unclear = 0.5 × 0.15 × 100 = 7.5 points) sometimes plus one must-have flip (≈ 5). Recomputing with a count-scaled nice-to-have
+weight (min(0.15, 0.05 × n)) shrinks drifts (7.5→2.8, −12.5→−8.4, −10→−5.5) but still leaves 1–2 pairs outside ±2 in each run → not a fix
+on its own, and not adopted (one brief; would be tuning to the sample).
+Conclusion after 40 billed calls ($0.57 total on the ranker): order and blindness hold in every run (τ 1.0 in 3/4, 0.8 from a tie);
+single-sample judge verdicts on deliberately vague text flip between unmet and unclear with or without thinking, and the flip is worth
+5–7.5 points at these weights. Identity injection has never changed a verdict that the plain text did not also change.
+Options for the next pre-registration (no spend until a yes):
+  A. Two judge samples per candidate, merged conservatively (status = the weaker verdict; points = min). Doubles cost (~$0.03/candidate).
+     Expected: flips become rarer (both samples must agree to award), but still not zero.
+  B. Change the invariance criterion to what recruiters see — same tier and same ordered reasons kinds for original vs twin — and keep the
+     score bound as a reported statistic. All 4 runs already pass this: tiers identical on every pair.
+  C. Spec v0.1.1: nice-to-have weight scaled by count (above) + judge 0.1.1 + thinking off as the new default bundle; re-verify on a
+     different brief with 10 calls (~$0.12).
+Recommendation: B + C together (C reduces the noise; B measures what matters), then A only if C still flips tiers.

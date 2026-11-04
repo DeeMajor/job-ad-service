@@ -104,9 +104,12 @@ def render_judge_input(inp: JudgeInput) -> str:
     return "\n".join(L)
 
 
-def make_claude_judge(client: Optional[anthropic.Anthropic] = None, model: str = DEFAULT_JUDGE_MODEL, effort: str = "medium", prompt_version: str = JUDGE_PROMPT_VERSION) -> Judge:
+def make_claude_judge(client: Optional[anthropic.Anthropic] = None, model: str = DEFAULT_JUDGE_MODEL, effort: str = "medium", prompt_version: str = JUDGE_PROMPT_VERSION,
+                      thinking: bool = True) -> Judge:
+    """thinking=False → extended thinking disabled (temperature is not an accepted parameter on Sonnet 5; under test in EXP-303)."""
     client = client or anthropic.Anthropic()
     system = PROMPTS[prompt_version]
+    sampling = {"thinking": {"type": "adaptive"}, "output_config": {"effort": effort}} if thinking else {"thinking": {"type": "disabled"}}
 
     def run(inp: JudgeInput) -> JudgeResult:
         if not inp.requirements and not inp.items:
@@ -114,8 +117,7 @@ def make_claude_judge(client: Optional[anthropic.Anthropic] = None, model: str =
         user = render_judge_input(inp)
 
         def call():
-            return client.messages.parse(model=model, max_tokens=6000, thinking={"type": "adaptive"}, output_config={"effort": effort},
-                                         output_format=CandidateJudgeOut,
+            return client.messages.parse(model=model, max_tokens=6000, output_format=CandidateJudgeOut, **sampling,
                                          system=[{"type": "text", "text": system, "cache_control": {"type": "ephemeral"}}],
                                          messages=[{"role": "user", "content": user}])
 
