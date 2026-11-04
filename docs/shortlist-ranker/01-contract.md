@@ -13,7 +13,7 @@
     "facts": [                                            // optional: decide a must-have / nice-to-have from a declared form fact instead of the judge
       { "requirement": "Working knowledge of Sage", "declared_key": "uses_sage", "required_value": true }
     ],
-    "weights": { "requirements": 0.45, "skills_test": 0.40, "nice_to_have": 0.15 }   // optional; defaults from ranking-spec.yaml; components a job lacks are dropped and the rest renormalised
+    "weights": { "requirements": 0.45, "skills_test": 0.40, "nice_to_have": 0.15 }   // optional; defaults from ranking-spec.yaml; components a job lacks are dropped and the rest renormalised; the nice-to-have weight is capped at 0.05 × number of nice-to-haves
   },
   "candidates": [
     {
@@ -70,6 +70,7 @@ Rules: items with `points` are taken as graded; items with `answer` + `rubric` a
     {
       "rank": 1, "candidate_id": "c_8f3a", "score": 84.2,
       "tier": "strong",                                       // strong | possible | weak | does_not_meet_inherent_requirement
+      "borderline": false,                                    // true when the score is within 3 points of a tier threshold: the tier could read one step either way on a re-run; also listed in needs_human_check
       "components": {
         "requirements":  { "score": 0.90, "weight": 0.45, "matched": 3, "unclear": 0, "unmet": 0, "of": 3 },   // met=1, unclear=0.5, unmet=0; justified must-haves count double
         "skills_test":   { "score": 0.78, "weight": 0.40, "points": 31, "max": 40, "by_skill": { "reconciliation": 1.0, "excel": 0.5, "communication": 0.8 },

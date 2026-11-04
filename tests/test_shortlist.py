@@ -88,7 +88,8 @@ def test_graded_item_flip_moves_test_component_exactly():
     flipped = RankRequest.model_validate({"job": {"brief": BRIEF}, "candidates": [cand("a", "Sage creditors role", [2, 2, 0])]})
     b = rank_pool(base, judge=keyword_judge).shortlist[0]; f = rank_pool(flipped, judge=keyword_judge).shortlist[0]
     assert abs((b.components.skills_test.score - f.components.skills_test.score) - 3 / 7) < 1e-6
-    assert abs((b.score - f.score) - round(100 * 0.40 * 3 / 7, 1)) <= 0.1
+    wsum = 0.45 + 0.40 + 0.05  # one nice-to-have → effective weight 0.05 (spec 0.1.1)
+    assert abs((b.score - f.score) - 100 * 0.40 / wsum * 3 / 7) <= 0.11 and b.components.nice_to_have.weight == 0.05
     assert f.components.skills_test.by_skill["excel"] == 0.0 and b.components.skills_test.by_skill["excel"] == 1.0
 
 
@@ -124,6 +125,15 @@ def test_no_assessment_allowed_redistributes_weight():
     r = RankRequest.model_validate({"job": {"brief": BRIEF}, "candidates": [{"candidate_id": "a", "application": {"cv_text": "Sage creditors role pivot tables"}}], "options": {"require_assessment": False}})
     c = rank_pool(r, judge=keyword_judge).shortlist[0]
     assert c.components.skills_test is None and c.score == 100.0 and any(k.kind == "test_missing" for k in c.reasons) and "no assessment" in c.needs_human_check
+
+
+def test_borderline_flag_near_tier_threshold():
+    # a: all requirements met, nice met, test 3/7 → 100*(0.45 + 0.40*3/7 + 0.05)/0.9 ≈ 74.6 (possible, within 3 of 75 → borderline)
+    r = RankRequest.model_validate({"job": {"brief": BRIEF}, "candidates": [cand("a", "Sage creditors role pivot", [2, 1, 0]), cand("b", "Sage creditors role pivot", [2, 2, 3])]})
+    res = rank_pool(r, judge=keyword_judge)
+    a = next(c for c in res.shortlist if c.candidate_id == "a"); b = next(c for c in res.shortlist if c.candidate_id == "b")
+    assert a.borderline and any("borderline" in h for h in a.needs_human_check) and abs(a.score - 75) <= 3 and a.tier == "possible"
+    assert not b.borderline and b.score == 100.0
 
 
 def test_contract_validation():

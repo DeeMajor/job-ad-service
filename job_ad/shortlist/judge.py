@@ -11,7 +11,10 @@ from pydantic import BaseModel, Field
 
 from .contract import AssessmentItem
 
-JUDGE_PROMPT_VERSION = "0.1.0"  # default; 0.1.1 under test (EXP-302)
+from .spec import load_ranking_spec
+
+JUDGE_PROMPT_VERSION = load_ranking_spec().judge.prompt_version  # 0.1.1 since spec 0.1.1 (EXP-304)
+JUDGE_THINKING = load_ranking_spec().judge.thinking
 DEFAULT_JUDGE_MODEL = "claude-sonnet-5"
 
 JUDGE_SYSTEM_0_1_0 = """You are a blind, evidence-only screening assistant for a South African recruiter. You receive a candidate's application text (form answers, CV text, cover note — identifiers removed) and (a) a list of job requirements, (b) zero or more test items each with the candidate's answer and a grading rubric.
@@ -105,7 +108,7 @@ def render_judge_input(inp: JudgeInput) -> str:
 
 
 def make_claude_judge(client: Optional[anthropic.Anthropic] = None, model: str = DEFAULT_JUDGE_MODEL, effort: str = "medium", prompt_version: str = JUDGE_PROMPT_VERSION,
-                      thinking: bool = True) -> Judge:
+                      thinking: bool = JUDGE_THINKING) -> Judge:
     """thinking=False → extended thinking disabled (temperature is not an accepted parameter on Sonnet 5; under test in EXP-303)."""
     client = client or anthropic.Anthropic()
     system = PROMPTS[prompt_version]

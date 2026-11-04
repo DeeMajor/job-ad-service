@@ -188,6 +188,7 @@ class RankedCandidate(BaseModel):
     candidate_id: str
     score: float
     tier: Tier
+    borderline: bool = Field(default=False, description="score lies within the noise band of a tier threshold; the tier could read one step either way on a re-run")
     components: Components
     reasons: list[Reason]
     needs_human_check: list[str]

@@ -16,6 +16,11 @@ class Weights(BaseModel):
     nice_to_have: float = 0.15
 
 
+class JudgeDefaults(BaseModel):
+    prompt_version: str = "0.1.1"
+    thinking: bool = False
+
+
 class StatusValues(BaseModel):
     met: float = 1.0
     unclear: float = 0.5
@@ -30,6 +35,7 @@ class ReqWeight(BaseModel):
 class Tiers(BaseModel):
     strong: float = 75
     possible: float = 55
+    borderline_band: float = 3
 
 
 class TestRules(BaseModel):
@@ -41,6 +47,8 @@ class TestRules(BaseModel):
 class RankingSpec(BaseModel):
     version: str
     weights: Weights
+    nice_to_have_per_item: float = 0.05
+    judge: JudgeDefaults = JudgeDefaults()
     requirement_status_values: StatusValues
     requirement_weight: ReqWeight
     tiers: Tiers

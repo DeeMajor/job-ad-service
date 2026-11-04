@@ -1,0 +1,2073 @@
+{
+ "brief": "case_006",
+ "tau": 0.9999999999999999,
+ "cost_usd": 0.1926,
+ "calls": 10,
+ "orig": {
+  "spec_version": "0.1.1",
+  "ranked_at": "2026-11-04T22:13:36.132897Z",
+  "shortlist": [
+   {
+    "rank": 1,
+    "candidate_id": "strong_1",
+    "score": 86.2,
+    "tier": "strong",
+    "components": {
+     "requirements": {
+      "score": 0.8181818181818182,
+      "weight": 0.45,
+      "matched": 8,
+      "unclear": 2,
+      "unmet": 1,
+      "of": 11
+     },
+     "skills_test": {
+      "score": 1.0,
+      "weight": 0.4,
+      "points": 20.0,
+      "max": 20.0,
+      "by_skill": {
+       "communication": 1.0,
+       "core": 1.0,
+       "process": 1.0
+      },
+      "judged_items": 1,
+      "ungraded_items": [],
+      "time_limit_s": 1200,
+      "time_used_s": 600,
+      "flags": []
+     },
+     "nice_to_have": {
+      "score": 0.625,
+      "weight": 0.15,
+      "matched": 2,
+      "unclear": 1,
+      "unmet": 1,
+      "of": 4
+     }
+    },
+    "reasons": [
+     {
+      "kind": "requirement_unmet",
+      "requirement": "Bachelor Honours Degree: Law, Military Science and Security (Required)",
+      "skill": null,
+      "evidence": "",
+      "source": "none",
+      "note": "not listed"
+     },
+     {
+      "kind": "requirement_met",
+      "requirement": "Admitted attorney qualified to practise in South Africa, ideally with at least five - eight years\u2019 relevant post-qualification experience.",
+      "skill": null,
+      "evidence": "\"I have Admitted attorney qualified to practise in South Africa, ideally with at least five - eight years\u2019 relevant post-qualification experience \u2014 used daily for the last three years.\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_met",
+      "requirement": "Substantial specialist legal experience in data privacy and data protection is essential, including hands-on experience drafting and negotiating data protection provisions, data processing agreements and related documentation.",
+      "skill": null,
+      "evidence": "\"Substantial specialist legal experience in data privacy and data protection is essential, including hands-on experience drafting and negotiating data protection provisions, data processing agreements and related documentation, obtained and current.\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_met",
+      "requirement": "Experience working in a fast-paced, highly regulated environment and managing competing demands.",
+      "skill": null,
+      "evidence": "\"I have Experience working in a fast-paced, highly regulated environment and managing competing demands \u2014 used daily for the last three years.\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_met",
+      "requirement": "Deep expertise in POPIA and relevant domestic and international data privacy and data protection laws, with an understanding of applicable financial-sector regulation and best practice.",
+      "skill": null,
+      "evidence": "\"Deep expertise in POPIA and relevant domestic and international data privacy and data protection laws, with an understanding of applicable financial-sector regulation and best practice, obtained and current.\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_met",
+      "requirement": "Excellent legal analysis, interpretation, research and drafting skills, including strong contractual drafting and negotiation capability.",
+      "skill": null,
+      "evidence": "\"Excellent legal analysis, interpretation, research and drafting skills, including strong contractual drafting and negotiation capability, obtained and current.\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_met",
+      "requirement": "Ability to provide practical, commercially balanced legal advice and to distinguish between legal, compliance, risk, control and operational responsibilities.",
+      "skill": null,
+      "evidence": "\"Confirmed Ability to provide practical, commercially balanced legal advice and to distinguish between legal, compliance, risk, control and operational responsibilities (see certificate on request).\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_met",
+      "requirement": "Strong written and verbal communication, influencing and stakeholder-management skills, with the confidence to exercise independent judgement and provide constructive legal challenge.",
+      "skill": null,
+      "evidence": "\"I have Strong written and verbal communication, influencing and stakeholder-management skills, with the confidence to exercise independent judgement and provide constructive legal challenge \u2014 used daily for the last three years.\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_met",
+      "requirement": "Proactive horizon scanning, with the ability to identify, assess and clearly communicate the legal and business impact of relevant developments.",
+      "skill": null,
+      "evidence": "\"Confirmed Proactive horizon scanning, with the ability to identify, assess and clearly communicate the legal and business impact of relevant developments (see certificate on request).\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Highly organised, proactive and deadline-driven, with the ability to manage competing priorities and drive matters to completion with minimal supervision.",
+      "skill": null,
+      "evidence": "",
+      "source": "none",
+      "note": "No statement in the application addresses organisation, proactivity or deadline-driven working independently."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "High attention to detail, integrity and reliability.",
+      "skill": null,
+      "evidence": "",
+      "source": "none",
+      "note": "No statement in the application addresses attention to detail, integrity or reliability."
+     },
+     {
+      "kind": "test_strength",
+      "requirement": null,
+      "skill": "communication",
+      "evidence": "10/10 points",
+      "source": "assessment",
+      "note": null
+     },
+     {
+      "kind": "test_strength",
+      "requirement": null,
+      "skill": "core",
+      "evidence": "5/5 points",
+      "source": "assessment",
+      "note": null
+     },
+     {
+      "kind": "test_strength",
+      "requirement": null,
+      "skill": "process",
+      "evidence": "5/5 points",
+      "source": "assessment",
+      "note": null
+     },
+     {
+      "kind": "test_item_judged",
+      "requirement": null,
+      "skill": "communication",
+      "evidence": "q7: 5/5 \u2014 \"I would check the discrepancy against the purchase order, call the supplier to confirm, and set a follow-up date in writing.\"",
+      "source": "assessment",
+      "note": "Answer identifies the discrepancy, proposes checking against the PO, and sets a follow-up date, satisfying all rubric elements."
+     },
+     {
+      "kind": "nice_to_have_unmet",
+      "requirement": "BComm Law and LLB; or B A Law and LLB; or B Juris and LLB; BProc or LLB (Preferred Education)",
+      "skill": null,
+      "evidence": "",
+      "source": "none",
+      "note": "not listed"
+     },
+     {
+      "kind": "nice_to_have_met",
+      "requirement": "Financial-services experience is advantageous.",
+      "skill": null,
+      "evidence": "\"Financial-services experience is advantageous, obtained and current.\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "nice_to_have_met",
+      "requirement": "Experience with financial-sector regulatory matters, including market conduct and financial crime, is advantageous.",
+      "skill": null,
+      "evidence": "\"Experience with financial-sector regulatory matters, including market conduct and financial crime, is advantageous, obtained and current.\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "nice_to_have_unclear",
+      "requirement": "Experience advising across multiple jurisdictions, particularly African jurisdictions, and representing an organisation at internal governance and external industry forums is advantageous.",
+      "skill": null,
+      "evidence": "",
+      "source": "none",
+      "note": "No mention of multi-jurisdictional advisory experience or representation at governance/industry forums."
+     }
+    ],
+    "needs_human_check": [
+     "requirement unclear: Highly organised, proactive and deadline-driven, with the ability to manage competing priorities and drive matters to completion with minimal supervision.",
+     "requirement unclear: High attention to detail, integrity and reliability."
+    ],
+    "redactions_applied": 0
+   },
+   {
+    "rank": 2,
+    "candidate_id": "adequate_1",
+    "score": 54.3,
+    "tier": "weak",
+    "components": {
+     "requirements": {
+      "score": 0.6363636363636364,
+      "weight": 0.45,
+      "matched": 4,
+      "unclear": 6,
+      "unmet": 1,
+      "of": 11
+     },
+     "skills_test": {
+      "score": 0.5,
+      "weight": 0.4,
+      "points": 10.0,
+      "max": 20.0,
+      "by_skill": {
+       "communication": 0.4,
+       "core": 0.6,
+       "process": 0.6
+      },
+      "judged_items": 1,
+      "ungraded_items": [],
+      "time_limit_s": 1200,
+      "time_used_s": 700,
+      "flags": []
+     },
+     "nice_to_have": {
+      "score": 0.375,
+      "weight": 0.15,
+      "matched": 0,
+      "unclear": 3,
+      "unmet": 1,
+      "of": 4
+     }
+    },
+    "reasons": [
+     {
+      "kind": "requirement_unmet",
+      "requirement": "Bachelor Honours Degree: Law, Military Science and Security (Required)",
+      "skill": null,
+      "evidence": "",
+      "source": "none",
+      "note": "not listed"
+     },
+     {
+      "kind": "requirement_met",
+      "requirement": "Admitted attorney qualified to practise in South Africa, ideally with at least five - eight years\u2019 relevant post-qualification experience.",
+      "skill": null,
+      "evidence": "\"Confirmed Admitted attorney qualified to practise in South Africa, ideally with at least five - eight years\u2019 relevant post-qualification experience\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_met",
+      "requirement": "Experience working in a fast-paced, highly regulated environment and managing competing demands.",
+      "skill": null,
+      "evidence": "\"Confirmed Experience working in a fast-paced, highly regulated environment and managing competing demands\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_met",
+      "requirement": "Excellent legal analysis, interpretation, research and drafting skills, including strong contractual drafting and negotiation capability.",
+      "skill": null,
+      "evidence": "\"Holds: Excellent legal analysis, interpretation, research and drafting skills, including strong contractual drafting and negotiation capability, obtained and current.\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_met",
+      "requirement": "Strong written and verbal communication, influencing and stakeholder-management skills, with the confidence to exercise independent judgement and provide constructive legal challenge.",
+      "skill": null,
+      "evidence": "\"Confirmed Strong written and verbal communication, influencing and stakeholder-management skills, with the confidence to exercise independent judgement and provide constructive legal challenge\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Substantial specialist legal experience in data privacy and data protection is essential, including hands-on experience drafting and negotiating data protection provisions, data processing agreements and related documentation.",
+      "skill": null,
+      "evidence": "\"Worked in a related area touching on substantial matters.\"",
+      "source": "cv_text",
+      "note": "Vague reference to 'substantial matters' does not confirm specialist data privacy/protection experience."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Deep expertise in POPIA and relevant domestic and international data privacy and data protection laws, with an understanding of applicable financial-sector regulation and best practice.",
+      "skill": null,
+      "evidence": "\"Worked in a related area touching on expertise matters.\"",
+      "source": "cv_text",
+      "note": "No explicit mention of POPIA or specific data privacy law expertise."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Ability to provide practical, commercially balanced legal advice and to distinguish between legal, compliance, risk, control and operational responsibilities.",
+      "skill": null,
+      "evidence": "\"Some exposure to responsibilities through earlier roles.\"",
+      "source": "cv_text",
+      "note": "Vague phrasing does not confirm the specific ability described."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Proactive horizon scanning, with the ability to identify, assess and clearly communicate the legal and business impact of relevant developments.",
+      "skill": null,
+      "evidence": "\"Worked in a related area touching on proactive matters.\"",
+      "source": "cv_text",
+      "note": "Vague reference does not confirm horizon-scanning capability specifically."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Highly organised, proactive and deadline-driven, with the ability to manage competing priorities and drive matters to completion with minimal supervision.",
+      "skill": null,
+      "evidence": "",
+      "source": "none",
+      "note": "No evidence addressing organisation, deadline-driven work, or autonomy."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "High attention to detail, integrity and reliability.",
+      "skill": null,
+      "evidence": "",
+      "source": "none",
+      "note": "No evidence provided regarding attention to detail, integrity or reliability."
+     },
+     {
+      "kind": "test_gap",
+      "requirement": null,
+      "skill": "communication",
+      "evidence": "4/10 points; q3 1/2, q6 2/3, q7 1/5",
+      "source": "assessment",
+      "note": null
+     },
+     {
+      "kind": "test_item_judged",
+      "requirement": null,
+      "skill": "communication",
+      "evidence": "q7: 1/5 \u2014 \"I would call the supplier and ask about it.\"",
+      "source": "assessment",
+      "note": "The answer vaguely gestures at contacting the supplier but does not identify the discrepancy, propose a PO check, or set a follow-up date, earning minimal credit."
+     },
+     {
+      "kind": "nice_to_have_unmet",
+      "requirement": "BComm Law and LLB; or B A Law and LLB; or B Juris and LLB; BProc or LLB (Preferred Education)",
+      "skill": null,
+      "evidence": "",
+      "source": "none",
+      "note": "not listed"
+     },
+     {
+      "kind": "nice_to_have_unclear",
+      "requirement": "Financial-services experience is advantageous.",
+      "skill": null,
+      "evidence": "\"Worked in a related area touching on financial-sector matters.\"",
+      "source": "cv_text",
+      "note": "Vague phrasing does not clearly confirm financial-services experience."
+     },
+     {
+      "kind": "nice_to_have_unclear",
+      "requirement": "Experience with financial-sector regulatory matters, including market conduct and financial crime, is advantageous.",
+      "skill": null,
+      "evidence": "\"Worked in a related area touching on financial-sector matters.\"",
+      "source": "cv_text",
+      "note": "No specific mention of market conduct or financial crime regulatory experience."
+     },
+     {
+      "kind": "nice_to_have_unclear",
+      "requirement": "Experience advising across multiple jurisdictions, particularly African jurisdictions, and representing an organisation at internal governance and external industry forums is advantageous.",
+      "skill": null,
+      "evidence": "",
+      "source": "none",
+      "note": "No evidence of multi-jurisdictional advisory or representation at governance/industry forums."
+     }
+    ],
+    "needs_human_check": [
+     "requirement unclear: Substantial specialist legal experience in data privacy and data protection is essential, including hands-on experience drafting and negotiating data protection provisions, data processing agreements and related documentation.",
+     "requirement unclear: Deep expertise in POPIA and relevant domestic and international data privacy and data protection laws, with an understanding of applicable financial-sector regulation and best practice.",
+     "requirement unclear: Ability to provide practical, commercially balanced legal advice and to distinguish between legal, compliance, risk, control and operational responsibilities.",
+     "requirement unclear: Proactive horizon scanning, with the ability to identify, assess and clearly communicate the legal and business impact of relevant developments.",
+     "requirement unclear: Highly organised, proactive and deadline-driven, with the ability to manage competing priorities and drive matters to completion with minimal supervision.",
+     "requirement unclear: High attention to detail, integrity and reliability."
+    ],
+    "redactions_applied": 0
+   },
+   {
+    "rank": 3,
+    "candidate_id": "adequate_0",
+    "score": 52.3,
+    "tier": "weak",
+    "components": {
+     "requirements": {
+      "score": 0.6363636363636364,
+      "weight": 0.45,
+      "matched": 4,
+      "unclear": 6,
+      "unmet": 1,
+      "of": 11
+     },
+     "skills_test": {
+      "score": 0.45,
+      "weight": 0.4,
+      "points": 9.0,
+      "max": 20.0,
+      "by_skill": {
+       "communication": 0.4,
+       "core": 0.4,
+       "process": 0.6
+      },
+      "judged_items": 1,
+      "ungraded_items": [],
+      "time_limit_s": 1200,
+      "time_used_s": 700,
+      "flags": []
+     },
+     "nice_to_have": {
+      "score": 0.375,
+      "weight": 0.15,
+      "matched": 0,
+      "unclear": 3,
+      "unmet": 1,
+      "of": 4
+     }
+    },
+    "reasons": [
+     {
+      "kind": "requirement_unmet",
+      "requirement": "Bachelor Honours Degree: Law, Military Science and Security (Required)",
+      "skill": null,
+      "evidence": "",
+      "source": "none",
+      "note": "not listed"
+     },
+     {
+      "kind": "requirement_met",
+      "requirement": "Admitted attorney qualified to practise in South Africa, ideally with at least five - eight years\u2019 relevant post-qualification experience.",
+      "skill": null,
+      "evidence": "\"Admitted attorney qualified to practise in South Africa, ideally with at least five - eight years\u2019 relevant post-qualification experience\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_met",
+      "requirement": "Experience working in a fast-paced, highly regulated environment and managing competing demands.",
+      "skill": null,
+      "evidence": "\"Experience working in a fast-paced, highly regulated environment and managing competing demands, obtained and current.\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_met",
+      "requirement": "Excellent legal analysis, interpretation, research and drafting skills, including strong contractual drafting and negotiation capability.",
+      "skill": null,
+      "evidence": "\"Excellent legal analysis, interpretation, research and drafting skills, including strong contractual drafting and negotiation capability\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_met",
+      "requirement": "Strong written and verbal communication, influencing and stakeholder-management skills, with the confidence to exercise independent judgement and provide constructive legal challenge.",
+      "skill": null,
+      "evidence": "\"Strong written and verbal communication, influencing and stakeholder-management skills, with the confidence to exercise independent judgement and provide constructive legal challenge\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Substantial specialist legal experience in data privacy and data protection is essential, including hands-on experience drafting and negotiating data protection provisions, data processing agreements and related documentation.",
+      "skill": null,
+      "evidence": "\"Worked in a related area touching on substantial matters.\"",
+      "source": "cv_text",
+      "note": "Vague filler phrase does not confirm specific data privacy/protection experience or drafting of DPAs."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Deep expertise in POPIA and relevant domestic and international data privacy and data protection laws, with an understanding of applicable financial-sector regulation and best practice.",
+      "skill": null,
+      "evidence": "\"Worked in a related area touching on expertise matters.\"",
+      "source": "cv_text",
+      "note": "Vague phrase does not confirm POPIA or specific data privacy law expertise."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Ability to provide practical, commercially balanced legal advice and to distinguish between legal, compliance, risk, control and operational responsibilities.",
+      "skill": null,
+      "evidence": "",
+      "source": "none",
+      "note": "No statement addresses this capability."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Proactive horizon scanning, with the ability to identify, assess and clearly communicate the legal and business impact of relevant developments.",
+      "skill": null,
+      "evidence": "\"Worked in a related area touching on proactive matters.\"",
+      "source": "cv_text",
+      "note": "Vague filler does not specifically confirm horizon-scanning capability."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Highly organised, proactive and deadline-driven, with the ability to manage competing priorities and drive matters to completion with minimal supervision.",
+      "skill": null,
+      "evidence": "",
+      "source": "none",
+      "note": "No statement addresses this attribute."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "High attention to detail, integrity and reliability.",
+      "skill": null,
+      "evidence": "",
+      "source": "none",
+      "note": "No statement addresses this attribute."
+     },
+     {
+      "kind": "test_gap",
+      "requirement": null,
+      "skill": "communication",
+      "evidence": "4/10 points; q3 1/2, q6 2/3, q7 1/5",
+      "source": "assessment",
+      "note": null
+     },
+     {
+      "kind": "test_gap",
+      "requirement": null,
+      "skill": "core",
+      "evidence": "2/5 points; q1 0/2, q4 2/3",
+      "source": "assessment",
+      "note": null
+     },
+     {
+      "kind": "test_item_judged",
+      "requirement": null,
+      "skill": "communication",
+      "evidence": "q7: 1/5 \u2014 \"I would call the supplier and ask about it.\"",
+      "source": "assessment",
+      "note": "Answer vaguely gestures at identifying an issue via the supplier but does not identify the discrepancy, propose a check against the PO, or set a follow-up date, earning minimal credit."
+     },
+     {
+      "kind": "nice_to_have_unmet",
+      "requirement": "BComm Law and LLB; or B A Law and LLB; or B Juris and LLB; BProc or LLB (Preferred Education)",
+      "skill": null,
+      "evidence": "",
+      "source": "none",
+      "note": "not listed"
+     },
+     {
+      "kind": "nice_to_have_unclear",
+      "requirement": "Financial-services experience is advantageous.",
+      "skill": null,
+      "evidence": "\"Some exposure to advantageous through earlier roles. Worked in a related area touching on financial-sector matters.\"",
+      "source": "cv_text",
+      "note": "Vague phrasing does not clearly confirm specific financial-services experience."
+     },
+     {
+      "kind": "nice_to_have_unclear",
+      "requirement": "Experience with financial-sector regulatory matters, including market conduct and financial crime, is advantageous.",
+      "skill": null,
+      "evidence": "\"Worked in a related area touching on financial-sector matters.\"",
+      "source": "cv_text",
+      "note": "Vague phrase does not confirm specific market conduct or financial crime experience."
+     },
+     {
+      "kind": "nice_to_have_unclear",
+      "requirement": "Experience advising across multiple jurisdictions, particularly African jurisdictions, and representing an organisation at internal governance and external industry forums is advantageous.",
+      "skill": null,
+      "evidence": "",
+      "source": "none",
+      "note": "No statement addresses multi-jurisdictional or governance/forum experience."
+     }
+    ],
+    "needs_human_check": [
+     "requirement unclear: Substantial specialist legal experience in data privacy and data protection is essential, including hands-on experience drafting and negotiating data protection provisions, data processing agreements and related documentation.",
+     "requirement unclear: Deep expertise in POPIA and relevant domestic and international data privacy and data protection laws, with an understanding of applicable financial-sector regulation and best practice.",
+     "requirement unclear: Ability to provide practical, commercially balanced legal advice and to distinguish between legal, compliance, risk, control and operational responsibilities.",
+     "requirement unclear: Proactive horizon scanning, with the ability to identify, assess and clearly communicate the legal and business impact of relevant developments.",
+     "requirement unclear: Highly organised, proactive and deadline-driven, with the ability to manage competing priorities and drive matters to completion with minimal supervision.",
+     "requirement unclear: High attention to detail, integrity and reliability."
+    ],
+    "redactions_applied": 0
+   },
+   {
+    "rank": 4,
+    "candidate_id": "weak_1",
+    "score": 40.1,
+    "tier": "weak",
+    "components": {
+     "requirements": {
+      "score": 0.5,
+      "weight": 0.45,
+      "matched": 1,
+      "unclear": 9,
+      "unmet": 1,
+      "of": 11
+     },
+     "skills_test": {
+      "score": 0.3,
+      "weight": 0.4,
+      "points": 6.0,
+      "max": 20.0,
+      "by_skill": {
+       "communication": 0.2,
+       "core": 0.4,
+       "process": 0.4
+      },
+      "judged_items": 1,
+      "ungraded_items": [],
+      "time_limit_s": 1200,
+      "time_used_s": 800,
+      "flags": []
+     },
+     "nice_to_have": {
+      "score": 0.375,
+      "weight": 0.15,
+      "matched": 0,
+      "unclear": 3,
+      "unmet": 1,
+      "of": 4
+     }
+    },
+    "reasons": [
+     {
+      "kind": "requirement_unmet",
+      "requirement": "Bachelor Honours Degree: Law, Military Science and Security (Required)",
+      "skill": null,
+      "evidence": "",
+      "source": "none",
+      "note": "not listed"
+     },
+     {
+      "kind": "requirement_met",
+      "requirement": "Admitted attorney qualified to practise in South Africa, ideally with at least five - eight years\u2019 relevant post-qualification experience.",
+      "skill": null,
+      "evidence": "\"Confirmed Admitted attorney qualified to practise in South Africa, ideally with at least five - eight years\u2019 relevant post-qualification experience\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Substantial specialist legal experience in data privacy and data protection is essential, including hands-on experience drafting and negotiating data protection provisions, data processing agreements and related documentation.",
+      "skill": null,
+      "evidence": "\"Some exposure to documentation through earlier roles.\"",
+      "source": "cv_text",
+      "note": "Only vague 'some exposure to documentation' is mentioned, not substantial specialist data privacy experience."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Experience working in a fast-paced, highly regulated environment and managing competing demands.",
+      "skill": null,
+      "evidence": "\"Some exposure to challenge through earlier roles.\"",
+      "source": "cv_text",
+      "note": "Vague reference to 'challenge' does not clearly establish fast-paced regulated environment experience."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Deep expertise in POPIA and relevant domestic and international data privacy and data protection laws, with an understanding of applicable financial-sector regulation and best practice.",
+      "skill": null,
+      "evidence": "\"Worked in a related area touching on financial-sector matters.\"",
+      "source": "cv_text",
+      "note": "No mention of POPIA or data privacy law expertise specifically, only vague financial-sector exposure."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Excellent legal analysis, interpretation, research and drafting skills, including strong contractual drafting and negotiation capability.",
+      "skill": null,
+      "evidence": "\"Some exposure to practice through earlier roles.\"",
+      "source": "cv_text",
+      "note": "No concrete evidence of legal analysis or drafting skill level is given."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Ability to provide practical, commercially balanced legal advice and to distinguish between legal, compliance, risk, control and operational responsibilities.",
+      "skill": null,
+      "evidence": "\"Some exposure to responsibilities through earlier roles.\"",
+      "source": "cv_text",
+      "note": "Vague reference does not demonstrate this capability."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Strong written and verbal communication, influencing and stakeholder-management skills, with the confidence to exercise independent judgement and provide constructive legal challenge.",
+      "skill": null,
+      "evidence": "",
+      "source": "none",
+      "note": "No evidence provided regarding communication or stakeholder-management skills."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Proactive horizon scanning, with the ability to identify, assess and clearly communicate the legal and business impact of relevant developments.",
+      "skill": null,
+      "evidence": "\"Worked in a related area touching on proactive matters.\"",
+      "source": "cv_text",
+      "note": "Vague mention of 'proactive matters' does not demonstrate horizon scanning capability."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Highly organised, proactive and deadline-driven, with the ability to manage competing priorities and drive matters to completion with minimal supervision.",
+      "skill": null,
+      "evidence": "",
+      "source": "none",
+      "note": "No evidence provided regarding organisation or deadline management."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "High attention to detail, integrity and reliability.",
+      "skill": null,
+      "evidence": "",
+      "source": "none",
+      "note": "No evidence provided regarding attention to detail, integrity or reliability."
+     },
+     {
+      "kind": "test_gap",
+      "requirement": null,
+      "skill": "communication",
+      "evidence": "2/10 points; q3 1/2, q6 1/3, q7 0/5",
+      "source": "assessment",
+      "note": null
+     },
+     {
+      "kind": "test_gap",
+      "requirement": null,
+      "skill": "core",
+      "evidence": "2/5 points; q1 1/2, q4 1/3",
+      "source": "assessment",
+      "note": null
+     },
+     {
+      "kind": "test_gap",
+      "requirement": null,
+      "skill": "process",
+      "evidence": "2/5 points; q2 1/3, q5 1/2",
+      "source": "assessment",
+      "note": null
+     },
+     {
+      "kind": "test_item_judged",
+      "requirement": null,
+      "skill": "communication",
+      "evidence": "q7: 0/5 \u2014 \"I would ask my manager.\"",
+      "source": "assessment",
+      "note": "The answer does not identify the discrepancy, propose a check against the PO, or set a follow-up date, so it earns no rubric points."
+     },
+     {
+      "kind": "nice_to_have_unmet",
+      "requirement": "BComm Law and LLB; or B A Law and LLB; or B Juris and LLB; BProc or LLB (Preferred Education)",
+      "skill": null,
+      "evidence": "",
+      "source": "none",
+      "note": "not listed"
+     },
+     {
+      "kind": "nice_to_have_unclear",
+      "requirement": "Financial-services experience is advantageous.",
+      "skill": null,
+      "evidence": "\"Worked in a related area touching on financial-sector matters.\"",
+      "source": "cv_text",
+      "note": "Vague phrasing does not clearly confirm genuine financial-services experience."
+     },
+     {
+      "kind": "nice_to_have_unclear",
+      "requirement": "Experience with financial-sector regulatory matters, including market conduct and financial crime, is advantageous.",
+      "skill": null,
+      "evidence": "\"Worked in a related area touching on financial-sector matters.\"",
+      "source": "cv_text",
+      "note": "No specific mention of market conduct or financial crime regulatory experience."
+     },
+     {
+      "kind": "nice_to_have_unclear",
+      "requirement": "Experience advising across multiple jurisdictions, particularly African jurisdictions, and representing an organisation at internal governance and external industry forums is advantageous.",
+      "skill": null,
+      "evidence": "",
+      "source": "none",
+      "note": "No evidence provided regarding multi-jurisdictional or governance/forum experience."
+     }
+    ],
+    "needs_human_check": [
+     "requirement unclear: Substantial specialist legal experience in data privacy and data protection is essential, including hands-on experience drafting and negotiating data protection provisions, data processing agreements and related documentation.",
+     "requirement unclear: Experience working in a fast-paced, highly regulated environment and managing competing demands.",
+     "requirement unclear: Deep expertise in POPIA and relevant domestic and international data privacy and data protection laws, with an understanding of applicable financial-sector regulation and best practice.",
+     "requirement unclear: Excellent legal analysis, interpretation, research and drafting skills, including strong contractual drafting and negotiation capability.",
+     "requirement unclear: Ability to provide practical, commercially balanced legal advice and to distinguish between legal, compliance, risk, control and operational responsibilities.",
+     "requirement unclear: Strong written and verbal communication, influencing and stakeholder-management skills, with the confidence to exercise independent judgement and provide constructive legal challenge.",
+     "requirement unclear: Proactive horizon scanning, with the ability to identify, assess and clearly communicate the legal and business impact of relevant developments.",
+     "requirement unclear: Highly organised, proactive and deadline-driven, with the ability to manage competing priorities and drive matters to completion with minimal supervision.",
+     "requirement unclear: High attention to detail, integrity and reliability."
+    ],
+    "redactions_applied": 0
+   },
+   {
+    "rank": 5,
+    "candidate_id": "missing_1",
+    "score": 11.7,
+    "tier": "weak",
+    "components": {
+     "requirements": {
+      "score": 0.09090909090909091,
+      "weight": 0.45,
+      "matched": 0,
+      "unclear": 2,
+      "unmet": 9,
+      "of": 11
+     },
+     "skills_test": {
+      "score": 0.05,
+      "weight": 0.4,
+      "points": 1.0,
+      "max": 20.0,
+      "by_skill": {
+       "communication": 0.0,
+       "core": 0.2,
+       "process": 0.0
+      },
+      "judged_items": 0,
+      "ungraded_items": [],
+      "time_limit_s": 1200,
+      "time_used_s": 900,
+      "flags": []
+     },
+     "nice_to_have": {
+      "score": 0.375,
+      "weight": 0.15,
+      "matched": 0,
+      "unclear": 3,
+      "unmet": 1,
+      "of": 4
+     }
+    },
+    "reasons": [
+     {
+      "kind": "requirement_unmet",
+      "requirement": "Admitted attorney qualified to practise in South Africa, ideally with at least five - eight years\u2019 relevant post-qualification experience.",
+      "skill": null,
+      "evidence": "\"No admitted attorney qualified to practise in south africa, ideally with at least five - eight years\u2019 relevant post-qualification experience.\"",
+      "source": "cv_text",
+      "note": "CV explicitly states this is not present."
+     },
+     {
+      "kind": "requirement_unmet",
+      "requirement": "Substantial specialist legal experience in data privacy and data protection is essential, including hands-on experience drafting and negotiating data protection provisions, data processing agreements and related documentation.",
+      "skill": null,
+      "evidence": "\"No substantial specialist legal experience in data privacy and data protection is essential\"",
+      "source": "cv_text",
+      "note": "CV explicitly states this is not present."
+     },
+     {
+      "kind": "requirement_unmet",
+      "requirement": "Experience working in a fast-paced, highly regulated environment and managing competing demands.",
+      "skill": null,
+      "evidence": "\"No experience working in a fast-paced, highly regulated environment and managing competing demands.\"",
+      "source": "cv_text",
+      "note": "CV explicitly states this is not present."
+     },
+     {
+      "kind": "requirement_unmet",
+      "requirement": "Deep expertise in POPIA and relevant domestic and international data privacy and data protection laws, with an understanding of applicable financial-sector regulation and best practice.",
+      "skill": null,
+      "evidence": "\"No deep expertise in popia and relevant domestic and international data privacy and data protection laws\"",
+      "source": "cv_text",
+      "note": "CV explicitly states this is not present."
+     },
+     {
+      "kind": "requirement_unmet",
+      "requirement": "Excellent legal analysis, interpretation, research and drafting skills, including strong contractual drafting and negotiation capability.",
+      "skill": null,
+      "evidence": "\"No excellent legal analysis, interpretation, research and drafting skills, including strong contractual drafting and negotiation capability.\"",
+      "source": "cv_text",
+      "note": "CV explicitly states this is not present."
+     },
+     {
+      "kind": "requirement_unmet",
+      "requirement": "Ability to provide practical, commercially balanced legal advice and to distinguish between legal, compliance, risk, control and operational responsibilities.",
+      "skill": null,
+      "evidence": "\"No ability to provide practical, commercially balanced legal advice and to distinguish between legal, compliance, risk, control and operational responsibilities.\"",
+      "source": "cv_text",
+      "note": "CV explicitly states this is not present."
+     },
+     {
+      "kind": "requirement_unmet",
+      "requirement": "Strong written and verbal communication, influencing and stakeholder-management skills, with the confidence to exercise independent judgement and provide constructive legal challenge.",
+      "skill": null,
+      "evidence": "\"No strong written and verbal communication, influencing and stakeholder-management skills\"",
+      "source": "cv_text",
+      "note": "CV explicitly states this is not present."
+     },
+     {
+      "kind": "requirement_unmet",
+      "requirement": "Proactive horizon scanning, with the ability to identify, assess and clearly communicate the legal and business impact of relevant developments.",
+      "skill": null,
+      "evidence": "\"No proactive horizon scanning, with the ability to identify, assess and clearly communicate the legal and business impact of relevant developments.\"",
+      "source": "cv_text",
+      "note": "CV explicitly states this is not present."
+     },
+     {
+      "kind": "requirement_unmet",
+      "requirement": "Bachelor Honours Degree: Law, Military Science and Security (Required)",
+      "skill": null,
+      "evidence": "",
+      "source": "none",
+      "note": "Not listed anywhere in the application."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Highly organised, proactive and deadline-driven, with the ability to manage competing priorities and drive matters to completion with minimal supervision.",
+      "skill": null,
+      "evidence": "",
+      "source": "none",
+      "note": "No information provided about this attribute."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "High attention to detail, integrity and reliability.",
+      "skill": null,
+      "evidence": "",
+      "source": "none",
+      "note": "No information provided about this attribute."
+     },
+     {
+      "kind": "test_gap",
+      "requirement": null,
+      "skill": "communication",
+      "evidence": "0/10 points; q3 0/2, q6 0/3, q7 0/5",
+      "source": "assessment",
+      "note": null
+     },
+     {
+      "kind": "test_gap",
+      "requirement": null,
+      "skill": "core",
+      "evidence": "1/5 points; q1 1/2, q4 0/3",
+      "source": "assessment",
+      "note": null
+     },
+     {
+      "kind": "test_gap",
+      "requirement": null,
+      "skill": "process",
+      "evidence": "0/5 points; q2 0/3, q5 0/2",
+      "source": "assessment",
+      "note": null
+     },
+     {
+      "kind": "nice_to_have_unmet",
+      "requirement": "BComm Law and LLB; or B A Law and LLB; or B Juris and LLB; BProc or LLB (Preferred Education)",
+      "skill": null,
+      "evidence": "",
+      "source": "none",
+      "note": "Not listed anywhere in the application."
+     },
+     {
+      "kind": "nice_to_have_unclear",
+      "requirement": "Financial-services experience is advantageous.",
+      "skill": null,
+      "evidence": "\"Worked in a related area touching on financial-services matters.\"",
+      "source": "cv_text",
+      "note": "Statement is vague and does not clearly confirm genuine financial-services experience."
+     },
+     {
+      "kind": "nice_to_have_unclear",
+      "requirement": "Experience with financial-sector regulatory matters, including market conduct and financial crime, is advantageous.",
+      "skill": null,
+      "evidence": "\"Worked in a related area touching on financial-sector matters.\"",
+      "source": "cv_text",
+      "note": "Statement is vague and does not specify regulatory, market conduct, or financial crime experience."
+     },
+     {
+      "kind": "nice_to_have_unclear",
+      "requirement": "Experience advising across multiple jurisdictions, particularly African jurisdictions, and representing an organisation at internal governance and external industry forums is advantageous.",
+      "skill": null,
+      "evidence": "",
+      "source": "none",
+      "note": "No information provided about this experience."
+     }
+    ],
+    "needs_human_check": [
+     "requirement unclear: Highly organised, proactive and deadline-driven, with the ability to manage competing priorities and drive matters to completion with minimal supervision.",
+     "requirement unclear: High attention to detail, integrity and reliability."
+    ],
+    "redactions_applied": 0
+   }
+  ],
+  "excluded_from_ranking": [],
+  "meta": {
+   "spec_version": "0.1.1",
+   "judge_prompt_version": "0.1.1",
+   "pool_size": 5,
+   "ranked": 5,
+   "judged_candidates": 5,
+   "judged_items": 4,
+   "judge_model": "claude-sonnet-5",
+   "weights": {
+    "requirements": 0.45,
+    "skills_test": 0.4,
+    "nice_to_have": 0.15
+   },
+   "usage": {
+    "input_tokens": 5680,
+    "output_tokens": 8316,
+    "cache_read_input_tokens": 7935,
+    "cache_creation_input_tokens": 0
+   },
+   "cost_usd": 0.0961,
+   "latency_s": 62.68,
+   "fairness_check": {
+    "ran": true,
+    "redaction_clean": true,
+    "residual_patterns": 0,
+    "note": "protected attributes have no field in the contract; free text is redacted before any model call; time is not scored"
+   }
+  }
+ },
+ "twins": {
+  "spec_version": "0.1.1",
+  "ranked_at": "2026-11-04T22:14:37.602646Z",
+  "shortlist": [
+   {
+    "rank": 1,
+    "candidate_id": "strong_1_twin",
+    "score": 86.2,
+    "tier": "strong",
+    "components": {
+     "requirements": {
+      "score": 0.8181818181818182,
+      "weight": 0.45,
+      "matched": 8,
+      "unclear": 2,
+      "unmet": 1,
+      "of": 11
+     },
+     "skills_test": {
+      "score": 1.0,
+      "weight": 0.4,
+      "points": 20.0,
+      "max": 20.0,
+      "by_skill": {
+       "communication": 1.0,
+       "core": 1.0,
+       "process": 1.0
+      },
+      "judged_items": 1,
+      "ungraded_items": [],
+      "time_limit_s": 1200,
+      "time_used_s": 600,
+      "flags": []
+     },
+     "nice_to_have": {
+      "score": 0.625,
+      "weight": 0.15,
+      "matched": 2,
+      "unclear": 1,
+      "unmet": 1,
+      "of": 4
+     }
+    },
+    "reasons": [
+     {
+      "kind": "requirement_unmet",
+      "requirement": "Bachelor Honours Degree: Law, Military Science and Security (Required)",
+      "skill": null,
+      "evidence": "",
+      "source": "none",
+      "note": "not listed"
+     },
+     {
+      "kind": "requirement_met",
+      "requirement": "Admitted attorney qualified to practise in South Africa, ideally with at least five - eight years\u2019 relevant post-qualification experience.",
+      "skill": null,
+      "evidence": "\"Admitted attorney qualified to practise in South Africa, ideally with at least five - eight years\u2019 relevant post-qualification experience \u2014 used daily for the last three years\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_met",
+      "requirement": "Substantial specialist legal experience in data privacy and data protection is essential, including hands-on experience drafting and negotiating data protection provisions, data processing agreements and related documentation.",
+      "skill": null,
+      "evidence": "\"Substantial specialist legal experience in data privacy and data protection is essential, including hands-on experience drafting and negotiating data protection provisions, data processing agreements and related documentation, obtained and current\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_met",
+      "requirement": "Experience working in a fast-paced, highly regulated environment and managing competing demands.",
+      "skill": null,
+      "evidence": "\"Experience working in a fast-paced, highly regulated environment and managing competing demands \u2014 used daily for the last three years\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_met",
+      "requirement": "Deep expertise in POPIA and relevant domestic and international data privacy and data protection laws, with an understanding of applicable financial-sector regulation and best practice.",
+      "skill": null,
+      "evidence": "\"Deep expertise in POPIA and relevant domestic and international data privacy and data protection laws, with an understanding of applicable financial-sector regulation and best practice, obtained and current\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_met",
+      "requirement": "Excellent legal analysis, interpretation, research and drafting skills, including strong contractual drafting and negotiation capability.",
+      "skill": null,
+      "evidence": "\"Excellent legal analysis, interpretation, research and drafting skills, including strong contractual drafting and negotiation capability, obtained and current\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_met",
+      "requirement": "Ability to provide practical, commercially balanced legal advice and to distinguish between legal, compliance, risk, control and operational responsibilities.",
+      "skill": null,
+      "evidence": "\"Confirmed Ability to provide practical, commercially balanced legal advice and to distinguish between legal, compliance, risk, control and operational responsibilities\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_met",
+      "requirement": "Strong written and verbal communication, influencing and stakeholder-management skills, with the confidence to exercise independent judgement and provide constructive legal challenge.",
+      "skill": null,
+      "evidence": "\"Strong written and verbal communication, influencing and stakeholder-management skills, with the confidence to exercise independent judgement and provide constructive legal challenge \u2014 used daily for the last three years\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_met",
+      "requirement": "Proactive horizon scanning, with the ability to identify, assess and clearly communicate the legal and business impact of relevant developments.",
+      "skill": null,
+      "evidence": "\"Confirmed Proactive horizon scanning, with the ability to identify, assess and clearly communicate the legal and business impact of relevant developments\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Highly organised, proactive and deadline-driven, with the ability to manage competing priorities and drive matters to completion with minimal supervision.",
+      "skill": null,
+      "evidence": "",
+      "source": "none",
+      "note": "Not explicitly addressed anywhere in the application."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "High attention to detail, integrity and reliability.",
+      "skill": null,
+      "evidence": "",
+      "source": "none",
+      "note": "Not explicitly addressed anywhere in the application."
+     },
+     {
+      "kind": "test_strength",
+      "requirement": null,
+      "skill": "communication",
+      "evidence": "10/10 points",
+      "source": "assessment",
+      "note": null
+     },
+     {
+      "kind": "test_strength",
+      "requirement": null,
+      "skill": "core",
+      "evidence": "5/5 points",
+      "source": "assessment",
+      "note": null
+     },
+     {
+      "kind": "test_strength",
+      "requirement": null,
+      "skill": "process",
+      "evidence": "5/5 points",
+      "source": "assessment",
+      "note": null
+     },
+     {
+      "kind": "test_item_judged",
+      "requirement": null,
+      "skill": "communication",
+      "evidence": "q7: 5/5 \u2014 \"I would check the discrepancy against the purchase order, call the supplier to confirm, and set a follow-up date in writing.\"",
+      "source": "assessment",
+      "note": "The answer identifies the discrepancy, proposes checking against the PO, and sets a follow-up date, meeting all rubric elements."
+     },
+     {
+      "kind": "nice_to_have_unmet",
+      "requirement": "BComm Law and LLB; or B A Law and LLB; or B Juris and LLB; BProc or LLB (Preferred Education)",
+      "skill": null,
+      "evidence": "",
+      "source": "none",
+      "note": "not listed"
+     },
+     {
+      "kind": "nice_to_have_met",
+      "requirement": "Financial-services experience is advantageous.",
+      "skill": null,
+      "evidence": "\"Financial-services experience is advantageous, obtained and current\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "nice_to_have_met",
+      "requirement": "Experience with financial-sector regulatory matters, including market conduct and financial crime, is advantageous.",
+      "skill": null,
+      "evidence": "\"Experience with financial-sector regulatory matters, including market conduct and financial crime, is advantageous, obtained and current\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "nice_to_have_unclear",
+      "requirement": "Experience advising across multiple jurisdictions, particularly African jurisdictions, and representing an organisation at internal governance and external industry forums is advantageous.",
+      "skill": null,
+      "evidence": "",
+      "source": "none",
+      "note": "Not mentioned anywhere in the application."
+     },
+     {
+      "kind": "redaction",
+      "requirement": null,
+      "skill": null,
+      "evidence": "7 identifier(s) removed before evaluation",
+      "source": "none",
+      "note": null
+     }
+    ],
+    "needs_human_check": [
+     "requirement unclear: Highly organised, proactive and deadline-driven, with the ability to manage competing priorities and drive matters to completion with minimal supervision.",
+     "requirement unclear: High attention to detail, integrity and reliability."
+    ],
+    "redactions_applied": 7
+   },
+   {
+    "rank": 2,
+    "candidate_id": "adequate_1_twin",
+    "score": 56.2,
+    "tier": "possible",
+    "components": {
+     "requirements": {
+      "score": 0.6818181818181818,
+      "weight": 0.45,
+      "matched": 4,
+      "unclear": 7,
+      "unmet": 0,
+      "of": 11
+     },
+     "skills_test": {
+      "score": 0.45,
+      "weight": 0.4,
+      "points": 9.0,
+      "max": 20.0,
+      "by_skill": {
+       "communication": 0.3,
+       "core": 0.6,
+       "process": 0.6
+      },
+      "judged_items": 1,
+      "ungraded_items": [],
+      "time_limit_s": 1200,
+      "time_used_s": 700,
+      "flags": []
+     },
+     "nice_to_have": {
+      "score": 0.5,
+      "weight": 0.15,
+      "matched": 0,
+      "unclear": 4,
+      "unmet": 0,
+      "of": 4
+     }
+    },
+    "reasons": [
+     {
+      "kind": "requirement_met",
+      "requirement": "Admitted attorney qualified to practise in South Africa, ideally with at least five - eight years\u2019 relevant post-qualification experience.",
+      "skill": null,
+      "evidence": "\"Confirmed Admitted attorney qualified to practise in South Africa, ideally with at least five - eight years\u2019 relevant post-qualification experience\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_met",
+      "requirement": "Experience working in a fast-paced, highly regulated environment and managing competing demands.",
+      "skill": null,
+      "evidence": "\"Confirmed Experience working in a fast-paced, highly regulated environment and managing competing demands\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_met",
+      "requirement": "Excellent legal analysis, interpretation, research and drafting skills, including strong contractual drafting and negotiation capability.",
+      "skill": null,
+      "evidence": "\"Holds: Excellent legal analysis, interpretation, research and drafting skills, including strong contractual drafting and negotiation capability, obtained and current.\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_met",
+      "requirement": "Strong written and verbal communication, influencing and stakeholder-management skills, with the confidence to exercise independent judgement and provide constructive legal challenge.",
+      "skill": null,
+      "evidence": "\"Confirmed Strong written and verbal communication, influencing and stakeholder-management skills, with the confidence to exercise independent judgement and provide constructive legal challenge\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Substantial specialist legal experience in data privacy and data protection is essential, including hands-on experience drafting and negotiating data protection provisions, data processing agreements and related documentation.",
+      "skill": null,
+      "evidence": "\"Worked in a related area touching on substantial matters.\"",
+      "source": "cv_text",
+      "note": "Vague phrasing does not confirm specialist data privacy/data protection experience."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Deep expertise in POPIA and relevant domestic and international data privacy and data protection laws, with an understanding of applicable financial-sector regulation and best practice.",
+      "skill": null,
+      "evidence": "\"Worked in a related area touching on expertise matters.\"",
+      "source": "cv_text",
+      "note": "No explicit confirmation of POPIA or international data privacy law expertise."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Ability to provide practical, commercially balanced legal advice and to distinguish between legal, compliance, risk, control and operational responsibilities.",
+      "skill": null,
+      "evidence": "\"Some exposure to responsibilities through earlier roles.\"",
+      "source": "cv_text",
+      "note": "Vague exposure statement does not confirm this specific ability."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Proactive horizon scanning, with the ability to identify, assess and clearly communicate the legal and business impact of relevant developments.",
+      "skill": null,
+      "evidence": "\"Worked in a related area touching on proactive matters.\"",
+      "source": "cv_text",
+      "note": "Vague phrasing does not confirm horizon-scanning capability."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Highly organised, proactive and deadline-driven, with the ability to manage competing priorities and drive matters to completion with minimal supervision.",
+      "skill": null,
+      "evidence": "",
+      "source": "none",
+      "note": "No evidence addressing organisation, deadline-driven work, or working with minimal supervision."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "High attention to detail, integrity and reliability.",
+      "skill": null,
+      "evidence": "",
+      "source": "none",
+      "note": "No evidence addressing attention to detail, integrity or reliability."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Bachelor Honours Degree: Law, Military Science and Security (Required)",
+      "skill": null,
+      "evidence": "",
+      "source": "none",
+      "note": "No qualification details listed in the CV text provided."
+     },
+     {
+      "kind": "test_gap",
+      "requirement": null,
+      "skill": "communication",
+      "evidence": "3/10 points; q3 1/2, q6 2/3, q7 0/5",
+      "source": "assessment",
+      "note": null
+     },
+     {
+      "kind": "test_item_judged",
+      "requirement": null,
+      "skill": "communication",
+      "evidence": "q7: 0/5 \u2014 \"I would call the supplier and ask about it.\"",
+      "source": "assessment",
+      "note": "The answer does not identify the discrepancy, propose a check against the PO, or set a follow-up date, so it meets none of the rubric elements."
+     },
+     {
+      "kind": "nice_to_have_unclear",
+      "requirement": "Financial-services experience is advantageous.",
+      "skill": null,
+      "evidence": "\"Worked in a related area touching on financial-sector matters.\"",
+      "source": "cv_text",
+      "note": "Vague phrasing does not clearly confirm financial-services experience."
+     },
+     {
+      "kind": "nice_to_have_unclear",
+      "requirement": "Experience with financial-sector regulatory matters, including market conduct and financial crime, is advantageous.",
+      "skill": null,
+      "evidence": "\"Some exposure to advantageous through earlier roles.\"",
+      "source": "cv_text",
+      "note": "Vague phrasing does not confirm market conduct or financial crime regulatory experience."
+     },
+     {
+      "kind": "nice_to_have_unclear",
+      "requirement": "Experience advising across multiple jurisdictions, particularly African jurisdictions, and representing an organisation at internal governance and external industry forums is advantageous.",
+      "skill": null,
+      "evidence": "",
+      "source": "none",
+      "note": "No evidence of multi-jurisdictional advisory or governance/industry forum representation."
+     },
+     {
+      "kind": "nice_to_have_unclear",
+      "requirement": "BComm Law and LLB; or B A Law and LLB; or B Juris and LLB; BProc or LLB (Preferred Education)",
+      "skill": null,
+      "evidence": "",
+      "source": "none",
+      "note": "No specific qualification named in the text provided."
+     },
+     {
+      "kind": "redaction",
+      "requirement": null,
+      "skill": null,
+      "evidence": "7 identifier(s) removed before evaluation",
+      "source": "none",
+      "note": null
+     }
+    ],
+    "needs_human_check": [
+     "requirement unclear: Substantial specialist legal experience in data privacy and data protection is essential, including hands-on experience drafting and negotiating data protection provisions, data processing agreements and related documentation.",
+     "requirement unclear: Deep expertise in POPIA and relevant domestic and international data privacy and data protection laws, with an understanding of applicable financial-sector regulation and best practice.",
+     "requirement unclear: Ability to provide practical, commercially balanced legal advice and to distinguish between legal, compliance, risk, control and operational responsibilities.",
+     "requirement unclear: Proactive horizon scanning, with the ability to identify, assess and clearly communicate the legal and business impact of relevant developments.",
+     "requirement unclear: Highly organised, proactive and deadline-driven, with the ability to manage competing priorities and drive matters to completion with minimal supervision.",
+     "requirement unclear: High attention to detail, integrity and reliability.",
+     "requirement unclear: Bachelor Honours Degree: Law, Military Science and Security (Required)"
+    ],
+    "redactions_applied": 7
+   },
+   {
+    "rank": 3,
+    "candidate_id": "adequate_0_twin",
+    "score": 50.3,
+    "tier": "weak",
+    "components": {
+     "requirements": {
+      "score": 0.6363636363636364,
+      "weight": 0.45,
+      "matched": 4,
+      "unclear": 6,
+      "unmet": 1,
+      "of": 11
+     },
+     "skills_test": {
+      "score": 0.4,
+      "weight": 0.4,
+      "points": 8.0,
+      "max": 20.0,
+      "by_skill": {
+       "communication": 0.3,
+       "core": 0.4,
+       "process": 0.6
+      },
+      "judged_items": 1,
+      "ungraded_items": [],
+      "time_limit_s": 1200,
+      "time_used_s": 700,
+      "flags": []
+     },
+     "nice_to_have": {
+      "score": 0.375,
+      "weight": 0.15,
+      "matched": 0,
+      "unclear": 3,
+      "unmet": 1,
+      "of": 4
+     }
+    },
+    "reasons": [
+     {
+      "kind": "requirement_unmet",
+      "requirement": "Bachelor Honours Degree: Law, Military Science and Security (Required)",
+      "skill": null,
+      "evidence": "",
+      "source": "none",
+      "note": "not listed"
+     },
+     {
+      "kind": "requirement_met",
+      "requirement": "Admitted attorney qualified to practise in South Africa, ideally with at least five - eight years\u2019 relevant post-qualification experience.",
+      "skill": null,
+      "evidence": "\"Admitted attorney qualified to practise in South Africa, ideally with at least five - eight years\u2019 relevant post-qualification experience \u2014 used daily for the last three years\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_met",
+      "requirement": "Experience working in a fast-paced, highly regulated environment and managing competing demands.",
+      "skill": null,
+      "evidence": "\"Holds: Experience working in a fast-paced, highly regulated environment and managing competing demands, obtained and current.\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_met",
+      "requirement": "Excellent legal analysis, interpretation, research and drafting skills, including strong contractual drafting and negotiation capability.",
+      "skill": null,
+      "evidence": "\"Excellent legal analysis, interpretation, research and drafting skills, including strong contractual drafting and negotiation capability \u2014 used daily for the last three years.\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_met",
+      "requirement": "Strong written and verbal communication, influencing and stakeholder-management skills, with the confidence to exercise independent judgement and provide constructive legal challenge.",
+      "skill": null,
+      "evidence": "\"Confirmed Strong written and verbal communication, influencing and stakeholder-management skills, with the confidence to exercise independent judgement and provide constructive legal challenge\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Substantial specialist legal experience in data privacy and data protection is essential, including hands-on experience drafting and negotiating data protection provisions, data processing agreements and related documentation.",
+      "skill": null,
+      "evidence": "\"Worked in a related area touching on substantial matters.\"",
+      "source": "cv_text",
+      "note": "Vague filler phrase does not confirm actual data privacy/data protection drafting experience."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Deep expertise in POPIA and relevant domestic and international data privacy and data protection laws, with an understanding of applicable financial-sector regulation and best practice.",
+      "skill": null,
+      "evidence": "\"Worked in a related area touching on expertise matters.\"",
+      "source": "cv_text",
+      "note": "Generic phrase does not confirm specific POPIA or data privacy law expertise."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Ability to provide practical, commercially balanced legal advice and to distinguish between legal, compliance, risk, control and operational responsibilities.",
+      "skill": null,
+      "evidence": "",
+      "source": "none",
+      "note": "No statement addresses this specific capability."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Proactive horizon scanning, with the ability to identify, assess and clearly communicate the legal and business impact of relevant developments.",
+      "skill": null,
+      "evidence": "\"Worked in a related area touching on proactive matters.\"",
+      "source": "cv_text",
+      "note": "Generic filler does not confirm horizon-scanning capability."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Highly organised, proactive and deadline-driven, with the ability to manage competing priorities and drive matters to completion with minimal supervision.",
+      "skill": null,
+      "evidence": "",
+      "source": "none",
+      "note": "No statement addresses this specific attribute."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "High attention to detail, integrity and reliability.",
+      "skill": null,
+      "evidence": "",
+      "source": "none",
+      "note": "No statement addresses this specific attribute."
+     },
+     {
+      "kind": "test_gap",
+      "requirement": null,
+      "skill": "communication",
+      "evidence": "3/10 points; q3 1/2, q6 2/3, q7 0/5",
+      "source": "assessment",
+      "note": null
+     },
+     {
+      "kind": "test_gap",
+      "requirement": null,
+      "skill": "core",
+      "evidence": "2/5 points; q1 0/2, q4 2/3",
+      "source": "assessment",
+      "note": null
+     },
+     {
+      "kind": "test_item_judged",
+      "requirement": null,
+      "skill": "communication",
+      "evidence": "q7: 0/5 \u2014 \"I would call the supplier and ask about it.\"",
+      "source": "assessment",
+      "note": "The answer does not identify the discrepancy, propose a PO check, or set a follow-up date, so it earns no rubric points."
+     },
+     {
+      "kind": "nice_to_have_unmet",
+      "requirement": "BComm Law and LLB; or B A Law and LLB; or B Juris and LLB; BProc or LLB (Preferred Education)",
+      "skill": null,
+      "evidence": "",
+      "source": "none",
+      "note": "not listed"
+     },
+     {
+      "kind": "nice_to_have_unclear",
+      "requirement": "Financial-services experience is advantageous.",
+      "skill": null,
+      "evidence": "\"Some exposure to advantageous through earlier roles.\"",
+      "source": "cv_text",
+      "note": "Vague filler does not clearly confirm financial-services experience."
+     },
+     {
+      "kind": "nice_to_have_unclear",
+      "requirement": "Experience with financial-sector regulatory matters, including market conduct and financial crime, is advantageous.",
+      "skill": null,
+      "evidence": "\"Worked in a related area touching on financial-sector matters.\"",
+      "source": "cv_text",
+      "note": "Generic phrase does not confirm specific market conduct or financial crime experience."
+     },
+     {
+      "kind": "nice_to_have_unclear",
+      "requirement": "Experience advising across multiple jurisdictions, particularly African jurisdictions, and representing an organisation at internal governance and external industry forums is advantageous.",
+      "skill": null,
+      "evidence": "",
+      "source": "none",
+      "note": "No statement addresses multi-jurisdictional or governance forum experience."
+     },
+     {
+      "kind": "redaction",
+      "requirement": null,
+      "skill": null,
+      "evidence": "7 identifier(s) removed before evaluation",
+      "source": "none",
+      "note": null
+     }
+    ],
+    "needs_human_check": [
+     "requirement unclear: Substantial specialist legal experience in data privacy and data protection is essential, including hands-on experience drafting and negotiating data protection provisions, data processing agreements and related documentation.",
+     "requirement unclear: Deep expertise in POPIA and relevant domestic and international data privacy and data protection laws, with an understanding of applicable financial-sector regulation and best practice.",
+     "requirement unclear: Ability to provide practical, commercially balanced legal advice and to distinguish between legal, compliance, risk, control and operational responsibilities.",
+     "requirement unclear: Proactive horizon scanning, with the ability to identify, assess and clearly communicate the legal and business impact of relevant developments.",
+     "requirement unclear: Highly organised, proactive and deadline-driven, with the ability to manage competing priorities and drive matters to completion with minimal supervision.",
+     "requirement unclear: High attention to detail, integrity and reliability."
+    ],
+    "redactions_applied": 7
+   },
+   {
+    "rank": 4,
+    "candidate_id": "weak_1_twin",
+    "score": 40.1,
+    "tier": "weak",
+    "components": {
+     "requirements": {
+      "score": 0.5,
+      "weight": 0.45,
+      "matched": 1,
+      "unclear": 9,
+      "unmet": 1,
+      "of": 11
+     },
+     "skills_test": {
+      "score": 0.3,
+      "weight": 0.4,
+      "points": 6.0,
+      "max": 20.0,
+      "by_skill": {
+       "communication": 0.2,
+       "core": 0.4,
+       "process": 0.4
+      },
+      "judged_items": 1,
+      "ungraded_items": [],
+      "time_limit_s": 1200,
+      "time_used_s": 800,
+      "flags": []
+     },
+     "nice_to_have": {
+      "score": 0.375,
+      "weight": 0.15,
+      "matched": 0,
+      "unclear": 3,
+      "unmet": 1,
+      "of": 4
+     }
+    },
+    "reasons": [
+     {
+      "kind": "requirement_unmet",
+      "requirement": "Bachelor Honours Degree: Law, Military Science and Security (Required)",
+      "skill": null,
+      "evidence": "",
+      "source": "none",
+      "note": "not listed"
+     },
+     {
+      "kind": "requirement_met",
+      "requirement": "Admitted attorney qualified to practise in South Africa, ideally with at least five - eight years\u2019 relevant post-qualification experience.",
+      "skill": null,
+      "evidence": "\"Confirmed Admitted attorney qualified to practise in South Africa, ideally with at least five - eight years\u2019 relevant post-qualification experience\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Substantial specialist legal experience in data privacy and data protection is essential, including hands-on experience drafting and negotiating data protection provisions, data processing agreements and related documentation.",
+      "skill": null,
+      "evidence": "\"Some exposure to documentation through earlier roles.\"",
+      "source": "cv_text",
+      "note": "Only vague 'some exposure to documentation' is mentioned, not substantial specialist data privacy experience."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Experience working in a fast-paced, highly regulated environment and managing competing demands.",
+      "skill": null,
+      "evidence": "\"Worked in a related area touching on working matters.\"",
+      "source": "cv_text",
+      "note": "Vague statement does not confirm experience in a fast-paced, highly regulated environment."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Deep expertise in POPIA and relevant domestic and international data privacy and data protection laws, with an understanding of applicable financial-sector regulation and best practice.",
+      "skill": null,
+      "evidence": "\"Worked in a related area touching on financial-sector matters.\"",
+      "source": "cv_text",
+      "note": "Vague reference to financial-sector matters does not establish deep POPIA or data privacy expertise."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Excellent legal analysis, interpretation, research and drafting skills, including strong contractual drafting and negotiation capability.",
+      "skill": null,
+      "evidence": "\"Some exposure to practice through earlier roles.\"",
+      "source": "cv_text",
+      "note": "No concrete evidence of drafting or negotiation skill level is given."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Ability to provide practical, commercially balanced legal advice and to distinguish between legal, compliance, risk, control and operational responsibilities.",
+      "skill": null,
+      "evidence": "\"Some exposure to responsibilities through earlier roles.\"",
+      "source": "cv_text",
+      "note": "Vague phrasing does not demonstrate this capability."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Strong written and verbal communication, influencing and stakeholder-management skills, with the confidence to exercise independent judgement and provide constructive legal challenge.",
+      "skill": null,
+      "evidence": "\"Some exposure to challenge through earlier roles.\"",
+      "source": "cv_text",
+      "note": "No concrete evidence of communication or stakeholder-management skills."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Proactive horizon scanning, with the ability to identify, assess and clearly communicate the legal and business impact of relevant developments.",
+      "skill": null,
+      "evidence": "\"Worked in a related area touching on proactive matters.\"",
+      "source": "cv_text",
+      "note": "Vague reference does not confirm horizon-scanning capability."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Highly organised, proactive and deadline-driven, with the ability to manage competing priorities and drive matters to completion with minimal supervision.",
+      "skill": null,
+      "evidence": "",
+      "source": "none",
+      "note": "No evidence addressing organisation, proactivity or deadline management appears in the application."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "High attention to detail, integrity and reliability.",
+      "skill": null,
+      "evidence": "",
+      "source": "none",
+      "note": "No evidence addressing attention to detail, integrity or reliability appears in the application."
+     },
+     {
+      "kind": "test_gap",
+      "requirement": null,
+      "skill": "communication",
+      "evidence": "2/10 points; q3 1/2, q6 1/3, q7 0/5",
+      "source": "assessment",
+      "note": null
+     },
+     {
+      "kind": "test_gap",
+      "requirement": null,
+      "skill": "core",
+      "evidence": "2/5 points; q1 1/2, q4 1/3",
+      "source": "assessment",
+      "note": null
+     },
+     {
+      "kind": "test_gap",
+      "requirement": null,
+      "skill": "process",
+      "evidence": "2/5 points; q2 1/3, q5 1/2",
+      "source": "assessment",
+      "note": null
+     },
+     {
+      "kind": "test_item_judged",
+      "requirement": null,
+      "skill": "communication",
+      "evidence": "q7: 0/5 \u2014 \"I would ask my manager.\"",
+      "source": "assessment",
+      "note": "The answer does not identify the discrepancy, propose a PO check, or set a follow-up date, so it earns no rubric elements."
+     },
+     {
+      "kind": "nice_to_have_unmet",
+      "requirement": "BComm Law and LLB; or B A Law and LLB; or B Juris and LLB; BProc or LLB (Preferred Education)",
+      "skill": null,
+      "evidence": "",
+      "source": "none",
+      "note": "not listed"
+     },
+     {
+      "kind": "nice_to_have_unclear",
+      "requirement": "Financial-services experience is advantageous.",
+      "skill": null,
+      "evidence": "\"Worked in a related area touching on financial-sector matters.\"",
+      "source": "cv_text",
+      "note": "Vague statement does not clearly confirm financial-services experience."
+     },
+     {
+      "kind": "nice_to_have_unclear",
+      "requirement": "Experience with financial-sector regulatory matters, including market conduct and financial crime, is advantageous.",
+      "skill": null,
+      "evidence": "\"Worked in a related area touching on financial-sector matters.\"",
+      "source": "cv_text",
+      "note": "Vague statement does not confirm specific regulatory, market conduct or financial crime experience."
+     },
+     {
+      "kind": "nice_to_have_unclear",
+      "requirement": "Experience advising across multiple jurisdictions, particularly African jurisdictions, and representing an organisation at internal governance and external industry forums is advantageous.",
+      "skill": null,
+      "evidence": "\"Worked in a related area touching on advantageous through earlier roles.\"",
+      "source": "cv_text",
+      "note": "Vague, non-specific statement does not confirm multi-jurisdictional or governance/forum experience."
+     },
+     {
+      "kind": "redaction",
+      "requirement": null,
+      "skill": null,
+      "evidence": "7 identifier(s) removed before evaluation",
+      "source": "none",
+      "note": null
+     }
+    ],
+    "needs_human_check": [
+     "requirement unclear: Substantial specialist legal experience in data privacy and data protection is essential, including hands-on experience drafting and negotiating data protection provisions, data processing agreements and related documentation.",
+     "requirement unclear: Experience working in a fast-paced, highly regulated environment and managing competing demands.",
+     "requirement unclear: Deep expertise in POPIA and relevant domestic and international data privacy and data protection laws, with an understanding of applicable financial-sector regulation and best practice.",
+     "requirement unclear: Excellent legal analysis, interpretation, research and drafting skills, including strong contractual drafting and negotiation capability.",
+     "requirement unclear: Ability to provide practical, commercially balanced legal advice and to distinguish between legal, compliance, risk, control and operational responsibilities.",
+     "requirement unclear: Strong written and verbal communication, influencing and stakeholder-management skills, with the confidence to exercise independent judgement and provide constructive legal challenge.",
+     "requirement unclear: Proactive horizon scanning, with the ability to identify, assess and clearly communicate the legal and business impact of relevant developments.",
+     "requirement unclear: Highly organised, proactive and deadline-driven, with the ability to manage competing priorities and drive matters to completion with minimal supervision.",
+     "requirement unclear: High attention to detail, integrity and reliability."
+    ],
+    "redactions_applied": 7
+   },
+   {
+    "rank": 5,
+    "candidate_id": "missing_1_twin",
+    "score": 11.7,
+    "tier": "weak",
+    "components": {
+     "requirements": {
+      "score": 0.09090909090909091,
+      "weight": 0.45,
+      "matched": 0,
+      "unclear": 2,
+      "unmet": 9,
+      "of": 11
+     },
+     "skills_test": {
+      "score": 0.05,
+      "weight": 0.4,
+      "points": 1.0,
+      "max": 20.0,
+      "by_skill": {
+       "communication": 0.0,
+       "core": 0.2,
+       "process": 0.0
+      },
+      "judged_items": 0,
+      "ungraded_items": [],
+      "time_limit_s": 1200,
+      "time_used_s": 900,
+      "flags": []
+     },
+     "nice_to_have": {
+      "score": 0.375,
+      "weight": 0.15,
+      "matched": 0,
+      "unclear": 3,
+      "unmet": 1,
+      "of": 4
+     }
+    },
+    "reasons": [
+     {
+      "kind": "requirement_unmet",
+      "requirement": "Admitted attorney qualified to practise in South Africa, ideally with at least five - eight years\u2019 relevant post-qualification experience.",
+      "skill": null,
+      "evidence": "\"No admitted attorney qualified to practise in south africa, ideally with at least five - eight years\u2019 relevant post-qualification experience.\"",
+      "source": "cv_text",
+      "note": "CV explicitly states this is not present."
+     },
+     {
+      "kind": "requirement_unmet",
+      "requirement": "Substantial specialist legal experience in data privacy and data protection is essential, including hands-on experience drafting and negotiating data protection provisions, data processing agreements and related documentation.",
+      "skill": null,
+      "evidence": "\"No substantial specialist legal experience in data privacy and data protection is essential\"",
+      "source": "cv_text",
+      "note": "CV explicitly states this is not present."
+     },
+     {
+      "kind": "requirement_unmet",
+      "requirement": "Experience working in a fast-paced, highly regulated environment and managing competing demands.",
+      "skill": null,
+      "evidence": "\"No experience working in a fast-paced, highly regulated environment and managing competing demands.\"",
+      "source": "cv_text",
+      "note": "CV explicitly states this is not present."
+     },
+     {
+      "kind": "requirement_unmet",
+      "requirement": "Deep expertise in POPIA and relevant domestic and international data privacy and data protection laws, with an understanding of applicable financial-sector regulation and best practice.",
+      "skill": null,
+      "evidence": "\"No deep expertise in popia and relevant domestic and international data privacy and data protection laws\"",
+      "source": "cv_text",
+      "note": "CV explicitly states this is not present."
+     },
+     {
+      "kind": "requirement_unmet",
+      "requirement": "Excellent legal analysis, interpretation, research and drafting skills, including strong contractual drafting and negotiation capability.",
+      "skill": null,
+      "evidence": "\"No excellent legal analysis, interpretation, research and drafting skills, including strong contractual drafting and negotiation capability.\"",
+      "source": "cv_text",
+      "note": "CV explicitly states this is not present."
+     },
+     {
+      "kind": "requirement_unmet",
+      "requirement": "Ability to provide practical, commercially balanced legal advice and to distinguish between legal, compliance, risk, control and operational responsibilities.",
+      "skill": null,
+      "evidence": "\"No ability to provide practical, commercially balanced legal advice and to distinguish between legal, compliance, risk, control and operational responsibilities.\"",
+      "source": "cv_text",
+      "note": "CV explicitly states this is not present."
+     },
+     {
+      "kind": "requirement_unmet",
+      "requirement": "Strong written and verbal communication, influencing and stakeholder-management skills, with the confidence to exercise independent judgement and provide constructive legal challenge.",
+      "skill": null,
+      "evidence": "\"No strong written and verbal communication, influencing and stakeholder-management skills\"",
+      "source": "cv_text",
+      "note": "CV explicitly states this is not present."
+     },
+     {
+      "kind": "requirement_unmet",
+      "requirement": "Proactive horizon scanning, with the ability to identify, assess and clearly communicate the legal and business impact of relevant developments.",
+      "skill": null,
+      "evidence": "\"No proactive horizon scanning, with the ability to identify, assess and clearly communicate the legal and business impact of relevant developments.\"",
+      "source": "cv_text",
+      "note": "CV explicitly states this is not present."
+     },
+     {
+      "kind": "requirement_unmet",
+      "requirement": "Bachelor Honours Degree: Law, Military Science and Security (Required)",
+      "skill": null,
+      "evidence": "",
+      "source": "none",
+      "note": "Not listed anywhere in the CV."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Highly organised, proactive and deadline-driven, with the ability to manage competing priorities and drive matters to completion with minimal supervision.",
+      "skill": null,
+      "evidence": "",
+      "source": "none",
+      "note": "Not addressed anywhere in the application."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "High attention to detail, integrity and reliability.",
+      "skill": null,
+      "evidence": "",
+      "source": "none",
+      "note": "Not addressed anywhere in the application."
+     },
+     {
+      "kind": "test_gap",
+      "requirement": null,
+      "skill": "communication",
+      "evidence": "0/10 points; q3 0/2, q6 0/3, q7 0/5",
+      "source": "assessment",
+      "note": null
+     },
+     {
+      "kind": "test_gap",
+      "requirement": null,
+      "skill": "core",
+      "evidence": "1/5 points; q1 1/2, q4 0/3",
+      "source": "assessment",
+      "note": null
+     },
+     {
+      "kind": "test_gap",
+      "requirement": null,
+      "skill": "process",
+      "evidence": "0/5 points; q2 0/3, q5 0/2",
+      "source": "assessment",
+      "note": null
+     },
+     {
+      "kind": "nice_to_have_unmet",
+      "requirement": "BComm Law and LLB; or B A Law and LLB; or B Juris and LLB; BProc or LLB (Preferred Education)",
+      "skill": null,
+      "evidence": "",
+      "source": "none",
+      "note": "No qualification listed in the CV."
+     },
+     {
+      "kind": "nice_to_have_unclear",
+      "requirement": "Financial-services experience is advantageous.",
+      "skill": null,
+      "evidence": "\"Worked in a related area touching on financial-services matters.\"",
+      "source": "cv_text",
+      "note": "Vague claim of related exposure, not a clear statement of financial-services experience."
+     },
+     {
+      "kind": "nice_to_have_unclear",
+      "requirement": "Experience with financial-sector regulatory matters, including market conduct and financial crime, is advantageous.",
+      "skill": null,
+      "evidence": "\"Worked in a related area touching on financial-sector matters.\"",
+      "source": "cv_text",
+      "note": "Vague claim of related exposure, no specific mention of market conduct or financial crime."
+     },
+     {
+      "kind": "nice_to_have_unclear",
+      "requirement": "Experience advising across multiple jurisdictions, particularly African jurisdictions, and representing an organisation at internal governance and external industry forums is advantageous.",
+      "skill": null,
+      "evidence": "",
+      "source": "none",
+      "note": "Not addressed anywhere in the application."
+     },
+     {
+      "kind": "redaction",
+      "requirement": null,
+      "skill": null,
+      "evidence": "7 identifier(s) removed before evaluation",
+      "source": "none",
+      "note": null
+     }
+    ],
+    "needs_human_check": [
+     "requirement unclear: Highly organised, proactive and deadline-driven, with the ability to manage competing priorities and drive matters to completion with minimal supervision.",
+     "requirement unclear: High attention to detail, integrity and reliability."
+    ],
+    "redactions_applied": 7
+   }
+  ],
+  "excluded_from_ranking": [],
+  "meta": {
+   "spec_version": "0.1.1",
+   "judge_prompt_version": "0.1.1",
+   "pool_size": 5,
+   "ranked": 5,
+   "judged_candidates": 5,
+   "judged_items": 4,
+   "judge_model": "claude-sonnet-5",
+   "weights": {
+    "requirements": 0.45,
+    "skills_test": 0.4,
+    "nice_to_have": 0.15
+   },
+   "usage": {
+    "input_tokens": 5954,
+    "output_tokens": 8298,
+    "cache_read_input_tokens": 7935,
+    "cache_creation_input_tokens": 0
+   },
+   "cost_usd": 0.0965,
+   "latency_s": 61.47,
+   "fairness_check": {
+    "ran": true,
+    "redaction_clean": true,
+    "residual_patterns": 0,
+    "note": "protected attributes have no field in the contract; free text is redacted before any model call; time is not scored"
+   }
+  }
+ }
+}

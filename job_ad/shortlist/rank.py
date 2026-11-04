@@ -155,15 +155,17 @@ def rank_pool(req: RankRequest, judge: Optional[Judge] = None) -> RankResult:
         must_outs = [outcomes[r.text] for r in brief.must_have if r.text in outcomes]
         nice_outs = [outcomes[r.text] for r in brief.nice_to_have if r.text in outcomes]
         comp_req = _component(must_outs, w.requirements, values)
-        comp_nice = _component(nice_outs, w.nice_to_have, values) if nice_outs else None
+        w_nice = min(w.nice_to_have, spec.nice_to_have_per_item * len(nice_outs))  # spec 0.1.1: one nice-to-have cannot swing a score by 7.5
+        comp_nice = _component(nice_outs, w_nice, values) if nice_outs else None
         ts: Optional[TestScore] = score_assessment(c.assessment, judged_pts) if c.assessment else None
         comp_test = SkillsTestComponent(score=ts.score, weight=w.skills_test, points=ts.points, max=ts.max, by_skill=ts.by_skill, judged_items=ts.judged_items,
                                         ungraded_items=ts.ungraded, time_limit_s=c.assessment.time_limit_s, time_used_s=c.assessment.time_used_s, flags=c.assessment.flags) if ts else None
-        parts = [(comp_req.score, w.requirements)] + ([(comp_test.score, w.skills_test)] if comp_test else []) + ([(comp_nice.score, w.nice_to_have)] if comp_nice else [])
+        parts = [(comp_req.score, w.requirements)] + ([(comp_test.score, w.skills_test)] if comp_test else []) + ([(comp_nice.score, w_nice)] if comp_nice else [])
         wsum = sum(p[1] for p in parts)
         score = round(100 * sum(s * wt for s, wt in parts) / wsum, 1) if wsum else 0.0
         knocked = any(o.status == "unmet" for o in knock_outs)
         tier = _tier(score, knocked, spec.tiers)
+        borderline = (not knocked) and any(abs(score - th) <= spec.tiers.borderline_band for th in (spec.tiers.strong, spec.tiers.possible))
 
         # 5. reasons and human checks
         reasons: list[Reason] = []
@@ -203,8 +205,10 @@ def rank_pool(req: RankRequest, judge: Optional[Judge] = None) -> RankResult:
             checks.append("integrity flags: " + ", ".join(c.assessment.flags))
         if not ts:
             checks.append("no assessment")
+        if borderline:
+            checks.append(f"borderline tier: score {score:g} is within {spec.tiers.borderline_band:g} points of a tier threshold")
 
-        rc = RankedCandidate(rank=0, candidate_id=c.candidate_id, score=score, tier=tier, components=Components(requirements=comp_req, skills_test=comp_test, nice_to_have=comp_nice),
+        rc = RankedCandidate(rank=0, candidate_id=c.candidate_id, score=score, tier=tier, borderline=borderline, components=Components(requirements=comp_req, skills_test=comp_test, nice_to_have=comp_nice),
                              reasons=reasons, needs_human_check=checks, redactions_applied=redactions)
         key = (1 if knocked else 0, -score, -comp_req.score, -(comp_test.score if comp_test else 0), -(comp_nice.score if comp_nice else 0), c.candidate_id)
         ranked.append((rc, key))

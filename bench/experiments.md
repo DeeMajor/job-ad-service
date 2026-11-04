@@ -328,3 +328,21 @@ Options for the next pre-registration (no spend until a yes):
   C. Spec v0.1.1: nice-to-have weight scaled by count (above) + judge 0.1.1 + thinking off as the new default bundle; re-verify on a
      different brief with 10 calls (~$0.12).
 Recommendation: B + C together (C reduces the noise; B measures what matters), then A only if C still flips tiers.
+
+### EXP-304 — spec 0.1.1 bundle (C) measured by the recruiter-facing criterion (B) — 2026-11-05, pre-registered before the run
+Change: ranking-spec 0.1.1 — effective nice-to-have weight = min(0.15, 0.05 × n); judge default prompt 0.1.1; thinking off.
+Design: a DIFFERENT brief (first case with ≥ 3 must-haves and ≥ 1 nice-to-have, excluding case_003), 5 candidates + 5 identity twins, 10 calls, ≈ $0.12.
+Pass: (B) every pair has the same tier and the same ordered reason kinds (redaction reason excluded) — 5/5; τ ≥ 0.9; every met quoted;
+redaction clean. Reported, not gating: twin |Δscore| per pair and how many are within ±2.
+Result (case_006 "Senior Legal Counsel: Regulatory and Privacy", 11 must-haves, 4 nice-to-haves; 10 calls; **$0.193** vs $0.12 quoted — the brief
+is twice as long): τ **1.0**; quotes on every met; redaction clean; twin |Δscore| 0.0, 1.9, 2.0, 0.0, 0.0 → **5/5 within ±2** (the score
+bound that failed in every earlier run now holds, as the weight scaling predicted). Criterion B: **4/5** — adequate_1 scored 54.3 (weak)
+and its twin 56.2 (possible): two verdicts flipped unmet→unclear (an Honours degree the text never names; an LLB nice-to-have) and the
+rubric item moved 2.5→2.25, together +1.9, straddling the 55 threshold.
+Decision: spec 0.1.1 bundle **adopted** (it is what moved the drift inside ±2 on a fresh brief, and the free deterministic benchmark is
+unchanged: τ 1.0, perturb 40/40, invariance 0). B fails strictly, for a structural reason: a tier threshold is a step function, so any
+score within the noise band of it will read either way. Added, free: `borderline: true` + a needs_human_check line when a score is within
+±3 (the measured ±2 noise plus margin) of a tier threshold (spec `tiers.borderline_band`). On the EXP-304 data both members of the failing
+pair are borderline (54.3 and 56.2), so "same tier, or both borderline" would read 5/5 — recorded as a hypothesis, not a result.
+Next (needs a yes): EXP-305 — a third brief, same 10-call design (~$0.15–0.20 depending on brief length), pass = 5/5 on "same tier or both
+borderline" with identical reason kinds, twin |Δ| ≤ 2 on 5/5. Not run.

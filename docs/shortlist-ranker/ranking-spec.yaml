@@ -1,9 +1,13 @@
 # Shortlist ranking spec — the pre-registered scoring rules. Bump the version when any number changes; log it in bench/experiments.md.
-version: "0.1.0"
+version: "0.1.1"
 weights:                      # default component weights; a request may override (normalised to 1). Components absent for a job
   requirements: 0.45          # (no nice-to-haves, no assessment with require_assessment=false) are dropped and the rest renormalised.
   skills_test: 0.40
-  nice_to_have: 0.15
+  nice_to_have: 0.15          # ceiling; the effective weight is min(nice_to_have, nice_to_have_per_item × number of nice-to-haves) — a single
+nice_to_have_per_item: 0.05   # nice-to-have at 0.15 let one judge flip move a score by 7.5 points (EXP-301a/302/303)
+judge:
+  prompt_version: "0.1.1"     # absent soft skill → unclear; whole-number points unless the rubric names halves
+  thinking: false             # fewer tokens, slightly steadier verdicts (EXP-303); temperature is not available on Sonnet 5
 requirement_status_values:    # value of one requirement in its component
   met: 1.0
   unclear: 0.5                # evidence suggests but does not state it; always listed in needs_human_check
@@ -14,6 +18,7 @@ requirement_weight:           # must-haves with a justification in the brief cou
 tiers:                        # by composite score (0-100); does_not_meet_inherent_requirement overrides, from explicit job.knockouts only
   strong: 75
   possible: 55                # weak below this
+  borderline_band: 3          # a score within this many points of a tier threshold is flagged `borderline` (judge noise floor measured ±2, EXP-304)
 test:
   strength_at: 0.80           # per-skill share at or above → test_strength reason
   gap_below: 0.50             # per-skill share below → test_gap reason
