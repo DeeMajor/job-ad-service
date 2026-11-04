@@ -270,3 +270,19 @@ item, each with an identity-injected twin → 20 × (8 + 1 perturbation + 8 twin
 Quote: ≈ $3.0 (Sonnet 5 at $2/$10 per MTok, plus prompt-cache reads). Pre-registered pass: τ ≥ 0.9 on ≥ 18/20 pools; twin |Δscore| ≤ 2
 on every pool (redaction makes the judge see the same text, so any drift is judge non-determinism, not identity); every `met` carries a
 quote; redaction clean everywhere. Command: `.venv/bin/python -m bench.shortlist.run --judge --briefs 20`.
+
+### EXP-301a — judged benchmark, 10-call budget (Andile: "do only 10 calls") — 2026-11-04
+Setup: case_003 "Head of Islamic Banking (Principal)" (9 must-haves, 1 nice-to-have); 5 text-only synthetic candidates
+(strong_1, adequate_1, adequate_0, weak_1, missing_1) + their 5 identity-injected twins; Sonnet 5 judge 0.1.0; hard stop at 10 calls.
+Result: τ vs design **1.000**; every `met` carries a verbatim quote (0 without); redaction clean on all 10 texts (7 redactions per twin);
+cost **$0.1215** (2.6k in, 4.8k out, 5.8k cache reads); 86 s.
+Twin |Δscore|: 0.0, 0.0, 0.0, 1.0, **7.5** → the ≤ 2 pre-registered bound fails on 1/5 pairs. Traced, not identity: the judge saw the
+same redacted text and still flipped the nice-to-have from `unmet` to `unclear` (the generator's "alluded" sentence read "Some exposure
+to advantageous through earlier roles" — meaningless filler, judged either way) and graded the rubric item 0.5 vs 0. Both sit on the
+unmet/unclear and half-point boundaries, i.e. judge non-determinism, with no change to the order.
+Findings: (1) the generator only wrote CV sentences for the first 4 must-haves, so the other 5 read as absent → fixed (now up to 8, and
+the alluded template names a real noun); (2) the judge calls absent soft skills ("commercial acumen") `unmet`, where the prompt's own
+rule says only concrete, normally-listed items should be `unmet` when absent — a prompt 0.1.1 candidate (not changed; unmeasured).
+Decision: machinery and blindness confirmed at tiny scale; judge consistency on the unmet/unclear boundary is the open risk.
+Next (needs a yes): EXP-302 — prompt 0.1.1 (explicit "absent soft skill → unclear"; integer points unless the rubric names halves) vs 0.1.0,
+same 10-call design, ≈ $0.12 per arm; pass = twin |Δ| ≤ 2 on 5/5 and τ unchanged.

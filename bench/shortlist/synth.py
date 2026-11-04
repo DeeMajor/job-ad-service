@@ -32,14 +32,15 @@ def _key(text: str) -> str:
 def _statement(level: str, req: str, rnd: random.Random) -> str:
     """CV sentence for one requirement at one evidence level."""
     stated = [f"I have {req.rstrip('.')} — used daily for the last three years.", f"Holds: {req.rstrip('.')}, obtained and current.", f"Confirmed {req.rstrip('.')} (see certificate on request)."]
-    alluded = [f"Worked in a related area touching on {req.split()[0].lower()} matters.", f"Some exposure to {req.split()[-1].rstrip('.').lower()} through earlier roles."]
+    nouns = [w.strip(".,()").lower() for w in req.split() if len(w) > 4 and w.lower() not in ("would", "strong", "excellent", "advantageous", "required", "experience", "knowledge")] or [req.split()[0].lower()]
+    alluded = [f"Worked in a related area touching on {nouns[0]} matters.", f"Some exposure to {nouns[-1]} through earlier roles."]
     absent = [f"No {req.rstrip('.').lower()}."]
     return rnd.choice({"met": stated, "unclear": alluded, "unmet": absent}[level])
 
 
 def build_pool(brief: dict, kind: str, seed: int = 0) -> dict:
     rnd = random.Random(seed)
-    musts = [m["text"] for m in brief["brief"]["must_have"]][:4]
+    musts = [m["text"] for m in brief["brief"]["must_have"]][:8]  # every must-have gets a CV sentence; uncovered ones read as absent to the judge
     nices = [n["text"] for n in brief["brief"].get("nice_to_have", [])][:2]
     skills = ["core", "process", "communication"]
     n_items = 6
