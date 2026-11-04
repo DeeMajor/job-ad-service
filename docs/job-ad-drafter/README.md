@@ -11,6 +11,7 @@ Order of work is deliberate: **measure first, generate second**. Without a score
 | [02-rag-plan.md](02-rag-plan.md) | Knowledge sources, retrieval design, prompt assembly, grounding and RAG-specific evals |
 | [03-scidlc-plan.md](03-scidlc-plan.md) | The scientific development lifecycle: phases, hypotheses, experiments, decision gates, experiment log |
 | [04-service-api.md](04-service-api.md) | The headless service: endpoints, the HiringBrief v0.3 request contract, response shape, versioning |
+| [05-deployment.md](05-deployment.md) | Runbook: where it runs, how to update, configure, check and roll back |
 
 ## Assumptions (stated, not verified with you)
 
