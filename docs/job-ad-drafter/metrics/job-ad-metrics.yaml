@@ -1,0 +1,234 @@
+# Job-ad scorecard spec. The scorer implements exactly these ids.
+# grader: deterministic | lexicon | judge
+# type:   pass_fail | count | ratio | number
+# norm:   how the raw value maps to 0..1 (pass_fail -> 1/0; band -> 1 inside [lo,hi], linear decay to 0 at lo-slack / hi+slack)
+version: 0.1.9
+language: en
+publish_threshold: 75
+review_threshold: 60
+
+gates:            # "must fix before publishing": reported as standard.reasons[severity=must_fix]; the composite is never zeroed (0.1.9)
+  - structure.minimum_content
+  - honesty.grounding
+  - inclusive.exclusionary_terms
+  - compliance.protected_grounds
+  - compliance.no_prohibited_requests
+  - compliance.pay_disclosure_law
+  # compliance.ee_statement gates only when ctx.designated_employer is known true (see gate_when)
+
+dimensions:
+  clarity:      { weight: 0.20 }
+  specificity:  { weight: 0.25 }
+  inclusivity:  { weight: 0.20 }
+  compliance:   { weight: 0.00, gate: true }
+  evp:          { weight: 0.15 }
+  seo:          { weight: 0.10 }
+  process:      { weight: 0.10 }
+
+metrics:
+  # ---- gate
+  - id: structure.minimum_content          # title + ≥1 responsibility + ≥1 requirement + ≥100 words
+    dimension: clarity
+    grader: deterministic
+    type: pass_fail
+    gate: { op: "==", value: 1 }
+
+  # ---- D1 clarity & structure
+  - id: structure.sections_present
+    dimension: clarity
+    grader: deterministic
+    type: ratio
+    norm: { kind: linear, lo: 1.0 }          # 9/9 => 1
+  - id: structure.title_matches_content
+    dimension: clarity
+    grader: judge
+    type: pass_fail
+  - id: structure.title_quality
+    dimension: clarity
+    grader: lexicon
+    type: pass_fail
+    params: { max_chars: 60, lexicon: gimmick_titles }
+  - id: clarity.word_count
+    dimension: clarity
+    grader: deterministic
+    type: count
+    norm: { kind: band, lo: 300, hi: 650, slack: 250 }
+    overrides:
+      linkedin: { lo: 150, hi: 300, slack: 150 }
+      indeed:   { lo: 700, hi: 2000, slack: 400 }
+  - id: clarity.reading_grade
+    dimension: clarity
+    grader: deterministic
+    type: number
+    norm: { kind: band, lo: 0, hi: 9, slack: 7 }        # 0 at grade 16; real SA corporate ads sit at 12–15
+  - id: clarity.longest_sentence
+    dimension: clarity
+    grader: deterministic
+    type: count                               # words in the longest sentence
+    norm: { kind: band, lo: 0, hi: 35, slack: 35 }
+  - id: clarity.scannability
+    dimension: clarity
+    grader: deterministic
+    type: ratio                               # 1 − share of words in prose paragraphs > 80 words
+    norm: { kind: band, lo: 0.7, hi: 1.0, slack: 0.5 }
+
+  # ---- D2 specificity & honesty
+  - id: specific.responsibility_concreteness
+    dimension: specificity
+    grader: judge
+    type: ratio
+    norm: { kind: band, lo: 0.8, hi: 1.0, slack: 0.5 }
+  - id: specific.must_have_count
+    dimension: specificity
+    grader: deterministic
+    type: count
+    norm: { kind: band, lo: 3, hi: 6, slack: 3 }
+  - id: specific.nice_to_have_split
+    dimension: specificity
+    grader: deterministic
+    type: pass_fail
+  - id: specific.requirement_traceability   # over SPECIFIC must-haves only (tools, certs, licences, languages); generic education/experience excluded
+    dimension: specificity
+    grader: judge
+    type: ratio
+    norm: { kind: band, lo: 0.9, hi: 1.0, slack: 0.5 }
+  - id: specific.years_inflation
+    dimension: specificity
+    grader: deterministic
+    type: count
+    norm: { kind: band, lo: 0, hi: 0, slack: 2 }
+  - id: pay.range_present
+    dimension: specificity
+    grader: deterministic
+    type: pass_fail
+  - id: pay.range_width
+    dimension: specificity
+    grader: deterministic
+    type: ratio                               # (max-min)/min
+    norm: { kind: band, lo: 0, hi: 0.30, slack: 0.40 }
+  - id: pay.context_present
+    dimension: specificity
+    grader: judge
+    type: pass_fail
+  - id: honesty.buzzword_density
+    dimension: specificity
+    grader: lexicon
+    type: number                              # per 100 words
+    norm: { kind: band, lo: 0, hi: 0.5, slack: 1.5 }
+  - id: honesty.grounding
+    dimension: specificity
+    grader: judge
+    type: ratio                               # supported claims / factual claims
+    gate: { op: "==", value: 1.0 }
+
+  # ---- D3 inclusivity
+  - id: inclusive.gender_coding
+    dimension: inclusivity
+    grader: lexicon
+    type: number                              # (masc - fem) per 100 words
+    norm: { kind: band, lo: -1, hi: 1, slack: 2 }
+    params: { lexicon: gaucher_2011 }
+  - id: inclusive.exclusionary_terms
+    dimension: inclusivity
+    grader: lexicon
+    type: count
+    gate: { op: "==", value: 0 }
+  - id: inclusive.proxy_requirements
+    dimension: inclusivity
+    grader: judge
+    type: count
+    norm: { kind: band, lo: 0, hi: 0, slack: 2 }
+  - id: inclusive.accessibility_statement
+    dimension: inclusivity
+    grader: deterministic
+    type: pass_fail
+  - id: inclusive.candidate_address
+    dimension: inclusivity
+    grader: deterministic
+    type: number                              # (you-mentions − 2 × "the candidate"-mentions) per 100 words
+    norm: { kind: band, lo: 1.0, slack: 1.5 }
+
+  # ---- D4 compliance (gates; rule set per jurisdiction)
+  - id: compliance.protected_grounds
+    dimension: compliance
+    grader: judge
+    type: pass_fail
+    jurisdictions: [ZA, EU, US]
+  - id: compliance.ee_statement           # the law requires an EE plan of designated employers, not a statement in the ad text
+    dimension: process                      # scored like POPIA; becomes a hard gate only when the employer is known to be designated
+    grader: deterministic
+    type: pass_fail
+    jurisdictions: [ZA]
+    gate_when: designated_employer
+  - id: compliance.popia_notice           # not a gate: ATS-hosted ads carry the notice on the portal, not in the text
+    dimension: process
+    grader: deterministic
+    type: pass_fail
+    jurisdictions: [ZA]
+  - id: compliance.no_prohibited_requests
+    dimension: compliance
+    grader: judge
+    type: pass_fail
+    jurisdictions: [ZA, EU, US]
+  - id: compliance.pay_disclosure_law
+    dimension: compliance
+    grader: deterministic
+    type: pass_fail
+    jurisdictions: [EU, US-CO, US-CA, US-NY, US-WA]
+
+  # ---- D5 value proposition
+  - id: evp.why_this_role
+    dimension: evp
+    grader: judge
+    type: pass_fail
+  - id: evp.benefits_specific
+    dimension: evp
+    grader: judge
+    type: pass_fail
+  - id: evp.team_context
+    dimension: evp
+    grader: judge
+    type: pass_fail
+  - id: evp.work_mode_clarity
+    dimension: evp
+    grader: judge
+    type: pass_fail
+
+  # ---- D6 searchability
+  - id: seo.title_matches_taxonomy
+    dimension: seo
+    grader: deterministic
+    type: pass_fail
+    params: { taxonomies: [ESCO, OFO] }
+  - id: seo.key_terms_early
+    dimension: seo
+    grader: deterministic
+    type: pass_fail
+    params: { first_n_words: 100 }
+  - id: seo.no_stuffing
+    dimension: seo
+    grader: deterministic
+    type: pass_fail
+    params: { max_repeats: "max(4, 1.5 per 100 words)" }
+
+  # ---- D7 process
+  - id: process.steps_and_timeline
+    dimension: process
+    grader: judge
+    type: pass_fail
+  - id: process.contact_or_link
+    dimension: process
+    grader: deterministic
+    type: pass_fail
+
+# Side-channel fields recorded on every scored draft (not part of composite)
+telemetry:
+  - model
+  - usage.input_tokens
+  - usage.output_tokens
+  - usage.cache_read_input_tokens
+  - judge_model
+  - judge_usage
+  - latency_s
+  - revision_passes
+  - retrieved_chunk_ids

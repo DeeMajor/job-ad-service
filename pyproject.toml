@@ -1,0 +1,26 @@
+[project]
+name = "job-ad"
+version = "0.1.0"
+description = "Job-ad drafter and scorer: headless service, scorer benchmark, drafter eval (SciDLC)"
+requires-python = ">=3.10"
+dependencies = [
+  "anthropic>=1",
+  "pydantic>=2",
+  "fastapi",
+  "uvicorn[standard]",
+  "pyyaml",
+  "httpx",
+  "scikit-learn",
+  "pandas",
+  "numpy",
+]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.setuptools.packages.find]
+include = ["job_ad*"]

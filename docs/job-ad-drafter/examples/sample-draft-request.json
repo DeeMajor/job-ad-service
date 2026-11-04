@@ -1,0 +1,39 @@
+{
+  "brief": {
+    "schema_version": "0.3",
+    "title": "Accounts Payable Clerk",
+    "company": { "name": "Mzansi Logistics", "about": "We move freight for 400 retailers across Gauteng and KwaZulu-Natal. Our finance team of nine keeps 1,200 suppliers paid on time." },
+    "seniority": "junior",
+    "employment_type": "permanent",
+    "purpose": "Own the supplier payment cycle for the Durban depot so suppliers are paid on time and the creditors book stays clean.",
+    "success_measures": ["Creditors age analysis under 45 days", "Weekly payment run ready for approval every Thursday"],
+    "responsibilities": [
+      "Capture and match about 300 supplier invoices a week against purchase orders in Sage",
+      "Prepare the weekly payment run for the Finance Supervisor to approve",
+      "Reconcile 40 supplier statements each month and resolve queries with buyers"
+    ],
+    "tools": ["Sage", "Excel"],
+    "must_have": [
+      { "text": "Two or more years in an accounts payable or creditors role" },
+      { "text": "Working knowledge of Sage or a similar accounting package", "justification": "all invoice capture happens in Sage" },
+      "Comfortable with Excel lookups and pivot tables"
+    ],
+    "nice_to_have": ["Experience in logistics or transport", "A bookkeeping certificate"],
+    "location": "Durban, KwaZulu-Natal",
+    "work_mode": "onsite",
+    "hours": "Mon–Fri 08:00–17:00",
+    "pay": { "min": 18000, "max": 22000, "currency": "ZAR", "period": "month", "basis": "years of creditors experience and Sage proficiency" },
+    "benefits": ["Medical aid contribution of 50%", "Provident fund with 7% employer contribution", "20 days annual leave", "Transport allowance of R1,500 a month"],
+    "team": { "reports_to": "Finance Supervisor", "size": 3 },
+    "process": { "steps": "A 30-minute phone screen, then one on-site interview with the Finance Supervisor and a short Excel exercise. Everyone hears back within three weeks.", "closing_date": "2026-11-30", "contact": "careers@mzansilogistics.example" },
+    "statements": {
+      "ee": "Mzansi Logistics is a designated employer. Preference will be given to candidates from designated groups in line with our Employment Equity plan.",
+      "popia": "We process your personal information under POPIA only for this recruitment.",
+      "accessibility": "If you need any accommodation during the application process, tell us and we will arrange it."
+    },
+    "jurisdiction": "ZA",
+    "designated_employer": true,
+    "hosted_apply": false
+  },
+  "options": { "effort": "medium" }
+}

@@ -1,0 +1,14 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+.env
+legacy/ts/node_modules/
+# benchmark/eval scratch, not evidence
+bench/data/out/smoke/
+bench/data/out/*/*.log
+bench/data/out/*/*/*.log
+evals/runs/*.log
+evals/runs/exp*.json
+evals/runs/scenario*.json

@@ -1,0 +1,836 @@
+{
+  "request": {
+    "brief": {
+      "schema_version": "0.2",
+      "title": "Specialist Solution Analyst",
+      "seniority": null,
+      "employment_type": null,
+      "purpose": "Work as part of a DevOps team, leverage specialist analysis & testing tools, frameworks, techniques and practices to elicit, define and organize business requirements. Translate & document business requirements into user stories & specifications (Full Stack, Cross System) detailing integration points, business & associated risk / opportunities to be realised. And following this analysis, work collaboratively within squads during design & delivery activity including assuming responsibility for manual application testing processes, frameworks & outcomes",
+      "success_measures": [],
+      "responsibilities": [
+        "Proactively build relationships, apply analytical techniques to elicit and validate business (product & service) needs ahead of demand",
+        "Implement routines to get to know / become an expert in various business processes (e.g. spend time in business & with users)",
+        "Translate elicited needs and knowledge acquired into user story format that is immediately usable for DevOps teams (right languaging, format for building & testing)",
+        "Prepare and prioritise the backlog of requirements for the user stories linked to the proposed solutions",
+        "Work collaboratively with Tribe Leads (Technical Product / Service Owners) to build a roadmap & vision for the products and services (including detailed analysis requirements & solution scope)",
+        "Define measures of success & key outcomes for various solutions / changes including detailed acceptance criteria for all features",
+        "Define testing requirements (pass or fail test cases)",
+        "Support the development of detailed business cases (including defining solution characteristics, effort estimations etc.)",
+        "Translate business requirements into detailed systems requirements. Detailed system requirements must include all capabilities, interfaces and functionalities within and across technologies.",
+        "Build detailed user stories to be leveraged for system requirements design (modular)",
+        "Leverage business analysis & modeling tools and apply notation standards such as UML/BPMN to diagrammatically/visually document: business requirements, business processes, system processes & integration",
+        "Facilitate processes to ensure integrated requirements are socialized, understood & approved across the broad range of stakeholders to be impacted (this includes various processes e.g. risk / governance forums, change council, scrum meetings / DevOps team capability building, solution design sessions etc.)",
+        "Understand & leverage knowledge on the organisations technical landscape, environment and broader architecture to define integration points across tech stacks for various requirements",
+        "Work collaboratively with project / program teams, squads, scrum masters and engineers to define backlog, release & DevOps / project planning implications of the requirements development & roadmap (what should happen when)",
+        "Continuously improve system requirements mapping (e.g. leverage input from questions asked etc. to consistently improve the quality of the requirements analysis for easier interpretation by the development teams)",
+        "Work as part of the embedded DevOps team throughout the design process to review solution design (features and functionality)",
+        "Facilitate resolution during development & testing phases for any change requirements",
+        "Define the manual testing strategy & test cases for various solutions (where it makes sense to do so)",
+        "Define & validate quality & testing parameters (+/-) & plans for the solution (socialize & translate these to automation testing teams)",
+        "Develop manual testing frameworks and patterns for the solution",
+        "Lead the manual testing process for various solutions (e.g. execute test cases, analyse results)",
+        "Provide real time feedback to the DevOps teams on change requirements identified throughout the testing process",
+        "Review & monitor system stability, resilience etc. throughout the testing process (e.g. integration) & in production",
+        "Define & monitor overall backlog planning for effective solution delivery",
+        "Provide Developer & User support during user acceptance testing",
+        "Provide coaching & mentoring across the DevOps team as well as to developing analysts across the estate",
+        "Conduct peer reviews & problem solving within and across the broader team"
+      ],
+      "tools": [],
+      "must_have": [
+        {
+          "text": "Bachelor's Degree: Information Technology",
+          "justification": null
+        }
+      ],
+      "nice_to_have": [],
+      "location": "Johannesburg",
+      "work_mode": null,
+      "work_mode_detail": null,
+      "hours": null,
+      "start_date": null,
+      "positions": null,
+      "pay": null,
+      "benefits": [],
+      "company": {
+        "name": "Absa Group",
+        "about": "Empowering Africa’s tomorrow, together…one story at a time. With over 100 years of rich history and strongly positioned as a local bank with regional and international expertise, a career with our family offers the opportunity to be part of this exciting growth journey, to reset our future and shape our destiny as a proudly African group."
+      },
+      "team": {
+        "reports_to": null,
+        "size": null,
+        "notes": "DevOps team, working with Tribe Leads (Technical Product / Service Owners), scrum masters, engineers, and squads"
+      },
+      "process": null,
+      "statements": {
+        "ee": "Absa is committed to creating an inclusive workplace where everyone can thrive. We are an equal opportunity employer and welcome applications from suitably qualified individuals from diverse backgrounds. In support of our Diversity, Equity, Inclusion and Belonging (DEIB) commitments and Employment Equity objectives, preference may be given to candidates from underrepresented designated groups, including persons with disabilities.",
+        "popia": null,
+        "accessibility": "We encourage applicants who may require reasonable accommodation during the recruitment process to let us know so that appropriate support can be provided."
+      },
+      "jurisdiction": "ZA",
+      "designated_employer": null,
+      "hosted_apply": true,
+      "channel": "default"
+    }
+  },
+  "response": {
+    "ad": {
+      "title": "Specialist Solution Analyst",
+      "company": {
+        "name": "Absa Group",
+        "about": "Empowering Africa's tomorrow, together…one story at a time. With over 100 years of rich history and strongly positioned as a local bank with regional and international expertise, a career with our family offers the opportunity to be part of this exciting growth journey, to reset our future and shape our destiny as a proudly African group."
+      },
+      "summary": "You will work inside a DevOps team, using specialist analysis and testing tools, frameworks and techniques to elicit, define and organise business requirements. You translate those requirements into full stack, cross system user stories and specifications that set out integration points, business value and associated risks. You then stay with the squad through design and delivery, and you own the manual testing process and its outcomes.",
+      "responsibilities": [
+        "Build relationships across the business and apply analytical techniques to elicit and validate product and service needs ahead of demand",
+        "Spend time in the business and with users so you become an expert in the business processes you support",
+        "Translate what you learn into user stories written in the language and format DevOps teams can build and test from",
+        "Prepare and prioritise the backlog of requirements linked to proposed solutions",
+        "Work with Tribe Leads (Technical Product / Service Owners) to build a roadmap and vision, including detailed analysis requirements and solution scope",
+        "Define measures of success, key outcomes and detailed acceptance criteria for all features",
+        "Translate business requirements into detailed system requirements covering all capabilities, interfaces and functionality within and across technologies",
+        "Document business requirements, business processes, system processes and integration visually using modelling tools and notation standards such as UML and BPMN",
+        "Use your knowledge of the technical landscape and broader architecture to define integration points across tech stacks",
+        "Facilitate socialisation and approval of integrated requirements through risk and governance forums, change council, scrum meetings and solution design sessions",
+        "Work with project and programme teams, squads, scrum masters and engineers to define backlog, release and delivery planning implications",
+        "Support development of detailed business cases, including solution characteristics and effort estimations",
+        "Define the manual testing strategy, test cases and pass or fail criteria, and develop manual testing frameworks and patterns",
+        "Lead manual testing: execute test cases, analyse results and give the DevOps team real time feedback on change requirements",
+        "Define and validate quality and testing parameters and plans, and translate these to automation testing teams",
+        "Review and monitor system stability and resilience through testing and in production",
+        "Support developers and users during user acceptance testing",
+        "Coach and mentor people across the DevOps team and developing analysts across the estate, and conduct peer reviews and problem solving"
+      ],
+      "must_have": [
+        "Bachelor's Degree in Information Technology"
+      ],
+      "nice_to_have": [],
+      "pay": null,
+      "location": "Johannesburg",
+      "work_mode": "unspecified",
+      "work_mode_detail": null,
+      "benefits": [],
+      "team": "You work as part of an embedded DevOps team, alongside Tribe Leads (Technical Product / Service Owners), scrum masters, engineers and squads.",
+      "process": null,
+      "closing_date": null,
+      "accessibility_statement": "We encourage applicants who may require reasonable accommodation during the recruitment process to let us know so that appropriate support can be provided.",
+      "ee_statement": "Absa is committed to creating an inclusive workplace where everyone can thrive. We are an equal opportunity employer and welcome applications from suitably qualified individuals from diverse backgrounds. In support of our Diversity, Equity, Inclusion and Belonging (DEIB) commitments and Employment Equity objectives, preference may be given to candidates from underrepresented designated groups, including persons with disabilities.",
+      "popia_notice": null,
+      "apply_contact": null,
+      "other": null
+    },
+    "scorecard": {
+      "spec_version": "0.1.9",
+      "metrics": [
+        {
+          "id": "structure.minimum_content",
+          "dimension": "clarity",
+          "grader": "deterministic",
+          "status": "ok",
+          "raw": 1.0,
+          "normalized": 1.0,
+          "pass": true,
+          "gate_failed": null,
+          "evidence": [],
+          "reasoning": null
+        },
+        {
+          "id": "structure.sections_present",
+          "dimension": "clarity",
+          "grader": "deterministic",
+          "status": "ok",
+          "raw": 0.6666666666666666,
+          "normalized": 0.6666666666666666,
+          "pass": null,
+          "gate_failed": null,
+          "evidence": [
+            "missing: nice_to_have",
+            "missing: pay",
+            "missing: process"
+          ],
+          "reasoning": null
+        },
+        {
+          "id": "structure.title_matches_content",
+          "dimension": "clarity",
+          "grader": "judge",
+          "status": "ok",
+          "raw": 1.0,
+          "normalized": 1.0,
+          "pass": true,
+          "gate_failed": null,
+          "evidence": [
+            "Specialist Solution Analyst",
+            "you own the manual testing process and its outcomes"
+          ],
+          "reasoning": "Title matches the analyst and testing duties described throughout the ad."
+        },
+        {
+          "id": "structure.title_quality",
+          "dimension": "clarity",
+          "grader": "lexicon",
+          "status": "ok",
+          "raw": 1.0,
+          "normalized": 1.0,
+          "pass": true,
+          "gate_failed": null,
+          "evidence": [],
+          "reasoning": null
+        },
+        {
+          "id": "clarity.word_count",
+          "dimension": "clarity",
+          "grader": "deterministic",
+          "status": "ok",
+          "raw": 552.0,
+          "normalized": 1.0,
+          "pass": null,
+          "gate_failed": null,
+          "evidence": [],
+          "reasoning": null
+        },
+        {
+          "id": "clarity.reading_grade",
+          "dimension": "clarity",
+          "grader": "deterministic",
+          "status": "ok",
+          "raw": 12.42,
+          "normalized": 0.5114285714285715,
+          "pass": null,
+          "gate_failed": null,
+          "evidence": [],
+          "reasoning": null
+        },
+        {
+          "id": "clarity.longest_sentence",
+          "dimension": "clarity",
+          "grader": "deterministic",
+          "status": "ok",
+          "raw": 47.0,
+          "normalized": 0.6571428571428571,
+          "pass": null,
+          "gate_failed": null,
+          "evidence": [],
+          "reasoning": null
+        },
+        {
+          "id": "clarity.scannability",
+          "dimension": "clarity",
+          "grader": "deterministic",
+          "status": "ok",
+          "raw": 1.0,
+          "normalized": 1.0,
+          "pass": null,
+          "gate_failed": null,
+          "evidence": [],
+          "reasoning": "wall-of-text share 0.0, bullet share 0.56"
+        },
+        {
+          "id": "specific.responsibility_concreteness",
+          "dimension": "specificity",
+          "grader": "judge",
+          "status": "ok",
+          "raw": 0.6666666666666666,
+          "normalized": 0.7333333333333332,
+          "pass": null,
+          "gate_failed": null,
+          "evidence": [
+            "Prepare and prioritise the backlog of requirements linked to proposed solutions",
+            "Define measures of success, key outcomes and detailed acceptance criteria for all features",
+            "Translate business requirements into detailed system requirements covering all capabilities, interfaces and functionality within and across technologies",
+            "Document business requirements, business processes, system processes and integration visually using modelling tools and notation standards such as UML and BPMN",
+            "Use your knowledge of the technical landscape and broader architecture to define integration points across tech stacks",
+            "Facilitate socialisation and approval of integrated requirements through risk and governance forums, change council, scrum meetings and solution design sessions",
+            "Define the manual testing strategy, test cases and pass or fail criteria, and develop manual testing frameworks and patterns",
+            "Lead manual testing: execute test cases, analyse results and give the DevOps team real time feedback on change requirements",
+            "Define and validate quality and testing parameters and plans, and translate these to automation testing teams",
+            "Review and monitor system stability and resilience through testing and in production",
+            "Support developers and users during user acceptance testing",
+            "Coach and mentor people across the DevOps team and developing analysts across the estate, and conduct peer reviews and problem solving"
+          ],
+          "reasoning": "12/18 concrete. 12 of 18 bullets pair a specific verb with a specific object; the rest use vague verbs like build relationships or work with."
+        },
+        {
+          "id": "specific.must_have_count",
+          "dimension": "specificity",
+          "grader": "deterministic",
+          "status": "ok",
+          "raw": 1.0,
+          "normalized": 0.33333333333333337,
+          "pass": null,
+          "gate_failed": null,
+          "evidence": [],
+          "reasoning": null
+        },
+        {
+          "id": "specific.nice_to_have_split",
+          "dimension": "specificity",
+          "grader": "deterministic",
+          "status": "ok",
+          "raw": 1.0,
+          "normalized": 1.0,
+          "pass": true,
+          "gate_failed": null,
+          "evidence": [],
+          "reasoning": "no nice-to-have list"
+        },
+        {
+          "id": "specific.requirement_traceability",
+          "dimension": "specificity",
+          "grader": "judge",
+          "status": "skipped",
+          "raw": null,
+          "normalized": null,
+          "pass": null,
+          "gate_failed": null,
+          "evidence": [],
+          "reasoning": null
+        },
+        {
+          "id": "specific.years_inflation",
+          "dimension": "specificity",
+          "grader": "deterministic",
+          "status": "ok",
+          "raw": 0.0,
+          "normalized": 1.0,
+          "pass": null,
+          "gate_failed": null,
+          "evidence": [],
+          "reasoning": null
+        },
+        {
+          "id": "pay.range_present",
+          "dimension": "specificity",
+          "grader": "deterministic",
+          "status": "ok",
+          "raw": 0.0,
+          "normalized": 0.0,
+          "pass": false,
+          "gate_failed": null,
+          "evidence": [],
+          "reasoning": null
+        },
+        {
+          "id": "pay.range_width",
+          "dimension": "specificity",
+          "grader": "deterministic",
+          "status": "skipped",
+          "raw": null,
+          "normalized": null,
+          "pass": null,
+          "gate_failed": null,
+          "evidence": [],
+          "reasoning": null
+        },
+        {
+          "id": "pay.context_present",
+          "dimension": "specificity",
+          "grader": "judge",
+          "status": "ok",
+          "raw": 0.0,
+          "normalized": 0.0,
+          "pass": false,
+          "gate_failed": null,
+          "evidence": [],
+          "reasoning": "No salary, pay band, or pay-related context is mentioned anywhere in the ad."
+        },
+        {
+          "id": "honesty.buzzword_density",
+          "dimension": "specificity",
+          "grader": "lexicon",
+          "status": "ok",
+          "raw": 0.0,
+          "normalized": 1.0,
+          "pass": null,
+          "gate_failed": null,
+          "evidence": [],
+          "reasoning": null
+        },
+        {
+          "id": "honesty.grounding",
+          "dimension": "specificity",
+          "grader": "judge",
+          "status": "ok",
+          "raw": 1.0,
+          "normalized": 1.0,
+          "pass": null,
+          "gate_failed": null,
+          "evidence": [],
+          "reasoning": "0/6 unsupported. All claims about company history, location, team structure, requirement, and equity/accessibility statements match the source."
+        },
+        {
+          "id": "inclusive.gender_coding",
+          "dimension": "inclusivity",
+          "grader": "lexicon",
+          "status": "ok",
+          "raw": 0.54,
+          "normalized": 1.0,
+          "pass": null,
+          "gate_failed": null,
+          "evidence": [
+            "masculine: analyst, analysis, analytical, analysis, analyse, analysts, individuals, leads, leads, lead, objectives",
+            "feminine: committed, commitments, support, support, support, support, support, together"
+          ],
+          "reasoning": null
+        },
+        {
+          "id": "inclusive.exclusionary_terms",
+          "dimension": "inclusivity",
+          "grader": "lexicon",
+          "status": "ok",
+          "raw": 0.0,
+          "normalized": 1.0,
+          "pass": null,
+          "gate_failed": null,
+          "evidence": [],
+          "reasoning": null
+        },
+        {
+          "id": "inclusive.proxy_requirements",
+          "dimension": "inclusivity",
+          "grader": "judge",
+          "status": "ok",
+          "raw": 0.0,
+          "normalized": 1.0,
+          "pass": null,
+          "gate_failed": null,
+          "evidence": [],
+          "reasoning": "No requirements such as driving licence, age range, or citizenship appear that would exclude a protected group."
+        },
+        {
+          "id": "inclusive.accessibility_statement",
+          "dimension": "inclusivity",
+          "grader": "deterministic",
+          "status": "ok",
+          "raw": 1.0,
+          "normalized": 1.0,
+          "pass": true,
+          "gate_failed": null,
+          "evidence": [],
+          "reasoning": null
+        },
+        {
+          "id": "inclusive.candidate_address",
+          "dimension": "inclusivity",
+          "grader": "deterministic",
+          "status": "ok",
+          "raw": 1.63,
+          "normalized": 1.0,
+          "pass": null,
+          "gate_failed": null,
+          "evidence": [
+            "second-person 9",
+            "third-person-candidate 0"
+          ],
+          "reasoning": null
+        },
+        {
+          "id": "compliance.protected_grounds",
+          "dimension": "compliance",
+          "grader": "judge",
+          "status": "ok",
+          "raw": 1.0,
+          "normalized": 1.0,
+          "pass": true,
+          "gate_failed": null,
+          "evidence": [
+            "preference may be given to candidates from underrepresented designated groups, including persons with disabilities"
+          ],
+          "reasoning": "This reflects lawful affirmative-action language under the Employment Equity Act rather than an exclusionary requirement."
+        },
+        {
+          "id": "compliance.ee_statement",
+          "dimension": "process",
+          "grader": "deterministic",
+          "status": "ok",
+          "raw": 1.0,
+          "normalized": 1.0,
+          "pass": true,
+          "gate_failed": null,
+          "evidence": [],
+          "reasoning": null
+        },
+        {
+          "id": "compliance.popia_notice",
+          "dimension": "process",
+          "grader": "deterministic",
+          "status": "ok",
+          "raw": 0.0,
+          "normalized": 0.0,
+          "pass": false,
+          "gate_failed": null,
+          "evidence": [],
+          "reasoning": null
+        },
+        {
+          "id": "compliance.no_prohibited_requests",
+          "dimension": "compliance",
+          "grader": "judge",
+          "status": "ok",
+          "raw": 1.0,
+          "normalized": 1.0,
+          "pass": true,
+          "gate_failed": null,
+          "evidence": [],
+          "reasoning": "The ad does not request ID numbers, photos, marital status, or other prohibited personal information."
+        },
+        {
+          "id": "compliance.pay_disclosure_law",
+          "dimension": "compliance",
+          "grader": "deterministic",
+          "status": "skipped",
+          "raw": null,
+          "normalized": null,
+          "pass": null,
+          "gate_failed": null,
+          "evidence": [],
+          "reasoning": null
+        },
+        {
+          "id": "evp.why_this_role",
+          "dimension": "evp",
+          "grader": "judge",
+          "status": "ok",
+          "raw": 1.0,
+          "normalized": 1.0,
+          "pass": true,
+          "gate_failed": null,
+          "evidence": [
+            "You then stay with the squad through design and delivery, and you own the manual testing process and its outcomes."
+          ],
+          "reasoning": "This sentence tells the candidate specifically what they will own and be responsible for in the role."
+        },
+        {
+          "id": "evp.benefits_specific",
+          "dimension": "evp",
+          "grader": "judge",
+          "status": "ok",
+          "raw": 0.0,
+          "normalized": 0.0,
+          "pass": false,
+          "gate_failed": null,
+          "evidence": [],
+          "reasoning": "No specific benefits such as medical aid, bonus, or leave are mentioned anywhere in the ad."
+        },
+        {
+          "id": "evp.team_context",
+          "dimension": "evp",
+          "grader": "judge",
+          "status": "ok",
+          "raw": 0.0,
+          "normalized": 0.0,
+          "pass": false,
+          "gate_failed": null,
+          "evidence": [],
+          "reasoning": "The ad names colleagues like Tribe Leads and scrum masters but never states a reporting line or a numeric team size."
+        },
+        {
+          "id": "evp.work_mode_clarity",
+          "dimension": "evp",
+          "grader": "judge",
+          "status": "ok",
+          "raw": 0.0,
+          "normalized": 0.0,
+          "pass": false,
+          "gate_failed": null,
+          "evidence": [],
+          "reasoning": "The ad never specifies whether the role is remote, hybrid, or office-based."
+        },
+        {
+          "id": "seo.title_matches_taxonomy",
+          "dimension": "seo",
+          "grader": "deterministic",
+          "status": "skipped",
+          "raw": null,
+          "normalized": null,
+          "pass": null,
+          "gate_failed": null,
+          "evidence": [],
+          "reasoning": null
+        },
+        {
+          "id": "seo.key_terms_early",
+          "dimension": "seo",
+          "grader": "deterministic",
+          "status": "ok",
+          "raw": 1.0,
+          "normalized": 1.0,
+          "pass": true,
+          "gate_failed": null,
+          "evidence": [],
+          "reasoning": "title early: True, location early: True"
+        },
+        {
+          "id": "seo.no_stuffing",
+          "dimension": "seo",
+          "grader": "deterministic",
+          "status": "ok",
+          "raw": 1.0,
+          "normalized": 1.0,
+          "pass": true,
+          "gate_failed": null,
+          "evidence": [],
+          "reasoning": null
+        },
+        {
+          "id": "process.steps_and_timeline",
+          "dimension": "process",
+          "grader": "judge",
+          "status": "ok",
+          "raw": 0.0,
+          "normalized": 0.0,
+          "pass": false,
+          "gate_failed": null,
+          "evidence": [],
+          "reasoning": "No application process steps, interview stages, or timeline are described in the ad."
+        },
+        {
+          "id": "process.contact_or_link",
+          "dimension": "process",
+          "grader": "deterministic",
+          "status": "skipped",
+          "raw": null,
+          "normalized": null,
+          "pass": null,
+          "gate_failed": null,
+          "evidence": [],
+          "reasoning": null
+        }
+      ],
+      "composite": 70.0,
+      "dimensions": {
+        "clarity": {
+          "score": 0.8544047619047619,
+          "n": 8
+        },
+        "specificity": {
+          "score": 0.6333333333333333,
+          "n": 8
+        },
+        "inclusivity": {
+          "score": 1.0,
+          "n": 5
+        },
+        "compliance": {
+          "score": 0.0,
+          "n": 0
+        },
+        "evp": {
+          "score": 0.25,
+          "n": 4
+        },
+        "seo": {
+          "score": 1.0,
+          "n": 2
+        },
+        "process": {
+          "score": 0.3333333333333333,
+          "n": 3
+        }
+      },
+      "standard": {
+        "level": "review",
+        "summary": "Needs a review pass: composite 70, publishable from 75. Start with: pay disclosed, how pay is set, popia notice.",
+        "reasons": [
+          {
+            "severity": "should_fix",
+            "metric": "pay.range_present",
+            "label": "Pay disclosed",
+            "message": "No salary or range in the ad. Add pay to the brief; it is the strongest driver of applications.",
+            "evidence": []
+          },
+          {
+            "severity": "should_fix",
+            "metric": "pay.context_present",
+            "label": "How pay is set",
+            "message": "Say what decides placement in the range. No salary, pay band, or pay-related context is mentioned anywhere in the ad.",
+            "evidence": []
+          },
+          {
+            "severity": "should_fix",
+            "metric": "compliance.popia_notice",
+            "label": "POPIA notice",
+            "message": "Add your POPIA / personal-information notice.",
+            "evidence": []
+          },
+          {
+            "severity": "should_fix",
+            "metric": "evp.benefits_specific",
+            "label": "Specific benefits",
+            "message": "Name the benefits with amounts or days instead of \"competitive\". No specific benefits such as medical aid, bonus, or leave are mentioned anywhere in the ad.",
+            "evidence": []
+          },
+          {
+            "severity": "should_fix",
+            "metric": "evp.team_context",
+            "label": "Reporting line or team size",
+            "message": "Say who the person reports to, or the team size. The ad names colleagues like Tribe Leads and scrum masters but never states a reporting line or a numeric team size.",
+            "evidence": []
+          },
+          {
+            "severity": "should_fix",
+            "metric": "evp.work_mode_clarity",
+            "label": "Work mode",
+            "message": "State remote, hybrid or on-site, and office days if hybrid. The ad never specifies whether the role is remote, hybrid, or office-based.",
+            "evidence": []
+          },
+          {
+            "severity": "should_fix",
+            "metric": "process.steps_and_timeline",
+            "label": "Application steps and timeline",
+            "message": "Describe the interview steps and when applicants will hear back. No application process steps, interview stages, or timeline are described in the ad.",
+            "evidence": []
+          },
+          {
+            "severity": "should_fix",
+            "metric": "specific.must_have_count",
+            "label": "Number of must-haves",
+            "message": "Measured 1, target 3–6. Keep must-haves to three to six; move the rest to nice-to-have.",
+            "evidence": []
+          },
+          {
+            "severity": "could_improve",
+            "metric": "clarity.reading_grade",
+            "label": "Reading level",
+            "message": "Measured 12.42, target 0–9. Shorter sentences and everyday words; aim for a Grade 8 reading level.",
+            "evidence": []
+          },
+          {
+            "severity": "could_improve",
+            "metric": "clarity.longest_sentence",
+            "label": "Longest sentence",
+            "message": "Measured 47, target 0–35. Split the longest sentence; keep sentences under 35 words.",
+            "evidence": []
+          }
+        ]
+      },
+      "gates_passed": true,
+      "gate_failures": [],
+      "verdict": "review"
+    },
+    "brief_feedback": {
+      "valid": true,
+      "would_be_not_ready": false,
+      "not_ready_reasons": [],
+      "unattainable_metrics": [
+        "specific.nice_to_have_split",
+        "pay.range_present",
+        "pay.context_present",
+        "compliance.popia_notice",
+        "evp.benefits_specific",
+        "evp.work_mode_clarity",
+        "process.steps_and_timeline"
+      ],
+      "attainable_metrics": 26,
+      "total_scored_metrics": 33,
+      "estimated_ceiling": 79.2,
+      "suggestions": [
+        {
+          "field": "benefits",
+          "unlocks": [
+            "evp.benefits_specific"
+          ],
+          "estimated_lift": 3.8,
+          "hint": "Named benefits with amounts or days, not 'competitive'."
+        },
+        {
+          "field": "work_mode",
+          "unlocks": [
+            "evp.work_mode_clarity"
+          ],
+          "estimated_lift": 3.8,
+          "hint": "Remote, hybrid or on-site; office days if hybrid."
+        },
+        {
+          "field": "nice_to_have",
+          "unlocks": [
+            "specific.nice_to_have_split"
+          ],
+          "estimated_lift": 2.8,
+          "hint": "Separate nice-to-haves from must-haves."
+        },
+        {
+          "field": "pay",
+          "unlocks": [
+            "pay.range_present"
+          ],
+          "estimated_lift": 2.8,
+          "hint": "A salary or range. The strongest apply-rate driver in the evidence."
+        },
+        {
+          "field": "pay.basis",
+          "unlocks": [
+            "pay.context_present"
+          ],
+          "estimated_lift": 2.8,
+          "hint": "What decides placement in the range."
+        },
+        {
+          "field": "statements.popia",
+          "unlocks": [
+            "compliance.popia_notice"
+          ],
+          "estimated_lift": 2.5,
+          "hint": "Your POPIA / personal-information notice."
+        },
+        {
+          "field": "process.steps",
+          "unlocks": [
+            "process.steps_and_timeline"
+          ],
+          "estimated_lift": 2.5,
+          "hint": "Interview steps and a response or closing date."
+        }
+      ]
+    },
+    "meta": {
+      "request_id": "3f9c2b1e-7a4d-4e0b-9c6a-5d2f8e1b0a77",
+      "drafter": {
+        "model": "claude-opus-5",
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 2522
+          },
+          "cache_creation_input_tokens": 2522,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 1725,
+          "output_tokens": 1250,
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        },
+        "latency_s": 18.189815521240234,
+        "prompt_version": "0.1.1"
+      },
+      "judge": {
+        "model": "claude-sonnet-5",
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 4124,
+          "inference_geo": "global",
+          "input_tokens": 2875,
+          "output_tokens": 3655,
+          "output_tokens_details": {
+            "thinking_tokens": 2381
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        },
+        "latency_s": 29.965452194213867,
+        "prompt_version": "0.5.1"
+      },
+      "spec": "0.1.9",
+      "brief_schema": "0.2"
+    }
+  }
+}

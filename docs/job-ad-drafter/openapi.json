@@ -1,0 +1,2007 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "job-ad service",
+    "description": "Drafts and scores job advertisements. Headless: clients produce a HiringBrief, the service returns an ad and its scorecard.",
+    "version": "0.1.0"
+  },
+  "paths": {
+    "/healthz": {
+      "get": {
+        "summary": "Healthz",
+        "operationId": "healthz_healthz_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/spec": {
+      "get": {
+        "summary": "Get Spec",
+        "operationId": "get_spec_v1_spec_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/scores": {
+      "post": {
+        "summary": "Post Scores",
+        "operationId": "post_scores_v1_scores_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ScoreRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ScoreResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/briefs/extract": {
+      "post": {
+        "summary": "Post Brief Extract",
+        "description": "Free-text role description \u2192 HiringBrief (verbatim, nothing invented) + what is missing + questions to ask. One cheap model call.",
+        "operationId": "post_brief_extract_v1_briefs_extract_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ExtractRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExtractResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/briefs/check": {
+      "post": {
+        "summary": "Post Brief Check",
+        "description": "Free, instant: which metrics this brief can satisfy, the composite ceiling, and which fields to add first. Call it before paying for a draft.",
+        "operationId": "post_brief_check_v1_briefs_check_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BriefCheckRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Completeness"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/drafts": {
+      "post": {
+        "summary": "Post Drafts",
+        "operationId": "post_drafts_v1_drafts_post",
+        "parameters": [
+          {
+            "name": "format",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "enum": [
+                "json",
+                "markdown"
+              ],
+              "type": "string",
+              "default": "json",
+              "title": "Format"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DraftRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "JSON by default; `?format=markdown` returns only the rendered ad as text/markdown (headers carry x-request-id and x-composite).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DraftResponse"
+                }
+              },
+              "text/markdown": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "BriefCheckRequest": {
+        "properties": {
+          "brief": {
+            "$ref": "#/components/schemas/HiringBrief"
+          }
+        },
+        "type": "object",
+        "required": [
+          "brief"
+        ],
+        "title": "BriefCheckRequest"
+      },
+      "Company": {
+        "properties": {
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Name"
+          },
+          "about": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "About"
+          }
+        },
+        "type": "object",
+        "title": "Company"
+      },
+      "CompanyBrief": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Name"
+          },
+          "about": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "About"
+          },
+          "website": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Website",
+            "description": "Employer website; when set, web enrichment is restricted to this domain"
+          }
+        },
+        "type": "object",
+        "required": [
+          "name"
+        ],
+        "title": "CompanyBrief"
+      },
+      "Completeness": {
+        "properties": {
+          "valid": {
+            "type": "boolean",
+            "title": "Valid",
+            "default": true
+          },
+          "would_be_not_ready": {
+            "type": "boolean",
+            "title": "Would Be Not Ready",
+            "description": "True if the draft would come back 'not_ready' with must-fix reasons (no duties or requirements, or a designated employer without an EE statement)"
+          },
+          "not_ready_reasons": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Not Ready Reasons"
+          },
+          "unattainable_metrics": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Unattainable Metrics",
+            "description": "metrics that must score 0 because the brief lacks their facts"
+          },
+          "attainable_metrics": {
+            "type": "integer",
+            "title": "Attainable Metrics"
+          },
+          "total_scored_metrics": {
+            "type": "integer",
+            "title": "Total Scored Metrics"
+          },
+          "estimated_ceiling": {
+            "type": "number",
+            "title": "Estimated Ceiling",
+            "description": "approximate maximum composite this brief can reach (0\u2013100)"
+          },
+          "suggestions": {
+            "items": {
+              "$ref": "#/components/schemas/FieldSuggestion"
+            },
+            "type": "array",
+            "title": "Suggestions",
+            "description": "fields to add, highest estimated lift first"
+          }
+        },
+        "type": "object",
+        "required": [
+          "would_be_not_ready",
+          "not_ready_reasons",
+          "unattainable_metrics",
+          "attainable_metrics",
+          "total_scored_metrics",
+          "estimated_ceiling",
+          "suggestions"
+        ],
+        "title": "Completeness"
+      },
+      "DimensionScore": {
+        "properties": {
+          "score": {
+            "type": "number",
+            "title": "Score"
+          },
+          "n": {
+            "type": "integer",
+            "title": "N"
+          }
+        },
+        "type": "object",
+        "required": [
+          "score",
+          "n"
+        ],
+        "title": "DimensionScore"
+      },
+      "DraftMeta": {
+        "properties": {
+          "request_id": {
+            "type": "string",
+            "title": "Request Id"
+          },
+          "drafter": {
+            "$ref": "#/components/schemas/ModelCall"
+          },
+          "judge": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ModelCall"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "enrichment": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/EnrichmentMeta"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "spec": {
+            "type": "string",
+            "title": "Spec"
+          },
+          "brief_schema": {
+            "type": "string",
+            "title": "Brief Schema"
+          }
+        },
+        "type": "object",
+        "required": [
+          "request_id",
+          "drafter",
+          "spec",
+          "brief_schema"
+        ],
+        "title": "DraftMeta"
+      },
+      "DraftOptions": {
+        "properties": {
+          "model": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Model"
+          },
+          "effort": {
+            "type": "string",
+            "enum": [
+              "low",
+              "medium",
+              "high"
+            ],
+            "title": "Effort",
+            "default": "medium"
+          },
+          "judge_model": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Judge Model"
+          },
+          "score": {
+            "type": "boolean",
+            "title": "Score",
+            "default": true
+          },
+          "allow_not_ready": {
+            "type": "boolean",
+            "title": "Allow Not Ready",
+            "description": "If false (default) and the completeness check says the draft would come back not_ready, the service refuses with 422 before any model call.",
+            "default": false
+          },
+          "enrich": {
+            "type": "boolean",
+            "title": "Enrich",
+            "description": "Web enrichment: search the employer's public web presence (restricted to company.website when given) for about/values/locations/published benefits; cited in `sources`. Never pay or legal statements. Adds one model call and up to `max_searches` web searches.",
+            "default": false
+          },
+          "max_searches": {
+            "type": "integer",
+            "maximum": 5.0,
+            "minimum": 1.0,
+            "title": "Max Searches",
+            "default": 3
+          }
+        },
+        "type": "object",
+        "title": "DraftOptions"
+      },
+      "DraftRequest": {
+        "properties": {
+          "brief": {
+            "$ref": "#/components/schemas/HiringBrief"
+          },
+          "options": {
+            "$ref": "#/components/schemas/DraftOptions"
+          }
+        },
+        "type": "object",
+        "required": [
+          "brief"
+        ],
+        "title": "DraftRequest"
+      },
+      "DraftResponse": {
+        "properties": {
+          "ad": {
+            "$ref": "#/components/schemas/JobAd",
+            "description": "The structured ad: the source of truth. Score, edit and publish from this."
+          },
+          "rendered": {
+            "$ref": "#/components/schemas/Rendered"
+          },
+          "scorecard": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Scorecard"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "brief_feedback": {
+            "$ref": "#/components/schemas/Completeness"
+          },
+          "sources": {
+            "items": {
+              "$ref": "#/components/schemas/WebSource"
+            },
+            "type": "array",
+            "title": "Sources",
+            "description": "Web-sourced employer facts the drafter was allowed to use, by URL. Show them for the recruiter to confirm."
+          },
+          "meta": {
+            "$ref": "#/components/schemas/DraftMeta"
+          }
+        },
+        "type": "object",
+        "required": [
+          "ad",
+          "rendered",
+          "brief_feedback",
+          "meta"
+        ],
+        "title": "DraftResponse"
+      },
+      "EnrichmentMeta": {
+        "properties": {
+          "model": {
+            "type": "string",
+            "title": "Model"
+          },
+          "searches": {
+            "type": "integer",
+            "title": "Searches"
+          },
+          "facts": {
+            "type": "integer",
+            "title": "Facts"
+          },
+          "usage": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Usage"
+          },
+          "latency_s": {
+            "type": "number",
+            "title": "Latency S"
+          },
+          "prompt_version": {
+            "type": "string",
+            "title": "Prompt Version"
+          },
+          "notes": {
+            "type": "string",
+            "title": "Notes"
+          }
+        },
+        "type": "object",
+        "required": [
+          "model",
+          "searches",
+          "facts",
+          "usage",
+          "latency_s",
+          "prompt_version",
+          "notes"
+        ],
+        "title": "EnrichmentMeta"
+      },
+      "ExtractRequest": {
+        "properties": {
+          "description": {
+            "type": "string",
+            "maxLength": 20000,
+            "minLength": 20,
+            "title": "Description",
+            "description": "The role in the author's own words: duties, requirements, pay, team, process, anything they know"
+          },
+          "company_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Company Name",
+            "description": "Usually known to the client; overrides anything the text says"
+          },
+          "jurisdiction": {
+            "type": "string",
+            "title": "Jurisdiction",
+            "default": "ZA"
+          },
+          "hosted_apply": {
+            "type": "boolean",
+            "title": "Hosted Apply",
+            "default": false
+          },
+          "designated_employer": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Designated Employer"
+          }
+        },
+        "type": "object",
+        "required": [
+          "description"
+        ],
+        "title": "ExtractRequest"
+      },
+      "ExtractResponse": {
+        "properties": {
+          "brief": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/HiringBrief"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "A valid brief, ready for /v1/drafts \u2014 or null when required fields are missing"
+          },
+          "brief_partial": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Brief Partial",
+            "description": "Everything extracted, in HiringBrief shape, even when incomplete; pre-fill the form with it"
+          },
+          "missing_required": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Missing Required",
+            "description": "Required fields the description did not supply (title, company.name, responsibilities, must_have)"
+          },
+          "questions": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Questions",
+            "description": "Up to five questions to ask the author for the most valuable missing facts"
+          },
+          "completeness": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Completeness"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "The /v1/briefs/check result for the extracted brief, when it is valid"
+          },
+          "meta": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Meta"
+          }
+        },
+        "type": "object",
+        "required": [
+          "brief",
+          "brief_partial",
+          "missing_required",
+          "questions",
+          "completeness",
+          "meta"
+        ],
+        "title": "ExtractResponse"
+      },
+      "FieldSuggestion": {
+        "properties": {
+          "field": {
+            "type": "string",
+            "title": "Field"
+          },
+          "unlocks": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Unlocks",
+            "description": "metric ids this field feeds"
+          },
+          "estimated_lift": {
+            "type": "number",
+            "title": "Estimated Lift",
+            "description": "approximate composite points if the metrics it feeds reached full score"
+          },
+          "hint": {
+            "type": "string",
+            "title": "Hint"
+          }
+        },
+        "type": "object",
+        "required": [
+          "field",
+          "unlocks",
+          "estimated_lift",
+          "hint"
+        ],
+        "title": "FieldSuggestion"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "HiringBrief": {
+        "properties": {
+          "schema_version": {
+            "type": "string",
+            "const": "0.3",
+            "title": "Schema Version",
+            "default": "0.3"
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Title"
+          },
+          "seniority": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "entry",
+                  "junior",
+                  "mid",
+                  "senior",
+                  "lead",
+                  "manager",
+                  "head",
+                  "executive"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Seniority"
+          },
+          "employment_type": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "permanent",
+                  "fixed_term",
+                  "contract",
+                  "part_time",
+                  "internship",
+                  "learnership",
+                  "temporary"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Employment Type"
+          },
+          "purpose": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Purpose"
+          },
+          "success_measures": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Success Measures"
+          },
+          "responsibilities": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "minItems": 1,
+            "title": "Responsibilities",
+            "description": "At least one duty; the drafter rewrites, it does not add duties"
+          },
+          "tools": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Tools"
+          },
+          "must_have": {
+            "items": {
+              "$ref": "#/components/schemas/Requirement"
+            },
+            "type": "array",
+            "minItems": 1,
+            "title": "Must Have",
+            "description": "At least one requirement"
+          },
+          "nice_to_have": {
+            "items": {
+              "$ref": "#/components/schemas/Requirement"
+            },
+            "type": "array",
+            "title": "Nice To Have"
+          },
+          "location": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Location"
+          },
+          "work_mode": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "remote",
+                  "hybrid",
+                  "onsite"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Work Mode"
+          },
+          "work_mode_detail": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Work Mode Detail"
+          },
+          "hours": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Hours"
+          },
+          "start_date": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Start Date"
+          },
+          "positions": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "exclusiveMinimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Positions"
+          },
+          "pay": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/PayBrief"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "benefits": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Benefits"
+          },
+          "company": {
+            "$ref": "#/components/schemas/CompanyBrief"
+          },
+          "team": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/TeamBrief"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "process": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ProcessBrief"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "statements": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Statements"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "jurisdiction": {
+            "type": "string",
+            "pattern": "^(ZA|EU|US|US-[A-Z]{2})$",
+            "title": "Jurisdiction",
+            "default": "ZA"
+          },
+          "designated_employer": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Designated Employer"
+          },
+          "hosted_apply": {
+            "type": "boolean",
+            "title": "Hosted Apply",
+            "default": false
+          },
+          "channel": {
+            "type": "string",
+            "enum": [
+              "default",
+              "linkedin",
+              "indeed"
+            ],
+            "title": "Channel",
+            "default": "default"
+          }
+        },
+        "type": "object",
+        "required": [
+          "title",
+          "responsibilities",
+          "must_have",
+          "company"
+        ],
+        "title": "HiringBrief"
+      },
+      "JobAd": {
+        "properties": {
+          "title": {
+            "type": "string",
+            "title": "Title"
+          },
+          "company": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Company"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "summary": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Summary"
+          },
+          "responsibilities": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Responsibilities"
+          },
+          "must_have": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Must Have"
+          },
+          "nice_to_have": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Nice To Have"
+          },
+          "pay": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Pay"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "location": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Location"
+          },
+          "work_mode": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "remote",
+                  "hybrid",
+                  "onsite",
+                  "unspecified"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Work Mode"
+          },
+          "work_mode_detail": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Work Mode Detail"
+          },
+          "benefits": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Benefits"
+          },
+          "team": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Team"
+          },
+          "process": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Process"
+          },
+          "closing_date": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Closing Date"
+          },
+          "accessibility_statement": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Accessibility Statement"
+          },
+          "ee_statement": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ee Statement"
+          },
+          "popia_notice": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Popia Notice"
+          },
+          "apply_contact": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Apply Contact"
+          },
+          "other": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Other"
+          }
+        },
+        "type": "object",
+        "required": [
+          "title"
+        ],
+        "title": "JobAd",
+        "description": "Structured job ad. Both the drafter's output and the benchmark's normalised form of real ads."
+      },
+      "MetricResult": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "dimension": {
+            "type": "string",
+            "title": "Dimension",
+            "default": ""
+          },
+          "grader": {
+            "type": "string",
+            "enum": [
+              "deterministic",
+              "lexicon",
+              "judge"
+            ],
+            "title": "Grader",
+            "default": "deterministic"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "ok",
+              "skipped",
+              "not_implemented",
+              "not_applicable",
+              "error"
+            ],
+            "title": "Status",
+            "default": "ok"
+          },
+          "raw": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Raw"
+          },
+          "normalized": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Normalized"
+          },
+          "pass": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Pass"
+          },
+          "gate_failed": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Gate Failed"
+          },
+          "evidence": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Evidence"
+          },
+          "reasoning": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reasoning"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id"
+        ],
+        "title": "MetricResult"
+      },
+      "ModelCall": {
+        "properties": {
+          "model": {
+            "type": "string",
+            "title": "Model"
+          },
+          "usage": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Usage"
+          },
+          "latency_s": {
+            "type": "number",
+            "title": "Latency S"
+          },
+          "prompt_version": {
+            "type": "string",
+            "title": "Prompt Version"
+          }
+        },
+        "type": "object",
+        "required": [
+          "model",
+          "usage",
+          "latency_s",
+          "prompt_version"
+        ],
+        "title": "ModelCall"
+      },
+      "Pay": {
+        "properties": {
+          "min": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Min"
+          },
+          "max": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Max"
+          },
+          "currency": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Currency"
+          },
+          "period": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "year",
+                  "month",
+                  "hour",
+                  "day",
+                  "week"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Period"
+          },
+          "basis": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Basis"
+          }
+        },
+        "type": "object",
+        "title": "Pay"
+      },
+      "PayBrief": {
+        "properties": {
+          "min": {
+            "anyOf": [
+              {
+                "type": "number",
+                "minimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Min"
+          },
+          "max": {
+            "anyOf": [
+              {
+                "type": "number",
+                "minimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Max"
+          },
+          "currency": {
+            "type": "string",
+            "maxLength": 3,
+            "minLength": 3,
+            "title": "Currency",
+            "default": "ZAR"
+          },
+          "period": {
+            "type": "string",
+            "enum": [
+              "year",
+              "month",
+              "hour",
+              "day",
+              "week"
+            ],
+            "title": "Period"
+          },
+          "basis": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Basis"
+          }
+        },
+        "type": "object",
+        "required": [
+          "period"
+        ],
+        "title": "PayBrief"
+      },
+      "ProcessBrief": {
+        "properties": {
+          "steps": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Steps"
+          },
+          "closing_date": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Closing Date"
+          },
+          "contact": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Contact"
+          },
+          "reference": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reference"
+          }
+        },
+        "type": "object",
+        "title": "ProcessBrief"
+      },
+      "Reason": {
+        "properties": {
+          "severity": {
+            "type": "string",
+            "enum": [
+              "must_fix",
+              "should_fix",
+              "could_improve"
+            ],
+            "title": "Severity"
+          },
+          "metric": {
+            "type": "string",
+            "title": "Metric"
+          },
+          "label": {
+            "type": "string",
+            "title": "Label"
+          },
+          "message": {
+            "type": "string",
+            "title": "Message"
+          },
+          "evidence": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Evidence"
+          }
+        },
+        "type": "object",
+        "required": [
+          "severity",
+          "metric",
+          "label",
+          "message"
+        ],
+        "title": "Reason"
+      },
+      "Rendered": {
+        "properties": {
+          "markdown": {
+            "type": "string",
+            "title": "Markdown",
+            "description": "The ad as Markdown \u2014 headings, bullets, bold. Deterministic from `ad`; convert to HTML or paste into an editor."
+          },
+          "text": {
+            "type": "string",
+            "title": "Text",
+            "description": "The ad as plain text, as a candidate would read it"
+          }
+        },
+        "type": "object",
+        "required": [
+          "markdown",
+          "text"
+        ],
+        "title": "Rendered"
+      },
+      "Requirement": {
+        "properties": {
+          "text": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Text"
+          },
+          "justification": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Justification"
+          }
+        },
+        "type": "object",
+        "required": [
+          "text"
+        ],
+        "title": "Requirement"
+      },
+      "ScoreMeta": {
+        "properties": {
+          "judge": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ModelCall"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "spec": {
+            "type": "string",
+            "title": "Spec"
+          }
+        },
+        "type": "object",
+        "required": [
+          "spec"
+        ],
+        "title": "ScoreMeta"
+      },
+      "ScoreRequest": {
+        "properties": {
+          "ad": {
+            "$ref": "#/components/schemas/JobAd"
+          },
+          "context": {
+            "$ref": "#/components/schemas/ScoringContext"
+          },
+          "judge": {
+            "type": "boolean",
+            "title": "Judge",
+            "default": true
+          },
+          "judge_model": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Judge Model"
+          }
+        },
+        "type": "object",
+        "required": [
+          "ad"
+        ],
+        "title": "ScoreRequest"
+      },
+      "ScoreResponse": {
+        "properties": {
+          "scorecard": {
+            "$ref": "#/components/schemas/Scorecard"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/ScoreMeta"
+          }
+        },
+        "type": "object",
+        "required": [
+          "scorecard",
+          "meta"
+        ],
+        "title": "ScoreResponse"
+      },
+      "Scorecard": {
+        "properties": {
+          "spec_version": {
+            "type": "string",
+            "title": "Spec Version"
+          },
+          "metrics": {
+            "items": {
+              "$ref": "#/components/schemas/MetricResult"
+            },
+            "type": "array",
+            "title": "Metrics"
+          },
+          "composite": {
+            "type": "number",
+            "title": "Composite"
+          },
+          "dimensions": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/DimensionScore"
+            },
+            "type": "object",
+            "title": "Dimensions"
+          },
+          "standard": {
+            "$ref": "#/components/schemas/Standard"
+          },
+          "gates_passed": {
+            "type": "boolean",
+            "title": "Gates Passed"
+          },
+          "gate_failures": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Gate Failures"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "publishable",
+              "review",
+              "not_ready"
+            ],
+            "title": "Verdict"
+          }
+        },
+        "type": "object",
+        "required": [
+          "spec_version",
+          "metrics",
+          "composite",
+          "dimensions",
+          "standard",
+          "gates_passed",
+          "gate_failures",
+          "verdict"
+        ],
+        "title": "Scorecard"
+      },
+      "ScoringContext": {
+        "properties": {
+          "jurisdiction": {
+            "type": "string",
+            "title": "Jurisdiction",
+            "default": "ZA"
+          },
+          "channel": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "default",
+                  "linkedin",
+                  "indeed"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Channel"
+          },
+          "designated_employer": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Designated Employer"
+          },
+          "hosted_apply": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Hosted Apply"
+          },
+          "sources": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/Source"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sources"
+          }
+        },
+        "type": "object",
+        "title": "ScoringContext",
+        "description": "Facts about the employer and publication the scorer needs (not the ad text)."
+      },
+      "Source": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "text": {
+            "type": "string",
+            "title": "Text"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "text"
+        ],
+        "title": "Source"
+      },
+      "Standard": {
+        "properties": {
+          "level": {
+            "type": "string",
+            "enum": [
+              "publishable",
+              "review",
+              "not_ready"
+            ],
+            "title": "Level"
+          },
+          "summary": {
+            "type": "string",
+            "title": "Summary"
+          },
+          "reasons": {
+            "items": {
+              "$ref": "#/components/schemas/Reason"
+            },
+            "type": "array",
+            "title": "Reasons"
+          }
+        },
+        "type": "object",
+        "required": [
+          "level",
+          "summary",
+          "reasons"
+        ],
+        "title": "Standard"
+      },
+      "Statements": {
+        "properties": {
+          "ee": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ee"
+          },
+          "popia": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Popia"
+          },
+          "accessibility": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Accessibility"
+          }
+        },
+        "type": "object",
+        "title": "Statements"
+      },
+      "TeamBrief": {
+        "properties": {
+          "reports_to": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reports To"
+          },
+          "size": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "exclusiveMinimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Size"
+          },
+          "notes": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Notes"
+          }
+        },
+        "type": "object",
+        "title": "TeamBrief"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      },
+      "WebSource": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "url": {
+            "type": "string",
+            "title": "Url"
+          },
+          "facts": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Facts"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "url",
+          "facts"
+        ],
+        "title": "WebSource"
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "http://127.0.0.1:4310",
+      "description": "local"
+    }
+  ]
+}

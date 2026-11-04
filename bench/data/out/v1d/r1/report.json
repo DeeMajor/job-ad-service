@@ -1,0 +1,659 @@
+{
+  "version": "v1d",
+  "generated_at": "2026-11-04T12:30:43.216Z",
+  "spec_version": "0.1.5",
+  "judge_prompt_version": "0.4.0",
+  "config": {
+    "normalizer": "llm",
+    "judge": "claude-sonnet-5",
+    "reference_model": "claude-opus-5",
+    "reps": 3
+  },
+  "corpus": {
+    "n": 20,
+    "full_text_share": 1,
+    "sources": {
+      "workday": 15,
+      "greenhouse": 5
+    }
+  },
+  "composite": {
+    "mean": 47.144999999999996,
+    "p10": 0,
+    "p25": 50.1,
+    "median": 54.1,
+    "p75": 63.1,
+    "p90": 70.4,
+    "gates_pass_rate": 0.8,
+    "verdicts": {
+      "regenerate": 9,
+      "blocked": 4,
+      "review": 7
+    }
+  },
+  "gate_fail_rate": {
+    "compliance.ee_statement": 0.2
+  },
+  "metrics": {
+    "structure.sections_present": {
+      "n": 20,
+      "mean_norm": 0.777777777777778,
+      "mean_raw": 0.777777777777778
+    },
+    "structure.title_matches_content": {
+      "n": 20,
+      "mean_norm": 0.95,
+      "mean_raw": 0.95,
+      "pass_rate": 0.95
+    },
+    "structure.title_quality": {
+      "n": 20,
+      "mean_norm": 1,
+      "mean_raw": 1,
+      "pass_rate": 1
+    },
+    "clarity.word_count": {
+      "n": 20,
+      "mean_norm": 0.622,
+      "mean_raw": 670.35
+    },
+    "clarity.reading_grade": {
+      "n": 20,
+      "mean_norm": 0.5050714285714287,
+      "mean_raw": 12.479500000000002
+    },
+    "clarity.longest_sentence": {
+      "n": 20,
+      "mean_norm": 0.8128571428571428,
+      "mean_raw": 41.35
+    },
+    "clarity.scannability": {
+      "n": 20,
+      "mean_norm": 0.98235,
+      "mean_raw": 0.8780849999999999
+    },
+    "specific.responsibility_concreteness": {
+      "n": 20,
+      "mean_norm": 0.21106987310934672,
+      "mean_raw": 0.3587293809991178
+    },
+    "specific.must_have_count": {
+      "n": 20,
+      "mean_norm": 0.6333333333333334,
+      "mean_raw": 7.2
+    },
+    "specific.nice_to_have_split": {
+      "n": 20,
+      "mean_norm": 0.85,
+      "mean_raw": 0.85,
+      "pass_rate": 0.85
+    },
+    "specific.requirement_traceability": {
+      "n": 20,
+      "mean_norm": 0.38789168433905274,
+      "mean_raw": 0.5872791755028598
+    },
+    "specific.years_inflation": {
+      "n": 20,
+      "mean_norm": 0.95,
+      "mean_raw": 0.1
+    },
+    "pay.range_present": {
+      "n": 20,
+      "mean_norm": 0.2,
+      "mean_raw": 0.2,
+      "pass_rate": 0.2
+    },
+    "pay.range_width": {
+      "n": 4,
+      "mean_norm": 1,
+      "mean_raw": 0.05
+    },
+    "pay.context_present": {
+      "n": 20,
+      "mean_norm": 0.15,
+      "mean_raw": 0.15,
+      "pass_rate": 0.15
+    },
+    "honesty.buzzword_density": {
+      "n": 20,
+      "mean_norm": 1,
+      "mean_raw": 0.0785
+    },
+    "inclusive.gender_coding": {
+      "n": 20,
+      "mean_norm": 0.87525,
+      "mean_raw": -0.01850000000000005
+    },
+    "inclusive.exclusionary_terms": {
+      "n": 20,
+      "mean_norm": 1,
+      "mean_raw": 0
+    },
+    "inclusive.proxy_requirements": {
+      "n": 20,
+      "mean_norm": 1,
+      "mean_raw": 0
+    },
+    "inclusive.accessibility_statement": {
+      "n": 20,
+      "mean_norm": 0.5,
+      "mean_raw": 0.5,
+      "pass_rate": 0.5
+    },
+    "inclusive.candidate_address": {
+      "n": 20,
+      "mean_norm": 0.6330000000000002,
+      "mean_raw": 0.8370000000000001
+    },
+    "compliance.protected_grounds": {
+      "n": 20,
+      "mean_norm": 1,
+      "mean_raw": 1,
+      "pass_rate": 1
+    },
+    "compliance.ee_statement": {
+      "n": 20,
+      "mean_norm": 0.8,
+      "mean_raw": 0.8,
+      "pass_rate": 0.8
+    },
+    "compliance.popia_notice": {
+      "n": 20,
+      "mean_norm": 0.2,
+      "mean_raw": 0.2,
+      "pass_rate": 0.2
+    },
+    "compliance.no_prohibited_requests": {
+      "n": 20,
+      "mean_norm": 1,
+      "mean_raw": 1,
+      "pass_rate": 1
+    },
+    "evp.why_this_role": {
+      "n": 20,
+      "mean_norm": 0.25,
+      "mean_raw": 0.25,
+      "pass_rate": 0.25
+    },
+    "evp.benefits_specific": {
+      "n": 20,
+      "mean_norm": 0.35,
+      "mean_raw": 0.35,
+      "pass_rate": 0.35
+    },
+    "evp.team_context": {
+      "n": 20,
+      "mean_norm": 0.35,
+      "mean_raw": 0.35,
+      "pass_rate": 0.35
+    },
+    "evp.work_mode_clarity": {
+      "n": 20,
+      "mean_norm": 0.3,
+      "mean_raw": 0.3,
+      "pass_rate": 0.3
+    },
+    "seo.key_terms_early": {
+      "n": 20,
+      "mean_norm": 1,
+      "mean_raw": 1,
+      "pass_rate": 1
+    },
+    "seo.no_stuffing": {
+      "n": 20,
+      "mean_norm": 0.65,
+      "mean_raw": 0.65,
+      "pass_rate": 0.65
+    },
+    "process.steps_and_timeline": {
+      "n": 20,
+      "mean_norm": 0,
+      "mean_raw": 0,
+      "pass_rate": 0
+    }
+  },
+  "detection": {
+    "merge_nice_to_haves→specific.nice_to_have_split": {
+      "perturbation": "merge_nice_to_haves",
+      "target": "specific.nice_to_have_split",
+      "n_total": 15,
+      "n": 15,
+      "rate": 1,
+      "false_improvements": 0,
+      "target_rate": 0.9,
+      "pass": true
+    },
+    "inject_masculine_coding→inclusive.gender_coding": {
+      "perturbation": "inject_masculine_coding",
+      "target": "inclusive.gender_coding",
+      "n_total": 20,
+      "n": 19,
+      "rate": 1,
+      "false_improvements": 0,
+      "target_rate": 0.9,
+      "pass": true
+    },
+    "inflate_years→specific.years_inflation": {
+      "perturbation": "inflate_years",
+      "target": "specific.years_inflation",
+      "n_total": 20,
+      "n": 20,
+      "rate": 1,
+      "false_improvements": 0,
+      "target_rate": 0.9,
+      "pass": true
+    },
+    "inflate_must_haves→specific.must_have_count": {
+      "perturbation": "inflate_must_haves",
+      "target": "specific.must_have_count",
+      "n_total": 11,
+      "n": 11,
+      "rate": 1,
+      "false_improvements": 0,
+      "target_rate": 0.9,
+      "pass": true
+    },
+    "inject_exclusionary_phrase→inclusive.exclusionary_terms": {
+      "perturbation": "inject_exclusionary_phrase",
+      "target": "inclusive.exclusionary_terms",
+      "n_total": 20,
+      "n": 20,
+      "rate": 1,
+      "false_improvements": 0,
+      "target_rate": 0.9,
+      "pass": true
+    },
+    "third_person_candidate→inclusive.candidate_address": {
+      "perturbation": "third_person_candidate",
+      "target": "inclusive.candidate_address",
+      "n_total": 20,
+      "n": 19,
+      "rate": 1,
+      "false_improvements": 0,
+      "target_rate": 0.9,
+      "pass": true
+    },
+    "bloat_prose→clarity.reading_grade": {
+      "perturbation": "bloat_prose",
+      "target": "clarity.reading_grade",
+      "n_total": 20,
+      "n": 19,
+      "rate": 1,
+      "false_improvements": 0,
+      "target_rate": 0.9,
+      "pass": true
+    },
+    "bloat_prose→clarity.longest_sentence": {
+      "perturbation": "bloat_prose",
+      "target": "clarity.longest_sentence",
+      "n_total": 20,
+      "n": 19,
+      "rate": 1,
+      "false_improvements": 0,
+      "target_rate": 0.9,
+      "pass": true
+    },
+    "bloat_prose→clarity.scannability": {
+      "perturbation": "bloat_prose",
+      "target": "clarity.scannability",
+      "n_total": 20,
+      "n": 20,
+      "rate": 1,
+      "false_improvements": 0,
+      "target_rate": 0.9,
+      "pass": true
+    },
+    "inject_buzzwords→honesty.buzzword_density": {
+      "perturbation": "inject_buzzwords",
+      "target": "honesty.buzzword_density",
+      "n_total": 20,
+      "n": 20,
+      "rate": 1,
+      "false_improvements": 0,
+      "target_rate": 0.9,
+      "pass": true
+    },
+    "vague_responsibilities→specific.responsibility_concreteness": {
+      "perturbation": "vague_responsibilities",
+      "target": "specific.responsibility_concreteness",
+      "n_total": 20,
+      "n": 10,
+      "rate": 1,
+      "false_improvements": 0,
+      "target_rate": 0.85,
+      "pass": true
+    },
+    "strip_ee_popia→compliance.ee_statement": {
+      "perturbation": "strip_ee_popia",
+      "target": "compliance.ee_statement",
+      "n_total": 17,
+      "n": 16,
+      "rate": 1,
+      "false_improvements": 0,
+      "target_rate": 0.9,
+      "pass": true
+    },
+    "strip_ee_popia→compliance.popia_notice": {
+      "perturbation": "strip_ee_popia",
+      "target": "compliance.popia_notice",
+      "n_total": 17,
+      "n": 4,
+      "rate": 0.75,
+      "false_improvements": 0,
+      "target_rate": 0.9,
+      "pass": false
+    },
+    "proxy_requirement→inclusive.proxy_requirements": {
+      "perturbation": "proxy_requirement",
+      "target": "inclusive.proxy_requirements",
+      "n_total": 20,
+      "n": 20,
+      "rate": 1,
+      "false_improvements": 0,
+      "target_rate": 0.85,
+      "pass": true
+    },
+    "proxy_requirement→compliance.protected_grounds": {
+      "perturbation": "proxy_requirement",
+      "target": "compliance.protected_grounds",
+      "n_total": 20,
+      "n": 20,
+      "rate": 1,
+      "false_improvements": 0,
+      "target_rate": 0.85,
+      "pass": true
+    },
+    "untraceable_requirements→specific.requirement_traceability": {
+      "perturbation": "untraceable_requirements",
+      "target": "specific.requirement_traceability",
+      "n_total": 20,
+      "n": 13,
+      "rate": 1,
+      "false_improvements": 1,
+      "target_rate": 0.85,
+      "pass": false
+    },
+    "hallucinate_benefit→honesty.grounding": {
+      "perturbation": "hallucinate_benefit",
+      "target": "honesty.grounding",
+      "n_total": 20,
+      "n": 20,
+      "rate": 1,
+      "false_improvements": 0,
+      "target_rate": 0.85,
+      "pass": true
+    },
+    "gimmick_title→structure.title_quality": {
+      "perturbation": "gimmick_title",
+      "target": "structure.title_quality",
+      "n_total": 20,
+      "n": 20,
+      "rate": 1,
+      "false_improvements": 0,
+      "target_rate": 0.9,
+      "pass": true
+    },
+    "prohibited_request→compliance.no_prohibited_requests": {
+      "perturbation": "prohibited_request",
+      "target": "compliance.no_prohibited_requests",
+      "n_total": 20,
+      "n": 20,
+      "rate": 1,
+      "false_improvements": 0,
+      "target_rate": 0.85,
+      "pass": true
+    },
+    "delete_process→process.contact_or_link": {
+      "perturbation": "delete_process",
+      "target": "process.contact_or_link",
+      "n_total": 4,
+      "n": 0,
+      "rate": 0,
+      "false_improvements": 0,
+      "target_rate": 0.9,
+      "pass": false
+    },
+    "delete_process→structure.sections_present": {
+      "perturbation": "delete_process",
+      "target": "structure.sections_present",
+      "n_total": 4,
+      "n": 4,
+      "rate": 1,
+      "false_improvements": 0,
+      "target_rate": 0.9,
+      "pass": false
+    },
+    "remove_team_and_work_mode→evp.team_context": {
+      "perturbation": "remove_team_and_work_mode",
+      "target": "evp.team_context",
+      "n_total": 14,
+      "n": 7,
+      "rate": 0.2857142857142857,
+      "false_improvements": 2,
+      "target_rate": 0.85,
+      "pass": false
+    },
+    "remove_team_and_work_mode→evp.work_mode_clarity": {
+      "perturbation": "remove_team_and_work_mode",
+      "target": "evp.work_mode_clarity",
+      "n_total": 14,
+      "n": 6,
+      "rate": 0.16666666666666666,
+      "false_improvements": 0,
+      "target_rate": 0.85,
+      "pass": false
+    },
+    "vague_benefits→evp.benefits_specific": {
+      "perturbation": "vague_benefits",
+      "target": "evp.benefits_specific",
+      "n_total": 11,
+      "n": 7,
+      "rate": 1,
+      "false_improvements": 0,
+      "target_rate": 0.85,
+      "pass": true
+    },
+    "remove_timeline→process.steps_and_timeline": {
+      "perturbation": "remove_timeline",
+      "target": "process.steps_and_timeline",
+      "n_total": 4,
+      "n": 0,
+      "rate": 0,
+      "false_improvements": 0,
+      "target_rate": 0.85,
+      "pass": false
+    },
+    "strip_pay→pay.range_present": {
+      "perturbation": "strip_pay",
+      "target": "pay.range_present",
+      "n_total": 4,
+      "n": 4,
+      "rate": 1,
+      "false_improvements": 0,
+      "target_rate": 0.9,
+      "pass": false
+    },
+    "strip_pay→structure.sections_present": {
+      "perturbation": "strip_pay",
+      "target": "structure.sections_present",
+      "n_total": 4,
+      "n": 4,
+      "rate": 1,
+      "false_improvements": 0,
+      "target_rate": 0.9,
+      "pass": false
+    },
+    "widen_pay_range→pay.range_width": {
+      "perturbation": "widen_pay_range",
+      "target": "pay.range_width",
+      "n_total": 4,
+      "n": 4,
+      "rate": 1,
+      "false_improvements": 0,
+      "target_rate": 0.9,
+      "pass": false
+    }
+  },
+  "agreement": {
+    "structure.title_matches_content": {
+      "n": 10,
+      "type": "categorical",
+      "kappa": 1,
+      "consistency": 1,
+      "target": "κ ≥ 0.7",
+      "pass": true
+    },
+    "specific.responsibility_concreteness": {
+      "n": 10,
+      "type": "ratio",
+      "mae": 0.07456252081252082,
+      "consistency": 1,
+      "target": "MAE ≤ 0.2",
+      "pass": true
+    },
+    "specific.requirement_traceability": {
+      "n": 10,
+      "type": "ratio",
+      "mae": 0.18326923076923077,
+      "consistency": 0.8,
+      "target": "MAE ≤ 0.2",
+      "pass": false
+    },
+    "pay.context_present": {
+      "n": 10,
+      "type": "categorical",
+      "kappa": 0.782608695652174,
+      "consistency": 0.9,
+      "target": "κ ≥ 0.7",
+      "pass": true
+    },
+    "inclusive.proxy_requirements": {
+      "n": 10,
+      "type": "categorical",
+      "kappa": 0,
+      "consistency": 1,
+      "target": "κ ≥ 0.7",
+      "pass": false
+    },
+    "compliance.protected_grounds": {
+      "n": 10,
+      "type": "categorical",
+      "kappa": 1,
+      "consistency": 1,
+      "target": "κ ≥ 0.8",
+      "pass": true
+    },
+    "compliance.no_prohibited_requests": {
+      "n": 10,
+      "type": "categorical",
+      "kappa": 1,
+      "consistency": 1,
+      "target": "κ ≥ 0.8",
+      "pass": true
+    },
+    "evp.why_this_role": {
+      "n": 10,
+      "type": "categorical",
+      "kappa": 0.3999999999999999,
+      "consistency": 0.7,
+      "target": "κ ≥ 0.7",
+      "pass": false
+    },
+    "evp.benefits_specific": {
+      "n": 10,
+      "type": "categorical",
+      "kappa": 1,
+      "consistency": 0.9,
+      "target": "κ ≥ 0.7",
+      "pass": true
+    },
+    "evp.team_context": {
+      "n": 10,
+      "type": "categorical",
+      "kappa": 1,
+      "consistency": 0.9,
+      "target": "κ ≥ 0.7",
+      "pass": true
+    },
+    "evp.work_mode_clarity": {
+      "n": 10,
+      "type": "categorical",
+      "kappa": 1,
+      "consistency": 1,
+      "target": "κ ≥ 0.7",
+      "pass": true
+    },
+    "process.steps_and_timeline": {
+      "n": 10,
+      "type": "categorical",
+      "kappa": 1,
+      "consistency": 1,
+      "target": "κ ≥ 0.7",
+      "pass": true
+    }
+  },
+  "probes": [
+    {
+      "name": "empty",
+      "expect": "blocked, composite < 20",
+      "composite": 0,
+      "gates_passed": false,
+      "gate_failures": [
+        "compliance.protected_grounds",
+        "compliance.ee_statement",
+        "compliance.no_prohibited_requests"
+      ],
+      "pass": true
+    },
+    {
+      "name": "i_dont_know",
+      "expect": "blocked or composite < 20",
+      "composite": 0,
+      "gates_passed": false,
+      "gate_failures": [
+        "compliance.ee_statement"
+      ],
+      "pass": true
+    },
+    {
+      "name": "wrong_role_confident",
+      "expect": "structure.title_matches_content fails when judged; deterministic alone cannot catch",
+      "composite": 91.8,
+      "gates_passed": true,
+      "gate_failures": [],
+      "pass": true
+    },
+    {
+      "name": "oracle_good_fixture",
+      "expect": "gates pass, composite >= 80",
+      "composite": 98.4,
+      "gates_passed": true,
+      "gate_failures": [],
+      "pass": true
+    }
+  ],
+  "cost": {
+    "judge_calls": 20,
+    "judge_mean_input_tokens": 4727,
+    "judge_mean_output_tokens": 3451.25,
+    "judge_mean_latency_s": 29.55315,
+    "judge_cache_read_share": 0.6744131748791142,
+    "normalize_calls": 20,
+    "normalize_mean_tokens": 3389.25
+  },
+  "exit": {
+    "perturbation_all_pass": false,
+    "perturbation_insufficient_data": [
+      "strip_ee_popia→compliance.popia_notice",
+      "delete_process→process.contact_or_link",
+      "delete_process→structure.sections_present",
+      "remove_timeline→process.steps_and_timeline",
+      "strip_pay→pay.range_present",
+      "strip_pay→structure.sections_present",
+      "widen_pay_range→pay.range_width"
+    ],
+    "agreement_all_pass": false,
+    "probes_all_pass": true
+  }
+}

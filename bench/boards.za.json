@@ -1,0 +1,100 @@
+[
+  {
+    "ats": "workday",
+    "slug": "absa",
+    "wd": "wd3",
+    "site": "ABSAcareersite",
+    "company": "Absa Group",
+    "max": 85,
+    "facets": {
+      "locationCountry": [
+        "4db3c26940b944919b83612cc1193eed"
+      ]
+    }
+  },
+  {
+    "ats": "workday",
+    "slug": "oldmutual",
+    "wd": "wd3",
+    "site": "Old_Mutual_Careers",
+    "company": "Old Mutual",
+    "max": 85,
+    "facets": {
+      "locationCountry": [
+        "4db3c26940b944919b83612cc1193eed"
+      ]
+    }
+  },
+  {
+    "ats": "workday",
+    "slug": "firstrand",
+    "wd": "wd3",
+    "site": "FRB",
+    "company": "FirstRand",
+    "max": 85,
+    "facets": {
+      "locationCountry": [
+        "4db3c26940b944919b83612cc1193eed"
+      ]
+    }
+  },
+  {
+    "ats": "workday",
+    "slug": "mimecast",
+    "wd": "wd5",
+    "site": "Mimecast-Careers",
+    "company": "Mimecast",
+    "max": 30,
+    "facets": {
+      "locationCountry": [
+        "4db3c26940b944919b83612cc1193eed"
+      ]
+    }
+  },
+  {
+    "ats": "workday",
+    "slug": "cnx",
+    "wd": "wd1",
+    "site": "external_global",
+    "company": "Concentrix",
+    "max": 30,
+    "facets": {
+      "locationCountry": [
+        "4db3c26940b944919b83612cc1193eed"
+      ]
+    }
+  },
+  {
+    "ats": "workday",
+    "slug": "ssctech",
+    "wd": "wd1",
+    "site": "SSCTechnologies",
+    "company": "SS&C Technologies",
+    "max": 20,
+    "facets": {
+      "locationCountry": [
+        "4db3c26940b944919b83612cc1193eed"
+      ]
+    }
+  },
+  {
+    "ats": "greenhouse",
+    "slug": "ozow",
+    "company": "Ozow"
+  },
+  {
+    "ats": "greenhouse",
+    "slug": "offerzen",
+    "company": "OfferZen"
+  },
+  {
+    "ats": "greenhouse",
+    "slug": "luno",
+    "company": "Luno"
+  },
+  {
+    "ats": "greenhouse",
+    "slug": "2u",
+    "company": "2U / GetSmarter"
+  }
+]
