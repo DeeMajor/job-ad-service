@@ -81,3 +81,23 @@ def test_api_check_and_template(monkeypatch):
     r = client.post("/v1/offers/template?format=markdown", json=body); assert r.headers["content-type"].startswith("text/markdown") and r.headers["x-compliance-level"] == "compliant"
     assert client.get("/healthz").json()["versions"]["offer_rules"] == "0.1.0"
     bad = client.post("/v1/offers/check", json={"brief": BRIEF, "terms": {**TERMS, "contract_type": "fixed_term"}}); assert bad.status_code == 422
+
+
+def test_api_draft_with_fake_model(monkeypatch):
+    from job_ad.offer import draft as draftmod
+    def fake_draft(req, client=None, model="claude-opus-5", effort="medium", model_explanations=False):
+        d = draftmod.draft_template(req); d.meta.mode = "model"; d.meta.model = model; d.meta.cost_usd = 0.05; d.meta.usage = {"input_tokens": 10, "output_tokens": 5}
+        return d
+    monkeypatch.setattr(appmod, "draft_with_model", fake_draft)
+    client = TestClient(appmod.app)
+    r = client.post("/v1/offers/draft", json={"brief": BRIEF, "terms": TERMS}); assert r.status_code == 200 and r.json()["meta"]["model"] == "claude-opus-5" and r.json()["meta"]["mode"] == "model"
+    r = client.post("/v1/offers/draft?format=markdown", json={"brief": BRIEF, "terms": TERMS, "options": {"model": "claude-sonnet-5"}}); assert r.headers["content-type"].startswith("text/markdown") and "# Offer of employment" in r.text and "# Contract of employment" in r.text
+    r = client.post("/v1/offer-jobs", json={"brief": BRIEF, "terms": TERMS}); assert r.status_code == 202
+    import time
+    for _ in range(100):
+        j = client.get(r.json()["status_url"]).json()
+        if j["status"] in ("done", "failed"):
+            break
+        time.sleep(0.05)
+    assert j["status"] == "done" and j["result"]["compliance"]["level"] == "compliant"
+    assert client.get("/healthz").json()["versions"]["offer_prompt"] == "0.1.0"

@@ -46,6 +46,8 @@ from ..shortlist.spec import RANKING_SPEC_VERSION
 from ..offer.terms import OfferRequest
 from ..offer.rules import RULES_VERSION as OFFER_RULES_VERSION, Compliance as OfferCompliance, Consistency as OfferConsistency, check as offer_check
 from ..offer.draft import OfferDraft, draft_template
+from ..offer.model import DEFAULT_OFFER_MODEL, draft_with_model
+from ..offer.prompts import OFFER_PROMPT_VERSION
 
 # ---- structured JSON logs to stdout (Alloy → Loki); every line carries the version stamps
 class _JsonFormatter(logging.Formatter):
@@ -198,7 +200,7 @@ async def upstream_error(request: Request, exc: anthropic.APIError):
 
 @app.get("/healthz")
 def healthz():
-    return {"ok": True, "versions": {"spec": spec.version, "judge_prompt": JUDGE_PROMPT_VERSION, "drafter_prompt": DRAFTER_PROMPT_VERSION, "brief_schema": BRIEF_SCHEMA_VERSION, "ranking_spec": RANKING_SPEC_VERSION, "shortlist_judge_prompt": SHORTLIST_JUDGE_PROMPT_VERSION, "offer_rules": OFFER_RULES_VERSION},
+    return {"ok": True, "versions": {"spec": spec.version, "judge_prompt": JUDGE_PROMPT_VERSION, "drafter_prompt": DRAFTER_PROMPT_VERSION, "brief_schema": BRIEF_SCHEMA_VERSION, "ranking_spec": RANKING_SPEC_VERSION, "shortlist_judge_prompt": SHORTLIST_JUDGE_PROMPT_VERSION, "offer_rules": OFFER_RULES_VERSION, "offer_prompt": OFFER_PROMPT_VERSION},
             "features": {"enrichment": ENRICH_ENABLED, "jobs_store": store.backend}, "spend": {"today_usd": round(spend_cap.today(), 4), "daily_cap_usd": DAILY_CAP_USD}}
 
 
@@ -450,3 +452,65 @@ def post_offer_template(req: OfferRequest, format: Literal["json", "markdown"] =
     if format == "markdown":
         return Response(content=d.contract.markdown, media_type="text/markdown", headers={"x-compliance-level": d.compliance.level})
     return d
+
+
+class OfferDraftOptions(BaseModel):
+    model: str = DEFAULT_OFFER_MODEL
+    model_explanations: bool = Field(default=False, description="true = the model also writes the plain-language explanations (default: clause-library explanations, faithful by construction)")
+    effort: Literal["low", "medium", "high"] = "medium"
+
+
+class OfferDraftRequest(OfferRequest):
+    options: OfferDraftOptions = Field(default_factory=OfferDraftOptions)
+
+
+class OfferJobRequest(OfferDraftRequest):
+    callback_url: Optional[str] = None
+
+
+OFFERS = Counter("jobad_offer_drafts_total", "Offer drafts completed", ["status", "mode"])
+
+
+def _offer_model_draft(req: OfferDraftRequest, mode: str) -> OfferDraft:
+    _check_cap()
+    try:
+        d = draft_with_model(OfferRequest.model_validate(req.model_dump(exclude={"options", "callback_url"})), client=client(), model=req.options.model, effort=req.options.effort, model_explanations=req.options.model_explanations)
+    except Exception:
+        OFFERS.labels("failed", mode).inc(); raise
+    OFFERS.labels("done", mode).inc()
+    if d.meta.cost_usd:
+        spend_cap.add(d.meta.cost_usd); SPEND.labels(d.meta.model).inc(d.meta.cost_usd)
+        for k, v in d.meta.usage.items():
+            TOKENS.labels(d.meta.model, k).inc(v)
+    log.info("offer drafted", extra={"model": d.meta.model, "cost_usd": d.meta.cost_usd, "latency_s": d.meta.latency_s, "compliance": d.compliance.level, "mode": mode})
+    return d
+
+
+@app.post("/v1/offers/draft", response_model=OfferDraft, responses={200: {"content": {"text/markdown": {"schema": {"type": "string"}}}, "description": "JSON by default; `?format=markdown` returns offer letter + contract as text/markdown."}})
+def post_offer_draft(req: OfferDraftRequest, format: Literal["json", "markdown"] = "json"):
+    """One model call (default claude-opus-5, EXP-401) writes the offer letter; the contract and explanations come from the clause library; the rule engine reports compliance. ~20–45 s."""
+    d = _offer_model_draft(req, "sync")
+    if format == "markdown":
+        return Response(content=d.offer_letter.markdown + "\n\n---\n\n" + d.contract.markdown, media_type="text/markdown", headers={"x-compliance-level": d.compliance.level})
+    return d
+
+
+def _offer_job_view(j: dict) -> DraftJob:
+    return DraftJob(job_id=j["job_id"], status=j["status"], status_url=f"/v1/offer-jobs/{j['job_id']}", created_at=j["created_at"], started_at=j.get("started_at"), finished_at=j.get("finished_at"), result=j.get("result"), error=j.get("error"))
+
+
+@app.post("/v1/offer-jobs", response_model=DraftJob, status_code=202)
+def post_offer_job(req: OfferJobRequest):
+    """Asynchronous offer drafting: 202 + job id; poll status_url or receive callback_url."""
+    _check_cap()
+    inner = OfferDraftRequest.model_validate(req.model_dump(exclude={"callback_url"}))
+    job = runner.submit({"title": req.brief.title, "options": req.options.model_dump()}, lambda: _offer_model_draft(inner, "job").model_dump(mode="json"), req.callback_url)
+    return _offer_job_view(job)
+
+
+@app.get("/v1/offer-jobs/{job_id}", response_model=DraftJob)
+def get_offer_job(job_id: str):
+    j = runner.get(job_id)
+    if not j:
+        raise HTTPException(status_code=404, detail={"error": "job_not_found", "message": "Unknown or expired job id (jobs are kept for 24 hours)."})
+    return _offer_job_view(j)

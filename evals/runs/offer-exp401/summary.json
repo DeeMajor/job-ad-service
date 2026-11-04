@@ -1,0 +1,369 @@
+{
+ "summary": {
+  "claude-sonnet-5": {
+   "n": 8,
+   "faithful_share": 0.719,
+   "unsupported_total": 3,
+   "claims_total": 161,
+   "briefs_with_unsupported": 2,
+   "novel_numbers_total": 14,
+   "letter_grade_mean": 6.1,
+   "expl_le10_mean": 0.72,
+   "missing_expl": 0,
+   "cost_usd": 0.232,
+   "judge_cost_usd": 0.604,
+   "latency_mean_s": 19.7
+  },
+  "claude-opus-5": {
+   "n": 8,
+   "faithful_share": 1.0,
+   "unsupported_total": 0,
+   "claims_total": 220,
+   "briefs_with_unsupported": 0,
+   "novel_numbers_total": 15,
+   "letter_grade_mean": 7.0,
+   "expl_le10_mean": 0.75,
+   "missing_expl": 0,
+   "cost_usd": 0.59,
+   "judge_cost_usd": 0.272,
+   "latency_mean_s": 26.0
+  },
+  "spent_usd": 1.698
+ },
+ "rows": [
+  {
+   "brief": "case_000",
+   "drafter": "claude-sonnet-5",
+   "judge": "claude-opus-5",
+   "draft_cost": 0.0262,
+   "judge_cost": 0.0629,
+   "latency_s": 19.05,
+   "faithful": 14,
+   "explanations": 16,
+   "unsupported": [],
+   "claims": 17,
+   "novel_numbers": [
+    "2",
+    "6"
+   ],
+   "letter_grade_mean": 5.4,
+   "expl_grade_le10_share": 0.88,
+   "missing_expl": 0,
+   "level": "compliant"
+  },
+  {
+   "brief": "case_000",
+   "drafter": "claude-opus-5",
+   "judge": "claude-sonnet-5",
+   "draft_cost": 0.0708,
+   "judge_cost": 0.0287,
+   "latency_s": 24.67,
+   "faithful": 16,
+   "explanations": 16,
+   "unsupported": [],
+   "claims": 24,
+   "novel_numbers": [
+    "2",
+    "6"
+   ],
+   "letter_grade_mean": 6.6,
+   "expl_grade_le10_share": 0.88,
+   "missing_expl": 0,
+   "level": "compliant"
+  },
+  {
+   "brief": "case_001",
+   "drafter": "claude-sonnet-5",
+   "judge": "claude-opus-5",
+   "draft_cost": 0.0277,
+   "judge_cost": 0.0692,
+   "latency_s": 19.21,
+   "faithful": 10,
+   "explanations": 16,
+   "unsupported": [],
+   "claims": 19,
+   "novel_numbers": [
+    "2",
+    "6"
+   ],
+   "letter_grade_mean": 5.4,
+   "expl_grade_le10_share": 0.75,
+   "missing_expl": 0,
+   "level": "compliant"
+  },
+  {
+   "brief": "case_001",
+   "drafter": "claude-opus-5",
+   "judge": "claude-sonnet-5",
+   "draft_cost": 0.0665,
+   "judge_cost": 0.0284,
+   "latency_s": 25.41,
+   "faithful": 16,
+   "explanations": 16,
+   "unsupported": [],
+   "claims": 25,
+   "novel_numbers": [
+    "2",
+    "6"
+   ],
+   "letter_grade_mean": 5.8,
+   "expl_grade_le10_share": 0.75,
+   "missing_expl": 0,
+   "level": "compliant"
+  },
+  {
+   "brief": "case_002",
+   "drafter": "claude-sonnet-5",
+   "judge": "claude-opus-5",
+   "draft_cost": 0.0268,
+   "judge_cost": 0.0669,
+   "latency_s": 18.45,
+   "faithful": 10,
+   "explanations": 16,
+   "unsupported": [],
+   "claims": 18,
+   "novel_numbers": [
+    "2",
+    "6"
+   ],
+   "letter_grade_mean": 5.1,
+   "expl_grade_le10_share": 0.81,
+   "missing_expl": 0,
+   "level": "compliant"
+  },
+  {
+   "brief": "case_002",
+   "drafter": "claude-opus-5",
+   "judge": "claude-sonnet-5",
+   "draft_cost": 0.0697,
+   "judge_cost": 0.0315,
+   "latency_s": 25.39,
+   "faithful": 16,
+   "explanations": 16,
+   "unsupported": [],
+   "claims": 25,
+   "novel_numbers": [
+    "2",
+    "6"
+   ],
+   "letter_grade_mean": 6.9,
+   "expl_grade_le10_share": 0.75,
+   "missing_expl": 0,
+   "level": "compliant"
+  },
+  {
+   "brief": "case_003",
+   "drafter": "claude-sonnet-5",
+   "judge": "claude-opus-5",
+   "draft_cost": 0.0281,
+   "judge_cost": 0.0912,
+   "latency_s": 20.13,
+   "faithful": 11,
+   "explanations": 16,
+   "unsupported": [
+    {
+     "claim": "These deductions are required by law",
+     "sentence": "We will deduct PAYE and 1% UIF from your pay, as required by law.",
+     "supported": false
+    }
+   ],
+   "claims": 24,
+   "novel_numbers": [
+    "2",
+    "6"
+   ],
+   "letter_grade_mean": 6.8,
+   "expl_grade_le10_share": 0.62,
+   "missing_expl": 0,
+   "level": "compliant"
+  },
+  {
+   "brief": "case_003",
+   "drafter": "claude-opus-5",
+   "judge": "claude-sonnet-5",
+   "draft_cost": 0.0711,
+   "judge_cost": 0.0348,
+   "latency_s": 26.59,
+   "faithful": 16,
+   "explanations": 16,
+   "unsupported": [],
+   "claims": 28,
+   "novel_numbers": [
+    "2",
+    "6"
+   ],
+   "letter_grade_mean": 7.1,
+   "expl_grade_le10_share": 0.69,
+   "missing_expl": 0,
+   "level": "compliant"
+  },
+  {
+   "brief": "case_004",
+   "drafter": "claude-sonnet-5",
+   "judge": "claude-opus-5",
+   "draft_cost": 0.0308,
+   "judge_cost": 0.0791,
+   "latency_s": 19.35,
+   "faithful": 13,
+   "explanations": 16,
+   "unsupported": [],
+   "claims": 19,
+   "novel_numbers": [
+    "2"
+   ],
+   "letter_grade_mean": 6.4,
+   "expl_grade_le10_share": 0.69,
+   "missing_expl": 0,
+   "level": "compliant"
+  },
+  {
+   "brief": "case_004",
+   "drafter": "claude-opus-5",
+   "judge": "claude-sonnet-5",
+   "draft_cost": 0.0809,
+   "judge_cost": 0.037,
+   "latency_s": 26.29,
+   "faithful": 16,
+   "explanations": 16,
+   "unsupported": [],
+   "claims": 26,
+   "novel_numbers": [
+    "2",
+    "6"
+   ],
+   "letter_grade_mean": 6.8,
+   "expl_grade_le10_share": 0.75,
+   "missing_expl": 0,
+   "level": "compliant"
+  },
+  {
+   "brief": "case_005",
+   "drafter": "claude-sonnet-5",
+   "judge": "claude-opus-5",
+   "draft_cost": 0.029,
+   "judge_cost": 0.0656,
+   "latency_s": 19.8,
+   "faithful": 15,
+   "explanations": 16,
+   "unsupported": [],
+   "claims": 19,
+   "novel_numbers": [
+    "2",
+    "6"
+   ],
+   "letter_grade_mean": 6.4,
+   "expl_grade_le10_share": 0.62,
+   "missing_expl": 0,
+   "level": "compliant"
+  },
+  {
+   "brief": "case_005",
+   "drafter": "claude-opus-5",
+   "judge": "claude-sonnet-5",
+   "draft_cost": 0.0712,
+   "judge_cost": 0.0376,
+   "latency_s": 25.25,
+   "faithful": 16,
+   "explanations": 16,
+   "unsupported": [],
+   "claims": 32,
+   "novel_numbers": [
+    "2",
+    "6"
+   ],
+   "letter_grade_mean": 7.0,
+   "expl_grade_le10_share": 0.69,
+   "missing_expl": 0,
+   "level": "compliant"
+  },
+  {
+   "brief": "case_006",
+   "drafter": "claude-sonnet-5",
+   "judge": "claude-opus-5",
+   "draft_cost": 0.0318,
+   "judge_cost": 0.0868,
+   "latency_s": 20.87,
+   "faithful": 7,
+   "explanations": 16,
+   "unsupported": [],
+   "claims": 21,
+   "novel_numbers": [
+    "2"
+   ],
+   "letter_grade_mean": 6.8,
+   "expl_grade_le10_share": 0.56,
+   "missing_expl": 0,
+   "level": "compliant"
+  },
+  {
+   "brief": "case_006",
+   "drafter": "claude-opus-5",
+   "judge": "claude-sonnet-5",
+   "draft_cost": 0.08,
+   "judge_cost": 0.0358,
+   "latency_s": 26.49,
+   "faithful": 16,
+   "explanations": 16,
+   "unsupported": [],
+   "claims": 29,
+   "novel_numbers": [
+    "2",
+    "6"
+   ],
+   "letter_grade_mean": 7.0,
+   "expl_grade_le10_share": 0.75,
+   "missing_expl": 0,
+   "level": "compliant"
+  },
+  {
+   "brief": "case_007",
+   "drafter": "claude-sonnet-5",
+   "judge": "claude-opus-5",
+   "draft_cost": 0.0314,
+   "judge_cost": 0.0824,
+   "latency_s": 20.85,
+   "faithful": 12,
+   "explanations": 16,
+   "unsupported": [
+    {
+     "claim": "These deductions are required by law",
+     "sentence": "We deduct PAYE and 1% UIF from your pay as required by law.",
+     "supported": false
+    },
+    {
+     "claim": "The documents are needed to finish onboarding",
+     "sentence": "Please send us your ID and qualifications so we can finish your onboarding.",
+     "supported": false
+    }
+   ],
+   "claims": 24,
+   "novel_numbers": [
+    "2",
+    "6"
+   ],
+   "letter_grade_mean": 6.2,
+   "expl_grade_le10_share": 0.81,
+   "missing_expl": 0,
+   "level": "compliant"
+  },
+  {
+   "brief": "case_007",
+   "drafter": "claude-opus-5",
+   "judge": "claude-sonnet-5",
+   "draft_cost": 0.0802,
+   "judge_cost": 0.038,
+   "latency_s": 28.11,
+   "faithful": 16,
+   "explanations": 16,
+   "unsupported": [],
+   "claims": 31,
+   "novel_numbers": [
+    "2"
+   ],
+   "letter_grade_mean": 8.9,
+   "expl_grade_le10_share": 0.75,
+   "missing_expl": 0,
+   "level": "compliant"
+  }
+ ]
+}

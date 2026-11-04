@@ -13,7 +13,7 @@ Pre-registered pass: 100% of perturbations detected with the right rule id and s
 response lists every `verify` figure used. Cost $0.
 Exit also requires: a labour practitioner's one-time review of the clause library (deliverable 2 in 02) is scheduled — not necessarily done.
 
-### Phase 1 — drafting (paid, small)
+### Phase 1 — drafting (paid, small) — DONE 2026-11-05: EXP-401 → Opus 5 default, model writes the letter only, library explanations (94% ≤ grade 10); `/v1/offers/draft` + `/v1/offer-jobs` live; $1.70 spent
 Prompt 0.1.0: fill the clause library from terms + brief; write the offer letter; write a plain-language explanation per clause. Model
 choice is the first experiment: **EXP-401** Sonnet 5 vs Opus 5 on 10 briefs, judged on `explanation_faithful` and `no_invented_terms`
 (Opus reference judge where Sonnet drafts, and vice versa); deterministic readability and the rule engine on every output. Quote ≈ $1.50

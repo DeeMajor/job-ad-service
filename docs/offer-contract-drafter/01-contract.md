@@ -23,7 +23,7 @@
     "earnings_threshold_override": null       // optional: if the employee earns above the BCEA s6(3) threshold, hours/overtime sections do not apply; derived from pay unless set
   },
   "offer": { "expires": "2026-11-20", "contact": "hr@acme.co.za", "documents_required": ["ID", "qualifications", "banking details"] },
-  "options": { "model": "claude-sonnet-5", "score": true, "effort": "medium" }
+  "options": { "model": "claude-opus-5", "model_explanations": false, "effort": "medium" }   // EXP-401: Opus default (0 unsupported claims); explanations from the clause library unless model_explanations=true
 }
 ```
 
@@ -57,6 +57,11 @@ placeholders the client merges: `{{employee.full_name}}`, `{{employee.id_number}
 ```
 
 `?format=markdown` returns the contract alone as `text/markdown` (headers carry `x-compliance-level`), as `/v1/drafts` does for the ad.
+
+## Drafting with a model: `POST /v1/offers/draft` · `POST /v1/offer-jobs` · `GET /v1/offer-jobs/{id}`
+One model call (default claude-opus-5, chosen in EXP-401) writes the offer letter from the brief, terms and the signed clauses; the
+contract clauses and the plain-language explanations come from the library; the rule engine reports compliance. `?format=markdown` returns
+offer letter + contract. ~20–45 s, ≈ $0.07 per draft; counted against the daily cap. The async form returns 202 + `job_id`, same as drafts.
 
 ## Template without a model: `POST /v1/offers/template`
 Built in Phase 0. Fills the clause library (`job_ad/offer/clauses.py`, v0.1.0) from the terms and brief, adds a plain-language explanation

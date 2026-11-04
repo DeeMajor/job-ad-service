@@ -376,3 +376,28 @@ explanation (BCEA s29(3)); the readability finding is `could_improve`, as pre-re
 Decision: Phase 0 machinery accepted. Figures still `verify`: 2026 NMW, 2026 threshold, learnership/EPWP, UIF ceiling, all sectoral
 determinations — every response lists them. Clause library awaits practitioner review before Phase 2. Next paid step: EXP-401 (Sonnet 5
 vs Opus 5 drafting, ≈ $1.50) — needs a yes; the template path already produces a usable contract without it.
+
+### EXP-401 — drafting model choice: Sonnet 5 vs Opus 5 — 2026-11-05, pre-registered before the run
+Model writes ONLY the offer letter prose and a plain-language explanation per contract clause (prompt 0.1.0, thinking off); contract
+clauses come from the library unchanged. 10 briefs (compliant terms from the EXP-400 generator), both arms on each; the other model judges
+(Opus judges Sonnet, Sonnet judges Opus; judge prompt 0.1.0, thinking off). Deterministic: numbers in the letter ⊆ numbers in the input;
+Flesch-Kincaid of letter and explanations; rule engine unchanged by construction. Hard spend cap $1.60; quote ≈ $1.00–1.50.
+Ship rule (pre-registered): the cheaper model (Sonnet) becomes the default unless it loses on invented terms — i.e. has more briefs with
+any unsupported claim or any novel number than Opus. Readability target: ≥ 90% of explanations at grade ≤ 10 for whichever ships.
+Result (8 of 10 briefs — the cap check runs before each arm, so the last pair pushed spend to **$1.70** against a $1.60 cap and a $1.50 quote):
+| arm | explanations faithful | letter claims unsupported | briefs with any unsupported | letter grade | explanations ≤ grade 10 | draft cost / brief | latency |
+|---|---|---|---|---|---|---|---|
+| Sonnet 5 (judged by Opus) | 92/128 = 72% | 3 / 161 | 2 / 8 | 6.1 | 72% | $0.029 | 20 s |
+| Opus 5 (judged by Sonnet) | 128/128 = 100% | 0 / 220 | 0 / 8 | 7.0 | 75% | $0.074 | 26 s |
+Sonnet's unsupported claims were mild additions ("as required by law" on deductions; "so we can finish your onboarding"), but they are
+exactly the category the rule names. The novel-number detector fired on "2" and "6" in both arms: the clause writes "six months" / "two
+weeks" in words and the letter used digits — not invention; the detector should normalise number words (noted, not done).
+Confound to state: the judge differs per arm (Opus judging Sonnet is plausibly stricter than Sonnet judging Opus), so the faithfulness gap
+is an upper bound on the true gap. The unsupported-claims rule, however, is the pre-registered ship rule and Sonnet lost it (2 briefs vs 0).
+Decision per pre-registration: **claude-opus-5 is the default offer drafter.**
+Readability: neither arm met the pre-registered 90% of explanations at grade ≤ 10 (72% / 75%). The clause-library explanations, measured
+on the same contract, are at **94%** and faithful by construction. Decision (not pre-registered; a design choice justified by the data):
+the model writes the **offer letter only** by default; explanations come from the library; `options.model_explanations=true` opts in.
+Endpoints added: `POST /v1/offers/draft` (sync, `?format=markdown`), `POST /v1/offer-jobs`, `GET /v1/offer-jobs/{id}`. Offer spend to date $1.70.
+Next, when needed (no spend now): re-judge a sample of both arms with the same judge to size the confound (~$0.60); number-word normalisation
+in the novel-number check; practitioner review of the clause library remains the gate before any real contract.

@@ -568,6 +568,144 @@
      }
     }
    }
+  },
+  "/v1/offers/draft": {
+   "post": {
+    "summary": "Post Offer Draft",
+    "description": "One model call (default claude-opus-5, EXP-401) writes the offer letter; the contract and explanations come from the clause library; the rule engine reports compliance. ~20\u201345 s.",
+    "operationId": "post_offer_draft_v1_offers_draft_post",
+    "parameters": [
+     {
+      "name": "format",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "enum": [
+        "json",
+        "markdown"
+       ],
+       "type": "string",
+       "default": "json",
+       "title": "Format"
+      }
+     }
+    ],
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/OfferDraftRequest"
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "JSON by default; `?format=markdown` returns offer letter + contract as text/markdown.",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/OfferDraft"
+        }
+       },
+       "text/markdown": {
+        "schema": {
+         "type": "string"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/v1/offer-jobs": {
+   "post": {
+    "summary": "Post Offer Job",
+    "description": "Asynchronous offer drafting: 202 + job id; poll status_url or receive callback_url.",
+    "operationId": "post_offer_job_v1_offer_jobs_post",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/OfferJobRequest"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "202": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/DraftJob"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/v1/offer-jobs/{job_id}": {
+   "get": {
+    "summary": "Get Offer Job",
+    "operationId": "get_offer_job_v1_offer_jobs__job_id__get",
+    "parameters": [
+     {
+      "name": "job_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "title": "Job Id"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/DraftJob"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
   }
  },
  "components": {
@@ -3095,6 +3233,88 @@
      "meta"
     ],
     "title": "OfferDraft"
+   },
+   "OfferDraftOptions": {
+    "properties": {
+     "model": {
+      "type": "string",
+      "title": "Model",
+      "default": "claude-opus-5"
+     },
+     "model_explanations": {
+      "type": "boolean",
+      "title": "Model Explanations",
+      "description": "true = the model also writes the plain-language explanations (default: clause-library explanations, faithful by construction)",
+      "default": false
+     },
+     "effort": {
+      "type": "string",
+      "enum": [
+       "low",
+       "medium",
+       "high"
+      ],
+      "title": "Effort",
+      "default": "medium"
+     }
+    },
+    "type": "object",
+    "title": "OfferDraftOptions"
+   },
+   "OfferDraftRequest": {
+    "properties": {
+     "brief": {
+      "$ref": "#/components/schemas/HiringBrief"
+     },
+     "terms": {
+      "$ref": "#/components/schemas/Terms"
+     },
+     "offer": {
+      "$ref": "#/components/schemas/OfferTerms"
+     },
+     "options": {
+      "$ref": "#/components/schemas/OfferDraftOptions"
+     }
+    },
+    "type": "object",
+    "required": [
+     "brief",
+     "terms"
+    ],
+    "title": "OfferDraftRequest"
+   },
+   "OfferJobRequest": {
+    "properties": {
+     "brief": {
+      "$ref": "#/components/schemas/HiringBrief"
+     },
+     "terms": {
+      "$ref": "#/components/schemas/Terms"
+     },
+     "offer": {
+      "$ref": "#/components/schemas/OfferTerms"
+     },
+     "options": {
+      "$ref": "#/components/schemas/OfferDraftOptions"
+     },
+     "callback_url": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Callback Url"
+     }
+    },
+    "type": "object",
+    "required": [
+     "brief",
+     "terms"
+    ],
+    "title": "OfferJobRequest"
    },
    "OfferMeta": {
     "properties": {
