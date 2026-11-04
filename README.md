@@ -20,5 +20,6 @@ PORT=4310 .venv/bin/uvicorn job_ad.api.app:app --port 4310   # the service; Open
 | `bench/` | Phase 0 scorer benchmark: `fetch`, `normalize`, `perturb`, `run`; `experiments.md` is the SciDLC log for every phase; `data/` holds frozen corpora and run outputs |
 | `evals/` | Phase 1+ drafter eval: `build_cases`, `run_drafter`, `cases/briefs.jsonl` |
 | `docs/job-ad-drafter/` | metrics rationale, machine-readable spec, RAG plan, SciDLC plan, service API |
-| `docs/shortlist-ranker/` | **planning only, not built** — shortlist ranker: goal, contract (incl. `AssessmentResult`), ranking metrics + fairness constraints, SciDLC plan |
+| `docs/shortlist-ranker/` | shortlist ranker: goal, contract (incl. `AssessmentResult`), ranking metrics + fairness constraints, SciDLC plan, `ranking-spec.yaml` (weights, tiers) |
+| `job_ad/shortlist/` | shortlist ranker: `contract`, `redact` (identifiers out before any model call), `assess` (deterministic test scoring), `judge` (requirement evidence + rubric items), `rank`; endpoints `/v1/shortlists/rank`, `/v1/shortlist-jobs`; `bench/shortlist/` synthetic-pool benchmark |
 | `legacy/ts/` | the original TypeScript implementation (ported to Python 2026-11-04 with exact scorer parity; kept for reference, not maintained) |

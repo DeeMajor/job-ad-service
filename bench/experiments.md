@@ -244,3 +244,29 @@ Paid (host-side spend recorded $0.11 by the service's own estimator): async `/v1
 
 ## DECISION  2026-11-04  Publishing layer: platforms registry + render endpoint
 Andile: the ad goes to various platforms; is the output sufficient? No — one shape vs many. Built `job_ad/publish/`: platform registry (linkedin, indeed, pnet, careers24, careerjunction, careers_site JSON-LD, social_teaser, generic_text) with hard/recommended limits and required extras; normalisation (SA city→province, employment-type vocabularies, salary units, dates); renderings html (safe subset, escaped) / text / markdown / schema.org JobPosting JSON-LD / 280-char teaser; per-platform payload + validation (`ready`, `issues`). Endpoints `GET /v1/platforms`, `POST /v1/ads/render`. Free and deterministic. Sending to platforms is out of scope (a publisher consumes the payloads). SA-board limits/categories are conservative defaults pending partner specs (stated in notes). Deferred: a paid condensed/LinkedIn-length variant and teaser rewrite, scored against the full ad for grounding. 87 tests.
+
+---
+
+## SHORTLIST RANKER — Phase 0 (2026-11-04)
+
+Planning pack: `docs/shortlist-ranker/` (README, 01-contract, 02-ranking-metrics, 03-scidlc-plan, ranking-spec.yaml v0.1.0). Andile's answers 2026-11-04:
+application = form answers and/or CV text (both supported); all test item types (graded by points, or answer+rubric judged); recruiter decides
+(advisory); pools ≈ 10. Built `job_ad/shortlist/` (contract, redact, assess, judge 0.1.0, rank) + `POST /v1/shortlists/rank`,
+`POST /v1/shortlist-jobs`, `GET /v1/shortlist-jobs/{id}`; 9 unit tests (offline keyword judge). Not a model-under-test experiment yet:
+the deterministic benchmark is free and checks the machinery; the judged benchmark is paid and awaits approval.
+
+### EXP-300 — deterministic machinery benchmark (free)
+Pre-registered: on 40 synthetic pools (8 designed candidates each, requirements decided by declared facts, graded tests)
+(a) Kendall τ vs designed order = 1.0 on every pool; (b) flipping one graded item of the top candidate moves the test component by
+exactly points/max on 40/40; (c) identity text (name, age, gender, ID) injected into a form answer changes no score and leaves no
+residual identifier pattern. Command: `.venv/bin/python -m bench.shortlist.run` → `bench/data/out/shortlist-det/summary.json`.
+Result: τ 1.000 on 40/40 pools; perturbation exact 40/40; invariance Δscore 0.0, redaction clean on all pools; 0.5 s; $0.
+Decision: machinery accepted. Kept the two-per-level design with a one-point test difference so the within-level order is real (a first
+cut rounded both twins to the same points and τ read 0.71 for a tie-break artefact, not a ranker fault).
+
+### EXP-301 — judged benchmark (PAID, awaiting Andile's yes)
+Text pools from 20 briefs: 8 candidates whose requirements exist only in CV prose (stated / alluded / explicitly absent) plus one rubric
+item, each with an identity-injected twin → 20 × (8 + 1 perturbation + 8 twins) = 340 Sonnet judge calls at ~2k in / 0.5k out.
+Quote: ≈ $3.0 (Sonnet 5 at $2/$10 per MTok, plus prompt-cache reads). Pre-registered pass: τ ≥ 0.9 on ≥ 18/20 pools; twin |Δscore| ≤ 2
+on every pool (redaction makes the judge see the same text, so any drift is judge non-determinism, not identity); every `met` carries a
+quote; redaction clean everywhere. Command: `.venv/bin/python -m bench.shortlist.run --judge --briefs 20`.

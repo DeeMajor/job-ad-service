@@ -21,7 +21,7 @@ import anthropic
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse, PlainTextResponse, Response
-from prometheus_client import CONTENT_TYPE_LATEST, generate_latest
+from prometheus_client import CONTENT_TYPE_LATEST, Counter, generate_latest
 from pydantic import BaseModel, Field
 
 from ..costs import usage_cost_usd
@@ -39,6 +39,10 @@ from ..metrics.text import render_ad, render_markdown
 from ..publish.platforms import PLATFORMS, Platform
 from ..publish.render import PublishExtras, RenderResult, render_all
 from ..metrics.types import JobAd, Scorecard, ScoringContext
+from ..shortlist.contract import RankJobRequest, RankRequest, RankResult
+from ..shortlist.judge import JUDGE_PROMPT_VERSION as SHORTLIST_JUDGE_PROMPT_VERSION, make_claude_judge
+from ..shortlist.rank import rank_pool
+from ..shortlist.spec import RANKING_SPEC_VERSION
 
 # ---- structured JSON logs to stdout (Alloy → Loki); every line carries the version stamps
 class _JsonFormatter(logging.Formatter):
@@ -191,7 +195,7 @@ async def upstream_error(request: Request, exc: anthropic.APIError):
 
 @app.get("/healthz")
 def healthz():
-    return {"ok": True, "versions": {"spec": spec.version, "judge_prompt": JUDGE_PROMPT_VERSION, "drafter_prompt": DRAFTER_PROMPT_VERSION, "brief_schema": BRIEF_SCHEMA_VERSION},
+    return {"ok": True, "versions": {"spec": spec.version, "judge_prompt": JUDGE_PROMPT_VERSION, "drafter_prompt": DRAFTER_PROMPT_VERSION, "brief_schema": BRIEF_SCHEMA_VERSION, "ranking_spec": RANKING_SPEC_VERSION, "shortlist_judge_prompt": SHORTLIST_JUDGE_PROMPT_VERSION},
             "features": {"enrichment": ENRICH_ENABLED, "jobs_store": store.backend}, "spend": {"today_usd": round(spend_cap.today(), 4), "daily_cap_usd": DAILY_CAP_USD}}
 
 
@@ -364,3 +368,59 @@ def get_draft_job(job_id: str):
     if not j:
         raise HTTPException(status_code=404, detail={"error": "job_not_found", "message": "Unknown or expired job id (jobs are kept for 24 hours)."})
     return _job_view(j)
+
+
+# ---- shortlist ranker (docs/shortlist-ranker/) — blind, explained, advisory
+
+RANKS = Counter("jobad_shortlist_ranks_total", "Shortlist rankings completed", ["status", "mode"])
+
+
+def _shortlist_judge(model: str):
+    return make_claude_judge(client(), model=model)
+
+
+def _rank(req: RankRequest, mode: str) -> RankResult:
+    if req.options.judge:
+        _check_cap()
+    try:
+        res = rank_pool(req, judge=_shortlist_judge(req.options.judge_model) if req.options.judge else None)
+    except Exception:
+        RANKS.labels("failed", mode).inc(); raise
+    RANKS.labels("done", mode).inc()
+    if res.meta.cost_usd:
+        spend_cap.add(res.meta.cost_usd); SPEND.labels(res.meta.judge_model or req.options.judge_model).inc(res.meta.cost_usd)
+        for k, v in res.meta.usage.items():
+            TOKENS.labels(res.meta.judge_model or req.options.judge_model, k).inc(v)
+    log.info("shortlist ranked", extra={"pool": res.meta.pool_size, "judged": res.meta.judged_candidates, "cost_usd": res.meta.cost_usd, "latency_s": res.meta.latency_s, "mode": mode})
+    return res
+
+
+@app.post("/v1/shortlists/rank", response_model=RankResult)
+def post_shortlist_rank(req: RankRequest):
+    """Synchronous ranking for small pools (one judge call per candidate with free text, ~3–8 s each). Pools over 10 should use /v1/shortlist-jobs."""
+    if len(req.candidates) > 10 and req.options.judge:
+        raise HTTPException(status_code=413, detail={"error": "pool_too_large", "message": "Synchronous ranking is limited to 10 candidates when the judge is on; use POST /v1/shortlist-jobs."})
+    return _rank(req, "sync")
+
+
+def _rank_job_view(j: dict) -> DraftJob:
+    return DraftJob(job_id=j["job_id"], status=j["status"], status_url=f"/v1/shortlist-jobs/{j['job_id']}", created_at=j["created_at"], started_at=j.get("started_at"), finished_at=j.get("finished_at"), result=j.get("result"), error=j.get("error"))
+
+
+@app.post("/v1/shortlist-jobs", response_model=DraftJob, status_code=202)
+def post_shortlist_job(req: RankJobRequest):
+    """Asynchronous ranking: 202 with a job id; poll status_url (or receive callback_url) for the RankResult."""
+    if req.options.judge:
+        _check_cap()
+    rank_req = RankRequest.model_validate(req.model_dump(exclude={"callback_url"}))
+    job = runner.submit({"job": rank_req.job.model_dump(mode="json"), "pool_size": len(rank_req.candidates), "options": rank_req.options.model_dump()},
+                        lambda: _rank(rank_req, "job").model_dump(mode="json"), req.callback_url)
+    return _rank_job_view(job)
+
+
+@app.get("/v1/shortlist-jobs/{job_id}", response_model=DraftJob)
+def get_shortlist_job(job_id: str):
+    j = runner.get(job_id)
+    if not j:
+        raise HTTPException(status_code=404, detail={"error": "job_not_found", "message": "Unknown or expired job id (jobs are kept for 24 hours)."})
+    return _rank_job_view(j)

@@ -11,6 +11,7 @@ RUN uv pip install --system --no-cache "anthropic>=1" "pydantic>=2" fastapi "uvi
 COPY job_ad ./job_ad
 COPY docs/job-ad-drafter/metrics ./docs/job-ad-drafter/metrics
 COPY docs/job-ad-drafter/openapi.json ./docs/job-ad-drafter/openapi.json
+COPY docs/shortlist-ranker/ranking-spec.yaml ./docs/shortlist-ranker/ranking-spec.yaml
 
 USER app
 EXPOSE 4310

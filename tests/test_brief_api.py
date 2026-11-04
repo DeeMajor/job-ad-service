@@ -55,7 +55,7 @@ class TestApi:
     def test_healthz(self):
         r = client.get("/healthz")
         assert r.status_code == 200 and r.json()["ok"] is True and r.headers["x-request-id"]
-        assert set(r.json()["versions"]) == {"spec", "judge_prompt", "drafter_prompt", "brief_schema"}
+        assert set(r.json()["versions"]) == {"spec", "judge_prompt", "drafter_prompt", "brief_schema", "ranking_spec", "shortlist_judge_prompt"}
 
     def test_spec(self):
         j = client.get("/v1/spec").json()
