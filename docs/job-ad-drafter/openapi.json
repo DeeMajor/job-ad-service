@@ -76,6 +76,68 @@
         }
       }
     },
+    "/v1/platforms": {
+      "get": {
+        "summary": "List Platforms",
+        "description": "Publishing channels the service can prepare payloads for, with their formats, limits (hard vs recommended) and required extras.",
+        "operationId": "list_platforms_v1_platforms_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/Platform"
+                  },
+                  "type": "array",
+                  "title": "Response List Platforms V1 Platforms Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/ads/render": {
+      "post": {
+        "summary": "Render Ad For Platforms",
+        "description": "Free and deterministic: normalised fields, renderings (html, text, markdown, JSON-LD, teaser) and a per-platform payload with validation issues.",
+        "operationId": "render_ad_for_platforms_v1_ads_render_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RenderRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RenderResult"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/briefs/extract": {
       "post": {
         "summary": "Post Brief Extract",
@@ -305,6 +367,38 @@
           "brief"
         ],
         "title": "BriefCheckRequest"
+      },
+      "ChannelPayload": {
+        "properties": {
+          "platform": {
+            "type": "string",
+            "title": "Platform"
+          },
+          "ready": {
+            "type": "boolean",
+            "title": "Ready"
+          },
+          "issues": {
+            "items": {
+              "$ref": "#/components/schemas/Issue"
+            },
+            "type": "array",
+            "title": "Issues"
+          },
+          "payload": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Payload"
+          }
+        },
+        "type": "object",
+        "required": [
+          "platform",
+          "ready",
+          "issues",
+          "payload"
+        ],
+        "title": "ChannelPayload"
       },
       "Company": {
         "properties": {
@@ -913,6 +1007,116 @@
         ],
         "title": "FieldSuggestion"
       },
+      "Fields": {
+        "properties": {
+          "title": {
+            "type": "string",
+            "title": "Title"
+          },
+          "company_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Company Name"
+          },
+          "location": {
+            "$ref": "#/components/schemas/Location"
+          },
+          "employment_type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Employment Type"
+          },
+          "employment_type_schema": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Employment Type Schema"
+          },
+          "salary": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Salary"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "closing_date": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Closing Date"
+          },
+          "reference": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reference"
+          },
+          "category": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Category"
+          },
+          "apply_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Apply Url"
+          },
+          "word_count": {
+            "type": "integer",
+            "title": "Word Count"
+          }
+        },
+        "type": "object",
+        "required": [
+          "title",
+          "location",
+          "word_count"
+        ],
+        "title": "Fields"
+      },
       "HTTPValidationError": {
         "properties": {
           "detail": {
@@ -1195,6 +1399,29 @@
         ],
         "title": "HiringBrief"
       },
+      "Issue": {
+        "properties": {
+          "severity": {
+            "type": "string",
+            "title": "Severity"
+          },
+          "field": {
+            "type": "string",
+            "title": "Field"
+          },
+          "message": {
+            "type": "string",
+            "title": "Message"
+          }
+        },
+        "type": "object",
+        "required": [
+          "severity",
+          "field",
+          "message"
+        ],
+        "title": "Issue"
+      },
       "JobAd": {
         "properties": {
           "title": {
@@ -1394,6 +1621,96 @@
         ],
         "title": "JobAd",
         "description": "Structured job ad. Both the drafter's output and the benchmark's normalised form of real ads."
+      },
+      "Limit": {
+        "properties": {
+          "field": {
+            "type": "string",
+            "title": "Field"
+          },
+          "max": {
+            "type": "integer",
+            "title": "Max"
+          },
+          "unit": {
+            "type": "string",
+            "enum": [
+              "chars",
+              "words"
+            ],
+            "title": "Unit",
+            "default": "chars"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "hard",
+              "recommended"
+            ],
+            "title": "Kind",
+            "default": "hard"
+          }
+        },
+        "type": "object",
+        "required": [
+          "field",
+          "max"
+        ],
+        "title": "Limit"
+      },
+      "Location": {
+        "properties": {
+          "raw": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Raw"
+          },
+          "city": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "City"
+          },
+          "province": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Province"
+          },
+          "country": {
+            "type": "string",
+            "title": "Country",
+            "default": "ZA"
+          },
+          "remote": {
+            "type": "boolean",
+            "title": "Remote",
+            "default": false
+          },
+          "hybrid": {
+            "type": "boolean",
+            "title": "Hybrid",
+            "default": false
+          }
+        },
+        "type": "object",
+        "title": "Location"
       },
       "MetricResult": {
         "properties": {
@@ -1656,6 +1973,111 @@
         ],
         "title": "PayBrief"
       },
+      "Platform": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "job_board",
+              "social",
+              "careers_site",
+              "feed"
+            ],
+            "title": "Kind"
+          },
+          "region": {
+            "type": "string",
+            "title": "Region",
+            "description": "ZA, global, \u2026"
+          },
+          "description_format": {
+            "type": "string",
+            "enum": [
+              "html",
+              "text",
+              "markdown",
+              "json_ld"
+            ],
+            "title": "Description Format"
+          },
+          "allowed_html_tags": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Allowed Html Tags"
+          },
+          "limits": {
+            "items": {
+              "$ref": "#/components/schemas/Limit"
+            },
+            "type": "array",
+            "title": "Limits"
+          },
+          "requires": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Requires",
+            "description": "publish extras the client must supply, e.g. category, apply_url"
+          },
+          "supports_salary": {
+            "type": "boolean",
+            "title": "Supports Salary",
+            "default": true
+          },
+          "supports_remote_flag": {
+            "type": "boolean",
+            "title": "Supports Remote Flag",
+            "default": true
+          },
+          "word_band": {
+            "anyOf": [
+              {
+                "prefixItems": [
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "integer"
+                  }
+                ],
+                "type": "array",
+                "maxItems": 2,
+                "minItems": 2
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Word Band",
+            "description": "recommended description length in words (matches the scorer's channel override)"
+          },
+          "notes": {
+            "type": "string",
+            "title": "Notes",
+            "default": ""
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "kind",
+          "region",
+          "description_format"
+        ],
+        "title": "Platform"
+      },
       "ProcessBrief": {
         "properties": {
           "steps": {
@@ -1707,6 +2129,112 @@
         "type": "object",
         "title": "ProcessBrief"
       },
+      "PublishExtras": {
+        "properties": {
+          "apply_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Apply Url"
+          },
+          "reference": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reference",
+            "description": "your job reference / external id, for updates and withdrawals"
+          },
+          "category": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Category",
+            "description": "platform category / sector / industry (SA boards require one)"
+          },
+          "employment_type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Employment Type",
+            "description": "permanent | fixed_term | contract | part_time | internship | learnership | temporary"
+          },
+          "company_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Company Url"
+          },
+          "company_logo_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Company Logo Url"
+          },
+          "date_posted": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Date Posted"
+          },
+          "valid_through": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Valid Through",
+            "description": "defaults to the ad's closing date when parseable"
+          },
+          "country": {
+            "type": "string",
+            "title": "Country",
+            "default": "ZA"
+          }
+        },
+        "type": "object",
+        "title": "PublishExtras",
+        "description": "What the client knows that the ad text does not: where applications go, identifiers, taxonomy."
+      },
       "Reason": {
         "properties": {
           "severity": {
@@ -1747,6 +2275,61 @@
         ],
         "title": "Reason"
       },
+      "RenderRequest": {
+        "properties": {
+          "ad": {
+            "$ref": "#/components/schemas/JobAd"
+          },
+          "extras": {
+            "$ref": "#/components/schemas/PublishExtras",
+            "description": "What the ad text does not carry: apply_url, reference, category, employment_type, company_url, dates"
+          },
+          "platforms": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Platforms",
+            "description": "Platform ids from GET /v1/platforms; default = all"
+          }
+        },
+        "type": "object",
+        "required": [
+          "ad"
+        ],
+        "title": "RenderRequest"
+      },
+      "RenderResult": {
+        "properties": {
+          "fields": {
+            "$ref": "#/components/schemas/Fields"
+          },
+          "renderings": {
+            "$ref": "#/components/schemas/Renderings"
+          },
+          "channels": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/ChannelPayload"
+            },
+            "type": "object",
+            "title": "Channels"
+          }
+        },
+        "type": "object",
+        "required": [
+          "fields",
+          "renderings",
+          "channels"
+        ],
+        "title": "RenderResult"
+      },
       "Rendered": {
         "properties": {
           "markdown": {
@@ -1766,6 +2349,40 @@
           "text"
         ],
         "title": "Rendered"
+      },
+      "Renderings": {
+        "properties": {
+          "html": {
+            "type": "string",
+            "title": "Html"
+          },
+          "text": {
+            "type": "string",
+            "title": "Text"
+          },
+          "markdown": {
+            "type": "string",
+            "title": "Markdown"
+          },
+          "json_ld": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Json Ld"
+          },
+          "teaser": {
+            "type": "string",
+            "title": "Teaser"
+          }
+        },
+        "type": "object",
+        "required": [
+          "html",
+          "text",
+          "markdown",
+          "json_ld",
+          "teaser"
+        ],
+        "title": "Renderings"
       },
       "Requirement": {
         "properties": {
@@ -1791,6 +2408,55 @@
           "text"
         ],
         "title": "Requirement"
+      },
+      "Salary": {
+        "properties": {
+          "min": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Min"
+          },
+          "max": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Max"
+          },
+          "currency": {
+            "type": "string",
+            "title": "Currency",
+            "default": "ZAR"
+          },
+          "unit": {
+            "type": "string",
+            "title": "Unit",
+            "default": "MONTH"
+          },
+          "basis": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Basis"
+          }
+        },
+        "type": "object",
+        "title": "Salary"
       },
       "ScoreMeta": {
         "properties": {

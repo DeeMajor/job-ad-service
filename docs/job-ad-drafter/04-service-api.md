@@ -21,6 +21,8 @@ Client-facing notes: `/v1/drafts` blocks 15–45 s (two model calls); set client
 | POST | `/v1/draft-jobs` | the same, asynchronously: `202 { job_id, status_url }` immediately; optional `callback_url` | same |
 | GET | `/v1/draft-jobs/{id}` | `queued` → `running` → `done` (with the full `/v1/drafts` response in `result`) or `failed`; kept 24 h | free |
 | GET | `/metrics` | Prometheus: drafts, judge calls, tokens, estimated spend, latency, active jobs, cap refusals | free |
+| GET | `/v1/platforms` | publishing channels the service can prepare: format, limits (hard vs recommended), required extras | free |
+| POST | `/v1/ads/render` | an ad → normalised fields, renderings (HTML, text, Markdown, JSON-LD, teaser) and a per-platform payload with validation | free |
 
 Every response carries `x-request-id`. Errors: `422 {detail:[{loc, msg, type}]}` for validation (FastAPI/Pydantic), `404`, `405`, `502 {error:"upstream"}` when the model API fails, `500`.
 
@@ -145,6 +147,23 @@ Pre-flight is identical to `/v1/drafts` (enrichment switch, `brief_not_ready` re
 **Spend cap.** The service estimates USD per draft from token usage and refuses new drafts with `429 { detail: { error: "daily_spend_cap" } }` once `DAILY_SPEND_CAP_USD` is reached for the UTC day (default 20; 0 disables). `/healthz` shows `spend.today_usd`. This is a guard against a looping client, not a billing system.
 
 **Observability.** `/metrics` (Prometheus) and JSON logs on stdout, every line stamped with spec, drafter-prompt and judge-prompt versions. Internal service: no authentication; bind to the VPN interface, never a public one.
+
+## Publishing: `/v1/platforms` and `/v1/ads/render`
+
+The draft is one shape; job boards each want their own. `GET /v1/platforms` lists what we can prepare — today `linkedin`, `indeed`, `pnet`, `careers24`, `careerjunction`, `careers_site` (schema.org JobPosting JSON-LD for your own page / Google for Jobs), `social_teaser`, `generic_text` — each with its description format, limits marked `hard` (rejected beyond) or `recommended` (performance), and the extras it requires (`apply_url`, `category` for the SA boards).
+
+```jsonc
+POST /v1/ads/render
+{ "ad": { /* JobAd from a draft */ },
+  "extras": { "apply_url": "https://…/apply", "reference": "FIN-0042", "category": "Finance / Accounting", "employment_type": "permanent", "company_url": "https://…", "valid_through": "2026-11-30" },
+  "platforms": ["linkedin", "indeed", "pnet", "careers_site", "social_teaser"] }        // omit for all
+→ { "fields": { "title", "company_name", "location": { "city", "province", "country", "remote", "hybrid" }, "employment_type_schema": "FULL_TIME", "salary": { "min", "max", "currency", "unit" }, "closing_date", "reference", "category", "apply_url", "word_count" },
+    "renderings": { "html": "…safe subset: h2/h3/p/ul/li/strong/br…", "text": "…", "markdown": "…", "json_ld": { "@type": "JobPosting", … }, "teaser": "We're hiring: … Apply: https://…" },
+    "channels": { "linkedin": { "ready": true, "issues": [ { "severity": "warning", "field": "description", "message": "…" } ], "payload": { "title", "description", "description_format": "text", "employment_type": "Full-time", "location", "salary", "apply_url", … } },
+                  "pnet": { "ready": false, "issues": [ { "severity": "error", "field": "category", "message": "PNet requires `category`…" } ], "payload": { … } }, … } }
+```
+
+`ready` is false when any `error` issue exists (missing required extra, hard limit exceeded, no SA province derivable for an SA board). Warnings (recommended length bands) do not block. Location is normalised for South Africa (city → province lookup). Employment type is mapped per platform. Deterministic and free; the actual sending to each platform is a separate concern (credentials, retries, status) that consumes these payloads.
 
 ## `/v1/scores`
 

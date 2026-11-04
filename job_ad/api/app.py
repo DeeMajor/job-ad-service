@@ -36,6 +36,8 @@ from ..metrics.judge.prompt import JUDGE_PROMPT_VERSION
 from ..metrics.scorecard import score, score_deterministic
 from ..metrics.spec import load_spec
 from ..metrics.text import render_ad, render_markdown
+from ..publish.platforms import PLATFORMS, Platform
+from ..publish.render import PublishExtras, RenderResult, render_all
 from ..metrics.types import JobAd, Scorecard, ScoringContext
 
 # ---- structured JSON logs to stdout (Alloy → Loki); every line carries the version stamps
@@ -285,6 +287,27 @@ class ExtractResponse(BaseModel):
     questions: list[str] = Field(description="Up to five questions to ask the author for the most valuable missing facts")
     completeness: Optional[Completeness] = Field(description="The /v1/briefs/check result for the extracted brief, when it is valid")
     meta: dict
+
+
+class RenderRequest(BaseModel):
+    ad: JobAd
+    extras: PublishExtras = Field(default_factory=PublishExtras, description="What the ad text does not carry: apply_url, reference, category, employment_type, company_url, dates")
+    platforms: Optional[list[str]] = Field(default=None, description="Platform ids from GET /v1/platforms; default = all")
+
+
+@app.get("/v1/platforms", response_model=list[Platform])
+def list_platforms():
+    """Publishing channels the service can prepare payloads for, with their formats, limits (hard vs recommended) and required extras."""
+    return list(PLATFORMS.values())
+
+
+@app.post("/v1/ads/render", response_model=RenderResult)
+def render_ad_for_platforms(req: RenderRequest):
+    """Free and deterministic: normalised fields, renderings (html, text, markdown, JSON-LD, teaser) and a per-platform payload with validation issues."""
+    try:
+        return render_all(req.ad, req.extras, req.platforms)
+    except KeyError as e:
+        raise HTTPException(status_code=422, detail={"error": "unknown_platform", "message": str(e), "available": sorted(PLATFORMS)})
 
 
 @app.post("/v1/briefs/extract", response_model=ExtractResponse)
