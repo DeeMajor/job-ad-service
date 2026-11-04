@@ -1,0 +1,104 @@
+# Statutory rules for the offer & contract drafter. Each rule: what is checked, the Act section, severity, and (where a figure is involved)
+# the figure with effective date, source and status. status: confirmed = checked against the gazette/Act text by a person on the date shown;
+# verify = carried from memory, must be confirmed before the rule is trusted. A rule with status verify is still reported, flagged as such.
+version: "0.1.0"
+jurisdiction: ZA
+acts:
+  BCEA: "Basic Conditions of Employment Act 75 of 1997 (as amended)"
+  NMWA: "National Minimum Wage Act 9 of 2018"
+  LRA: "Labour Relations Act 66 of 1995"
+  EEA: "Employment Equity Act 55 of 1998"
+  UIF: "Unemployment Insurance Contributions Act 4 of 2002"
+
+particulars:                    # BCEA s29(1): every item must be present in the contract. Missing → must_fix.
+  - { id: employer_name_address, ref: "BCEA s29(1)(a)", text: "full name and address of the employer" }
+  - { id: employee_name_occupation, ref: "BCEA s29(1)(b)-(c)", text: "name and occupation of the employee, or a brief description of the work", placeholder: true }
+  - { id: place_of_work, ref: "BCEA s29(1)(d)", text: "place(s) of work; whether required to work at various places" }
+  - { id: start_date, ref: "BCEA s29(1)(e)", text: "date on which employment began" }
+  - { id: hours_and_days, ref: "BCEA s29(1)(f)", text: "ordinary hours of work and days of work" }
+  - { id: remuneration, ref: "BCEA s29(1)(g)", text: "wage or the rate and method of calculating wages" }
+  - { id: overtime_rate, ref: "BCEA s29(1)(h)", text: "rate of pay for overtime work", unless: earnings_above_threshold }
+  - { id: other_cash_payments, ref: "BCEA s29(1)(i)", text: "any other cash payments the employee is entitled to" }
+  - { id: payments_in_kind, ref: "BCEA s29(1)(j)", text: "any payment in kind and its value" }
+  - { id: pay_frequency, ref: "BCEA s29(1)(k)", text: "how frequently remuneration is paid" }
+  - { id: deductions, ref: "BCEA s29(1)(l)", text: "any deductions to be made from remuneration" }
+  - { id: leave, ref: "BCEA s29(1)(m)", text: "leave to which the employee is entitled" }
+  - { id: notice_or_term, ref: "BCEA s29(1)(n)", text: "period of notice required, or the period of the contract if for a specified period" }
+  - { id: council_or_sd, ref: "BCEA s29(1)(o)", text: "description of any bargaining council or sectoral determination that covers the business" }
+  - { id: prior_service, ref: "BCEA s29(1)(p)", text: "any period of employment with a previous employer that counts towards service", optional_if_none: true }
+  - { id: documents_list, ref: "BCEA s29(1)(q)", text: "list of any other documents forming part of the contract and where a copy can be obtained" }
+  - { id: plain_language_duty, ref: "BCEA s29(3)", text: "particulars must be explained to an employee who cannot understand them → plain_language explanations are produced for every clause" }
+
+floors:                         # term below the floor → must_fix; floor applies unless a sectoral determination / council agreement sets a higher one
+  hours:
+    - { id: ordinary_hours_week, ref: "BCEA s9(1)(a)", max: 45, unit: hours/week, unless: earnings_above_threshold }
+    - { id: ordinary_hours_day_5days, ref: "BCEA s9(1)(b)(i)", max: 9, unit: hours/day, when: days_per_week <= 5, unless: earnings_above_threshold }
+    - { id: ordinary_hours_day_6days, ref: "BCEA s9(1)(b)(ii)", max: 8, unit: hours/day, when: days_per_week > 5, unless: earnings_above_threshold }
+    - { id: overtime_week, ref: "BCEA s10(1)(b)", max: 10, unit: hours/week, note: "by agreement; 3 h/day", unless: earnings_above_threshold }
+    - { id: overtime_rate, ref: "BCEA s10(2)", min: 1.5, unit: multiple of wage, unless: earnings_above_threshold }
+    - { id: meal_interval, ref: "BCEA s14(1)", min: 60, unit: minutes after 5 continuous hours, note: "may be reduced to 30 by written agreement" }
+    - { id: daily_rest, ref: "BCEA s15(1)(a)", min: 12, unit: consecutive hours }
+    - { id: weekly_rest, ref: "BCEA s15(1)(b)", min: 36, unit: consecutive hours }
+    - { id: sunday_rate, ref: "BCEA s16", min: 2.0, unit: multiple, note: "1.5 if the employee ordinarily works on Sundays" }
+    - { id: public_holiday_rate, ref: "BCEA s18(2)", min: 2.0, unit: multiple, note: "double pay or paid day off" }
+  leave:
+    - { id: annual_leave, ref: "BCEA s20(2)", min: 21, unit: consecutive days per leave cycle, equivalents: { working_days_5day: 15, working_days_6day: 18, per_days_worked: "1 per 17" } }
+    - { id: sick_leave_cycle, ref: "BCEA s22(2)", min: 30, unit: days per 36-month cycle, note: "36 for a 6-day week; first 6 months: 1 day per 26 days worked (s22(3))" }
+    - { id: maternity_leave, ref: "BCEA s25(1)", min: 4, unit: consecutive months }
+    - { id: parental_leave, ref: "BCEA s25A", min: 10, unit: consecutive days, status: confirmed, note: "Labour Laws Amendment Act 2018, in force 1 Jan 2020" }
+    - { id: adoption_leave, ref: "BCEA s25B", min: 10, unit: consecutive weeks, note: "child under 2; one parent" }
+    - { id: family_responsibility, ref: "BCEA s27(2)", min: 3, unit: days per year, when: "employed > 4 months and > 4 days/week" }
+  termination:
+    - { id: notice_le_6_months, ref: "BCEA s37(1)(a)", min: 1, unit: week, when: service <= 6 months }
+    - { id: notice_6_to_12_months, ref: "BCEA s37(1)(b)", min: 2, unit: weeks, when: 6 months < service <= 12 months }
+    - { id: notice_gt_12_months, ref: "BCEA s37(1)(c)", min: 4, unit: weeks, when: service > 12 months, note: "farm and domestic workers: 4 weeks after 6 months" }
+    - { id: severance, ref: "BCEA s41(2)", min: 1, unit: week's pay per completed year, when: "dismissal for operational requirements" }
+  pay:
+    - { id: nmw_hourly, ref: "NMWA s4(1), Schedule 1", min: { value: 28.79, currency: ZAR, unit: per hour, effective_from: "2025-03-01", source: "GN 5998 GG 52083, Feb 2025", status: confirmed },
+        next: { value: null, effective_from: "2026-03-01", source: "annual NMW Commission adjustment — fill from the 2026 gazette", status: verify },
+        note: "farm and domestic workers at 100% of NMW since 2022; the NMW is a floor on the ordinary hours wage, excluding allowances, bonuses, tips, payments in kind (s5)" }
+    - { id: nmw_epwp, ref: "NMWA Schedule 1 item 2", min: { value: null, unit: per hour, status: verify }, when: sector == epwp }
+    - { id: nmw_learnership, ref: "NMWA Schedule 2", min: "allowance table by NQF level and credits", status: verify, when: contract_type == learnership }
+    - { id: pay_slip, ref: "BCEA s33", text: "written particulars on each payment: employer, employee, period, remuneration, deductions, hours, overtime" }
+    - { id: no_unlawful_deductions, ref: "BCEA s34", text: "deductions only with written agreement or as required by law/court/arbitration" }
+  thresholds:
+    - { id: earnings_threshold, ref: "BCEA s6(3)", value: { amount: 261748.45, currency: ZAR, unit: per year, effective_from: "2025-04-01", source: "GN 6200 GG 52224, Mar 2025", status: confirmed },
+        next: { amount: null, effective_from: "2026-04-01", status: verify },
+        effect: "above this, s9 hours, s10 overtime, s14 meal intervals, s15 rest, s16 Sunday pay, s17 night work and s18(3) public holiday pay do not apply; the contract must then state agreed hours" }
+  fixed_term:
+    - { id: fixed_term_justification, ref: "LRA s198B(3)-(4)", text: "fixed-term > 3 months for an employee earning below the threshold requires a justifiable reason (listed in s198B(4)) stated in writing", severity: must_fix }
+    - { id: fixed_term_equal_treatment, ref: "LRA s198B(8)", text: "after 3 months, no less favourable treatment than a permanent employee doing the same work", severity: should_fix }
+    - { id: fixed_term_small_employer_exemption, ref: "LRA s198B(2)", text: "s198B does not apply to employers with < 10 employees, or < 50 within the first 2 years of business", effect: exemption }
+  probation:
+    - { id: probation_reasonable, ref: "LRA Schedule 8 item 8(1)", text: "period must be reasonable for the job's complexity and its purpose stated; no statutory maximum", severity: should_fix_if_gt_6_months }
+  other:
+    - { id: child_labour, ref: "BCEA s43", text: "no employment of a child under 15", severity: must_fix }
+    - { id: record_keeping, ref: "BCEA s29(4), s31", text: "employer keeps the particulars for 3 years after termination", effect: client_note }
+    - { id: uif_deduction, ref: "UIF Act s5-6", text: "1% employee + 1% employer contribution, capped at the UIF ceiling", status: verify_ceiling }
+    - { id: no_discriminatory_terms, ref: "EEA s6", text: "no term may differentiate on a listed ground (uses the ad's exclusionary lexicon)", severity: must_fix }
+    - { id: restraint_reasonableness, ref: "common law (Magna Alloys v Ellis 1984; Basson v Chilwan 1993)", text: "restraint is enforceable only if it protects a legitimate interest and is reasonable in duration and area → could_improve when > 12 months or no area", severity: could_improve }
+
+sectoral:                       # when terms.sector != none, the sector's gazetted floors replace national ones where higher. Rates NOT filled: load per gazette.
+  - { sector: domestic, instrument: "SD 7 (superseded by NMW 2022 for wage); BCEA s37(1)(c) 4-week notice after 6 months", status: verify }
+  - { sector: farm, instrument: "SD 13 (wage at 100% NMW since 2022)", status: verify }
+  - { sector: wholesale_retail, instrument: "SD 9", status: verify }
+  - { sector: contract_cleaning, instrument: "SD 1", status: verify }
+  - { sector: private_security, instrument: "SD 6", status: verify }
+  - { sector: hospitality, instrument: "SD 14", status: verify }
+  - { sector: taxi, instrument: "SD 11", status: verify }
+  - { sector: forestry, instrument: "SD 12", status: verify }
+  - { sector: learnership, instrument: "SD 5 / NMWA Schedule 2", status: verify }
+  - { sector: epwp, instrument: "NMWA Schedule 1 item 2", status: verify }
+
+consistency:                    # against the brief the ad was drafted from — should_fix
+  - { id: title_matches_ad, text: "offer/contract title equals brief.title" }
+  - { id: pay_in_ad_range, text: "offered pay within brief.pay.min..max (same period); absent range → not checked" }
+  - { id: work_mode_matches, text: "terms imply the same work mode as brief.work_mode" }
+  - { id: location_matches, text: "place_of_work consistent with brief.location" }
+  - { id: employment_type_matches, text: "terms.contract_type consistent with brief.employment_type" }
+
+plain_language:                 # BCEA s29(3) → judged + deterministic
+  - { id: clause_readability, grader: deterministic, metric: "Flesch-Kincaid grade per clause", target: "<= 10", severity: could_improve }
+  - { id: explanation_present, grader: deterministic, metric: "every contract clause has a plain_language explanation", severity: should_fix }
+  - { id: explanation_faithful, grader: judge, metric: "explanation adds no term, drops no condition", severity: should_fix }
+  - { id: no_invented_terms, grader: judge, metric: "every obligation in the contract traces to terms, brief or a statutory floor", severity: must_fix }
