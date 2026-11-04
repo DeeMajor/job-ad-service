@@ -65,7 +65,7 @@ Rules: items with `points` are taken as graded; items with `answer` + `rubric` a
 
 ```jsonc
 {
-  "job_id": "…", "spec_version": "0.1.0", "ranked_at": "…",
+  "job_id": "…", "spec_version": "0.1.1", "ranked_at": "…",
   "shortlist": [
     {
       "rank": 1, "candidate_id": "c_8f3a", "score": 84.2,
@@ -89,7 +89,7 @@ Rules: items with `points` are taken as graded; items with `answer` + `rubric` a
     }
   ],
   "excluded_from_ranking": [],                                // never silently: candidates with unusable data are listed here with the reason (e.g. no assessment)
-  "meta": { "spec_version": "0.1.0", "judge_prompt_version": "0.1.0", "pool_size": 23, "ranked": 22, "judged_candidates": 22, "judged_items": 46, "judge_model": "claude-sonnet-5",
+  "meta": { "spec_version": "0.1.1", "judge_prompt_version": "0.1.1", "pool_size": 23, "ranked": 22, "judged_candidates": 22, "judged_items": 46, "judge_model": "claude-sonnet-5",
             "weights": {...}, "usage": {...}, "cost_usd": 0.91, "latency_s": 84.2,
             "fairness_check": { "ran": true, "redaction_clean": true, "residual_patterns": 0, "note": "…" } }   // redaction_clean: no identifier pattern survived in any text a model saw
 }
@@ -108,3 +108,17 @@ Tiers: `strong` ≥ 75, `possible` 55–74, `weak` < 55; `does_not_meet_inherent
 | `GET` | `/v1/shortlist-jobs/{job_id}` | job status; kept 24 h |
 
 Spend: one Sonnet call per candidate that has text requirements or rubric items (~$0.01–0.03 each); counted against the daily cap. Deterministic-only requests are free.
+
+## What the client must store (so real pools produce evidence)
+
+The service keeps no candidate data beyond the 24-hour job record. For the ranking to be evaluated and improved (Phase 2 and 4 of the plan), the client stores, per candidate per job:
+
+| Field | From | Why |
+|---|---|---|
+| `rank`, `score`, `tier`, `borderline` | response | what we recommended |
+| `meta.spec_version`, `meta.judge_prompt_version` | response | which rules produced it; results across versions are not comparable |
+| recruiter decision (interviewed / rejected / hired) | the recruiter | the outcome we calibrate against |
+| recruiter's final order, and a reason for every override of our order | the recruiter | the labelled signal for what the ranker missed |
+| EE group of the candidate, **held by the client only** | the application | adverse-impact ratio of the top-N; the ranker must never receive it |
+
+Show the recruiter the full `reasons[]` and `needs_human_check` next to each candidate, not just the score; the recommendation is advisory and the recruiter's decision is the record (POPIA s71, EEA s6).

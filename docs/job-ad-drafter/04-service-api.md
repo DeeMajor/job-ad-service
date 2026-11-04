@@ -176,3 +176,8 @@ With `judge:false` only the deterministic metrics run (no cost, milliseconds); j
 ## Versioning
 
 `healthz` reports four versions. Any change to the spec, the judge prompt, the drafter prompt or the brief schema bumps its number and is logged in `bench/experiments.md`. Scorecards embed `spec_version`; drafts embed `prompt_version`. Clients should store both with the published ad so later outcome metrics can be joined to the scorer that produced the score.
+
+
+## Shortlist ranker endpoints
+
+Same service, documented separately in [`docs/shortlist-ranker/01-contract.md`](../shortlist-ranker/01-contract.md): `POST /v1/shortlists/rank` (sync, ≤ 10 candidates with the judge on), `POST /v1/shortlist-jobs` (202 + job id) and `GET /v1/shortlist-jobs/{job_id}`. Scoring rules in `docs/shortlist-ranker/ranking-spec.yaml`; `GET /healthz` reports `ranking_spec` and `shortlist_judge_prompt` versions.
