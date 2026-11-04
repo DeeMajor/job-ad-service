@@ -35,6 +35,15 @@ Rollback = the same with the previous `IMAGE_TAG`. Jobs in flight during a resta
 
 Call `http://127.0.0.1:4310/...` from the Next.js server side (API routes / server actions). Prefer `POST /v1/draft-jobs` + polling for drafts. If the browser must call the service directly, add an nginx `location /jobad/ { proxy_pass http://127.0.0.1:4310/; }` under the frontend's server block and set `ALLOWED_ORIGINS` to that origin.
 
+## Reaching it from a workstation
+
+The port is private to the host. From a machine with the deploy key, open a tunnel and use `localhost:4311`:
+
+```bash
+ssh -N -L 127.0.0.1:4311:127.0.0.1:4310 -i ~/.ssh/jobad_deploy root@$DEPLOY_HOST
+# then http://127.0.0.1:4311/docs  — healthz shows jobs_store: redis, which distinguishes it from a local dev server
+```
+
 ## Checks
 
 ```bash
