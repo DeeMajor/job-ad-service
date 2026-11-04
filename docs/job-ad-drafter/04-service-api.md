@@ -181,3 +181,7 @@ With `judge:false` only the deterministic metrics run (no cost, milliseconds); j
 ## Shortlist ranker endpoints
 
 Same service, documented separately in [`docs/shortlist-ranker/01-contract.md`](../shortlist-ranker/01-contract.md): `POST /v1/shortlists/rank` (sync, ≤ 10 candidates with the judge on), `POST /v1/shortlist-jobs` (202 + job id) and `GET /v1/shortlist-jobs/{job_id}`. Scoring rules in `docs/shortlist-ranker/ranking-spec.yaml`; `GET /healthz` reports `ranking_spec` and `shortlist_judge_prompt` versions.
+
+## Offer & contract endpoints
+
+Same service, documented in [`docs/offer-contract-drafter/01-contract.md`](../offer-contract-drafter/01-contract.md): `POST /v1/offers/check` (statutory + consistency check, free) and `POST /v1/offers/template` (offer letter + contract from the clause library with identity placeholders, free; `?format=markdown`). Rules in `docs/offer-contract-drafter/compliance-rules.yaml`; `GET /healthz` reports `offer_rules`.

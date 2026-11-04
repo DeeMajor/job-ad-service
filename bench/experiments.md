@@ -353,3 +353,26 @@ rule's real value is transparency, not correctness. Recorded as such: `borderlin
 Synthetic re-verification happens again only when the judge prompt, the spec weights/tiers or the redactor change. The next evidence
 about the ranker comes from Phase 2 — real pools, recruiters re-ordering our shortlist, overrides stored with reasons.
 SHORTLIST RANKER PHASE 0 CLOSED: spec 0.1.1, judge 0.1.1 (thinking off), 50 billed judge calls, $0.76. Deployed.
+
+---
+
+## OFFER & CONTRACT DRAFTER — Phase 0 (2026-11-05)
+
+Planning pack `docs/offer-contract-drafter/` (README, 01-contract, 02-compliance-rules + `compliance-rules.yaml` v0.1.0, 03-scidlc-plan).
+Andile: "go" (placeholders for identity, rule table, practitioner review as a deliverable). Built `job_ad/offer/` (terms, rules, clauses
+v0.1.0, draft) + `POST /v1/offers/check` and `POST /v1/offers/template` (no model; `?format=markdown`). 7 unit tests.
+
+### EXP-400 — rule-engine perturbation benchmark (free)
+Pre-registered: on the 40 real briefs, a compliant term set yields 0 must/should findings; 28 one-defect perturbations per brief (pay at
+NMW − R0.01, 46 h, 10 h/day, overtime missing or 1.2×, meal 20/45 min, leave missing / 14 working / 20 consecutive, sick 20, maternity 3,
+parental 5, family 2, notice missing / 2 weeks, fixed term with no reason, probation 9, employer address missing, payment in kind without
+value, loan deduction, UIF missing, under 15 / not attested, sector set, council set, restraint 24 months, discriminatory wording) plus two
+threshold edges (pay R1 above / below the s6(3) threshold with 50 h) must each be detected with the pre-registered rule id and severity.
+Result: **1200/1200 detected, 0 false findings**, 0.6 s, $0. One fix during the run: the EEA wording check used only the gate lexicon; the
+contextual patterns ("young energetic man") are now applied as the ad scorer does. One code defect caught by tests: consistency findings
+were appended to a list pydantic had already copied — fixed.
+Readability: template clause grades run 2.5–16.8 (legal clauses like parties/probation are high); every clause has a plain-language
+explanation (BCEA s29(3)); the readability finding is `could_improve`, as pre-registered.
+Decision: Phase 0 machinery accepted. Figures still `verify`: 2026 NMW, 2026 threshold, learnership/EPWP, UIF ceiling, all sectoral
+determinations — every response lists them. Clause library awaits practitioner review before Phase 2. Next paid step: EXP-401 (Sonnet 5
+vs Opus 5 drafting, ≈ $1.50) — needs a yes; the template path already produces a usable contract without it.

@@ -12,6 +12,7 @@ COPY job_ad ./job_ad
 COPY docs/job-ad-drafter/metrics ./docs/job-ad-drafter/metrics
 COPY docs/job-ad-drafter/openapi.json ./docs/job-ad-drafter/openapi.json
 COPY docs/shortlist-ranker/ranking-spec.yaml ./docs/shortlist-ranker/ranking-spec.yaml
+COPY docs/offer-contract-drafter/compliance-rules.yaml ./docs/offer-contract-drafter/compliance-rules.yaml
 
 USER app
 EXPOSE 4310

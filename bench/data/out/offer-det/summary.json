@@ -1,0 +1,291 @@
+{
+ "n_briefs": 40,
+ "perturbations": 1200,
+ "detected": 1200,
+ "missed": [],
+ "false_findings": [],
+ "n_false": 0,
+ "elapsed_s": 0.8,
+ "rows": [
+  {
+   "brief": "case_000",
+   "level": "compliant",
+   "hourly": 103.85,
+   "pay_in_ad_range": null,
+   "verify": []
+  },
+  {
+   "brief": "case_001",
+   "level": "compliant",
+   "hourly": 103.85,
+   "pay_in_ad_range": null,
+   "verify": []
+  },
+  {
+   "brief": "case_002",
+   "level": "compliant",
+   "hourly": 103.85,
+   "pay_in_ad_range": null,
+   "verify": []
+  },
+  {
+   "brief": "case_003",
+   "level": "compliant",
+   "hourly": 103.85,
+   "pay_in_ad_range": null,
+   "verify": []
+  },
+  {
+   "brief": "case_004",
+   "level": "compliant",
+   "hourly": 103.85,
+   "pay_in_ad_range": null,
+   "verify": []
+  },
+  {
+   "brief": "case_005",
+   "level": "compliant",
+   "hourly": 103.85,
+   "pay_in_ad_range": null,
+   "verify": []
+  },
+  {
+   "brief": "case_006",
+   "level": "compliant",
+   "hourly": 103.85,
+   "pay_in_ad_range": null,
+   "verify": []
+  },
+  {
+   "brief": "case_007",
+   "level": "compliant",
+   "hourly": 103.85,
+   "pay_in_ad_range": null,
+   "verify": []
+  },
+  {
+   "brief": "case_008",
+   "level": "compliant",
+   "hourly": 103.85,
+   "pay_in_ad_range": null,
+   "verify": []
+  },
+  {
+   "brief": "case_009",
+   "level": "compliant",
+   "hourly": 103.85,
+   "pay_in_ad_range": null,
+   "verify": []
+  },
+  {
+   "brief": "case_010",
+   "level": "compliant",
+   "hourly": 103.85,
+   "pay_in_ad_range": null,
+   "verify": []
+  },
+  {
+   "brief": "case_011",
+   "level": "compliant",
+   "hourly": 103.85,
+   "pay_in_ad_range": null,
+   "verify": []
+  },
+  {
+   "brief": "case_012",
+   "level": "compliant",
+   "hourly": 103.85,
+   "pay_in_ad_range": null,
+   "verify": []
+  },
+  {
+   "brief": "case_013",
+   "level": "compliant",
+   "hourly": 103.85,
+   "pay_in_ad_range": null,
+   "verify": []
+  },
+  {
+   "brief": "case_014",
+   "level": "compliant",
+   "hourly": 103.85,
+   "pay_in_ad_range": null,
+   "verify": []
+  },
+  {
+   "brief": "case_015",
+   "level": "compliant",
+   "hourly": 103.85,
+   "pay_in_ad_range": null,
+   "verify": []
+  },
+  {
+   "brief": "case_016",
+   "level": "compliant",
+   "hourly": 103.85,
+   "pay_in_ad_range": null,
+   "verify": []
+  },
+  {
+   "brief": "case_017",
+   "level": "compliant",
+   "hourly": 103.85,
+   "pay_in_ad_range": null,
+   "verify": []
+  },
+  {
+   "brief": "case_018",
+   "level": "compliant",
+   "hourly": 103.85,
+   "pay_in_ad_range": null,
+   "verify": []
+  },
+  {
+   "brief": "case_019",
+   "level": "compliant",
+   "hourly": 103.85,
+   "pay_in_ad_range": null,
+   "verify": []
+  },
+  {
+   "brief": "case_020",
+   "level": "compliant",
+   "hourly": 103.85,
+   "pay_in_ad_range": null,
+   "verify": []
+  },
+  {
+   "brief": "case_021",
+   "level": "compliant",
+   "hourly": 103.85,
+   "pay_in_ad_range": null,
+   "verify": []
+  },
+  {
+   "brief": "case_022",
+   "level": "compliant",
+   "hourly": 103.85,
+   "pay_in_ad_range": null,
+   "verify": []
+  },
+  {
+   "brief": "case_023",
+   "level": "compliant",
+   "hourly": 103.85,
+   "pay_in_ad_range": null,
+   "verify": []
+  },
+  {
+   "brief": "case_024",
+   "level": "compliant",
+   "hourly": 103.85,
+   "pay_in_ad_range": null,
+   "verify": []
+  },
+  {
+   "brief": "case_025",
+   "level": "compliant",
+   "hourly": 103.85,
+   "pay_in_ad_range": null,
+   "verify": []
+  },
+  {
+   "brief": "case_026",
+   "level": "compliant",
+   "hourly": 103.85,
+   "pay_in_ad_range": null,
+   "verify": []
+  },
+  {
+   "brief": "case_027",
+   "level": "compliant",
+   "hourly": 119.71,
+   "pay_in_ad_range": true,
+   "verify": []
+  },
+  {
+   "brief": "case_028",
+   "level": "compliant",
+   "hourly": 115.38,
+   "pay_in_ad_range": true,
+   "verify": []
+  },
+  {
+   "brief": "case_029",
+   "level": "compliant",
+   "hourly": 92.31,
+   "pay_in_ad_range": true,
+   "verify": []
+  },
+  {
+   "brief": "case_030",
+   "level": "compliant",
+   "hourly": 103.85,
+   "pay_in_ad_range": null,
+   "verify": []
+  },
+  {
+   "brief": "case_031",
+   "level": "compliant",
+   "hourly": 103.85,
+   "pay_in_ad_range": null,
+   "verify": []
+  },
+  {
+   "brief": "case_032",
+   "level": "compliant",
+   "hourly": 103.85,
+   "pay_in_ad_range": null,
+   "verify": []
+  },
+  {
+   "brief": "case_033",
+   "level": "compliant",
+   "hourly": 103.85,
+   "pay_in_ad_range": null,
+   "verify": []
+  },
+  {
+   "brief": "case_034",
+   "level": "compliant",
+   "hourly": 103.85,
+   "pay_in_ad_range": null,
+   "verify": []
+  },
+  {
+   "brief": "case_035",
+   "level": "compliant",
+   "hourly": 103.85,
+   "pay_in_ad_range": null,
+   "verify": []
+  },
+  {
+   "brief": "case_036",
+   "level": "compliant",
+   "hourly": 103.85,
+   "pay_in_ad_range": null,
+   "verify": []
+  },
+  {
+   "brief": "case_037",
+   "level": "compliant",
+   "hourly": 103.85,
+   "pay_in_ad_range": null,
+   "verify": []
+  },
+  {
+   "brief": "case_038",
+   "level": "compliant",
+   "hourly": 103.85,
+   "pay_in_ad_range": null,
+   "verify": []
+  },
+  {
+   "brief": "case_039",
+   "level": "compliant",
+   "hourly": 60.1,
+   "pay_in_ad_range": true,
+   "verify": []
+  }
+ ]
+}

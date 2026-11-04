@@ -469,6 +469,105 @@
      }
     }
    }
+  },
+  "/v1/offers/check": {
+   "post": {
+    "summary": "Post Offer Check",
+    "description": "Statutory check of the terms (BCEA s29 particulars, NMW, hours, leave, notice, LRA s198B) and consistency with the ad's brief. Free, no model call; nothing is gated.",
+    "operationId": "post_offer_check_v1_offers_check_post",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/OfferRequest"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/OfferCheckResponse"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/v1/offers/template": {
+   "post": {
+    "summary": "Post Offer Template",
+    "description": "Offer letter + contract from the clause library with identity placeholders, plain-language explanation per clause, compliance report. Free, no model call. Template wording pending practitioner review.",
+    "operationId": "post_offer_template_v1_offers_template_post",
+    "parameters": [
+     {
+      "name": "format",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "enum": [
+        "json",
+        "markdown"
+       ],
+       "type": "string",
+       "default": "json",
+       "title": "Format"
+      }
+     }
+    ],
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/OfferRequest"
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "JSON by default; `?format=markdown` returns the contract alone as text/markdown (header x-compliance-level).",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/OfferDraft"
+        }
+       },
+       "text/markdown": {
+        "schema": {
+         "type": "string"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
   }
  },
  "components": {
@@ -776,6 +875,125 @@
     ],
     "title": "ChannelPayload"
    },
+   "CheckedAgainst": {
+    "properties": {
+     "rules_version": {
+      "type": "string",
+      "title": "Rules Version",
+      "default": "0.1.0"
+     },
+     "sector": {
+      "type": "string",
+      "title": "Sector"
+     },
+     "earnings_threshold_applies": {
+      "type": "boolean",
+      "title": "Earnings Threshold Applies"
+     },
+     "hourly_equivalent_zar": {
+      "type": "number",
+      "title": "Hourly Equivalent Zar"
+     },
+     "annual_equivalent_zar": {
+      "type": "number",
+      "title": "Annual Equivalent Zar"
+     },
+     "figures_to_verify": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "title": "Figures To Verify"
+     }
+    },
+    "type": "object",
+    "required": [
+     "sector",
+     "earnings_threshold_applies",
+     "hourly_equivalent_zar",
+     "annual_equivalent_zar",
+     "figures_to_verify"
+    ],
+    "title": "CheckedAgainst"
+   },
+   "ClauseOut": {
+    "properties": {
+     "id": {
+      "type": "string",
+      "title": "Id"
+     },
+     "heading": {
+      "type": "string",
+      "title": "Heading"
+     },
+     "text": {
+      "type": "string",
+      "title": "Text"
+     },
+     "particular": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Particular"
+     },
+     "grade": {
+      "type": "number",
+      "title": "Grade",
+      "description": "Flesch-Kincaid grade of the clause text"
+     }
+    },
+    "type": "object",
+    "required": [
+     "id",
+     "heading",
+     "text",
+     "grade"
+    ],
+    "title": "ClauseOut"
+   },
+   "Clauses": {
+    "properties": {
+     "confidentiality": {
+      "type": "boolean",
+      "title": "Confidentiality",
+      "default": false
+     },
+     "restraint_of_trade": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/Restraint"
+       },
+       {
+        "type": "null"
+       }
+      ]
+     },
+     "ip_assignment": {
+      "type": "boolean",
+      "title": "Ip Assignment",
+      "default": false
+     },
+     "retirement_age": {
+      "anyOf": [
+       {
+        "type": "integer",
+        "minimum": 50.0
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Retirement Age"
+     }
+    },
+    "type": "object",
+    "title": "Clauses"
+   },
    "Company": {
     "properties": {
      "name": {
@@ -902,6 +1120,41 @@
     ],
     "title": "Completeness"
    },
+   "Compliance": {
+    "properties": {
+     "level": {
+      "type": "string",
+      "enum": [
+       "compliant",
+       "review",
+       "not_compliant"
+      ],
+      "title": "Level"
+     },
+     "summary": {
+      "type": "string",
+      "title": "Summary"
+     },
+     "findings": {
+      "items": {
+       "$ref": "#/components/schemas/Finding"
+      },
+      "type": "array",
+      "title": "Findings"
+     },
+     "checked_against": {
+      "$ref": "#/components/schemas/CheckedAgainst"
+     }
+    },
+    "type": "object",
+    "required": [
+     "level",
+     "summary",
+     "findings",
+     "checked_against"
+    ],
+    "title": "Compliance"
+   },
    "Components": {
     "properties": {
      "requirements": {
@@ -934,6 +1187,57 @@
     ],
     "title": "Components"
    },
+   "Consistency": {
+    "properties": {
+     "title_matches_ad": {
+      "type": "boolean",
+      "title": "Title Matches Ad",
+      "default": true
+     },
+     "pay_in_ad_range": {
+      "anyOf": [
+       {
+        "type": "boolean"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Pay In Ad Range"
+     },
+     "employment_type_matches": {
+      "anyOf": [
+       {
+        "type": "boolean"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Employment Type Matches"
+     },
+     "location_matches": {
+      "anyOf": [
+       {
+        "type": "boolean"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Location Matches"
+     },
+     "notes": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "title": "Notes"
+     }
+    },
+    "type": "object",
+    "title": "Consistency"
+   },
    "DimensionScore": {
     "properties": {
      "score": {
@@ -951,6 +1255,34 @@
      "n"
     ],
     "title": "DimensionScore"
+   },
+   "Document": {
+    "properties": {
+     "clauses": {
+      "items": {
+       "$ref": "#/components/schemas/ClauseOut"
+      },
+      "type": "array",
+      "title": "Clauses"
+     },
+     "markdown": {
+      "type": "string",
+      "title": "Markdown"
+     },
+     "placeholders": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "title": "Placeholders"
+     }
+    },
+    "type": "object",
+    "required": [
+     "clauses",
+     "markdown"
+    ],
+    "title": "Document"
    },
    "DraftJob": {
     "properties": {
@@ -1226,6 +1558,35 @@
     ],
     "title": "DraftResponse"
    },
+   "Employer": {
+    "properties": {
+     "registration_number": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Registration Number"
+     },
+     "address": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Address",
+      "description": "registered/physical address \u2014 BCEA s29(1)(a) particular; distinct from place of work"
+     }
+    },
+    "type": "object",
+    "title": "Employer"
+   },
    "EnrichmentMeta": {
     "properties": {
      "model": {
@@ -1287,6 +1648,29 @@
      "reason"
     ],
     "title": "Excluded"
+   },
+   "Explanation": {
+    "properties": {
+     "id": {
+      "type": "string",
+      "title": "Id"
+     },
+     "explanation": {
+      "type": "string",
+      "title": "Explanation"
+     },
+     "grade": {
+      "type": "number",
+      "title": "Grade"
+     }
+    },
+    "type": "object",
+    "required": [
+     "id",
+     "explanation",
+     "grade"
+    ],
+    "title": "Explanation"
    },
    "ExtractRequest": {
     "properties": {
@@ -1612,6 +1996,77 @@
     ],
     "title": "Fields"
    },
+   "Finding": {
+    "properties": {
+     "severity": {
+      "type": "string",
+      "enum": [
+       "must_fix",
+       "should_fix",
+       "could_improve"
+      ],
+      "title": "Severity"
+     },
+     "rule": {
+      "type": "string",
+      "title": "Rule"
+     },
+     "message": {
+      "type": "string",
+      "title": "Message"
+     },
+     "evidence": {
+      "type": "string",
+      "title": "Evidence",
+      "description": "Act section and the figure used"
+     },
+     "clause": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Clause"
+     }
+    },
+    "type": "object",
+    "required": [
+     "severity",
+     "rule",
+     "message",
+     "evidence"
+    ],
+    "title": "Finding"
+   },
+   "FixedTerm": {
+    "properties": {
+     "end_date": {
+      "type": "string",
+      "format": "date",
+      "title": "End Date"
+     },
+     "justification": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Justification",
+      "description": "LRA s198B(3)-(4) reason; required when the term exceeds 3 months and pay is below the earnings threshold"
+     }
+    },
+    "type": "object",
+    "required": [
+     "end_date"
+    ],
+    "title": "FixedTerm"
+   },
    "HTTPValidationError": {
     "properties": {
      "detail": {
@@ -1894,6 +2349,64 @@
     ],
     "title": "HiringBrief"
    },
+   "Hours": {
+    "properties": {
+     "per_week": {
+      "type": "number",
+      "maximum": 168.0,
+      "exclusiveMinimum": 0.0,
+      "title": "Per Week"
+     },
+     "per_day": {
+      "anyOf": [
+       {
+        "type": "number",
+        "maximum": 24.0,
+        "exclusiveMinimum": 0.0
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Per Day"
+     },
+     "days_per_week": {
+      "type": "integer",
+      "maximum": 7.0,
+      "minimum": 1.0,
+      "title": "Days Per Week",
+      "default": 5
+     },
+     "schedule": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Schedule"
+     },
+     "meal_interval_min": {
+      "anyOf": [
+       {
+        "type": "integer",
+        "minimum": 0.0
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Meal Interval Min"
+     }
+    },
+    "type": "object",
+    "required": [
+     "per_week"
+    ],
+    "title": "Hours"
+   },
    "Issue": {
     "properties": {
      "severity": {
@@ -1968,7 +2481,7 @@
      "pay": {
       "anyOf": [
        {
-        "$ref": "#/components/schemas/Pay"
+        "$ref": "#/components/schemas/Pay-Output"
        },
        {
         "type": "null"
@@ -2198,6 +2711,82 @@
     ],
     "title": "Knockout"
    },
+   "Leave": {
+    "properties": {
+     "annual_days": {
+      "anyOf": [
+       {
+        "type": "number",
+        "minimum": 0.0
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Annual Days"
+     },
+     "annual_basis": {
+      "type": "string",
+      "enum": [
+       "consecutive_days",
+       "working_days"
+      ],
+      "title": "Annual Basis",
+      "default": "working_days"
+     },
+     "sick_cycle_days": {
+      "anyOf": [
+       {
+        "type": "number",
+        "minimum": 0.0
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Sick Cycle Days",
+      "description": "days per 36-month cycle"
+     },
+     "family_responsibility_days": {
+      "anyOf": [
+       {
+        "type": "number",
+        "minimum": 0.0
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Family Responsibility Days"
+     },
+     "maternity_months": {
+      "anyOf": [
+       {
+        "type": "number",
+        "minimum": 0.0
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Maternity Months"
+     },
+     "parental_days": {
+      "anyOf": [
+       {
+        "type": "number",
+        "minimum": 0.0
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Parental Days"
+     }
+    },
+    "type": "object",
+    "title": "Leave"
+   },
    "Limit": {
     "properties": {
      "field": {
@@ -2419,7 +3008,212 @@
     ],
     "title": "ModelCall"
    },
-   "Pay": {
+   "Notice": {
+    "properties": {
+     "weeks": {
+      "anyOf": [
+       {
+        "type": "number",
+        "minimum": 0.0
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Weeks",
+      "description": "a single stated period; must be at least the s37 floor for the longest service band"
+     },
+     "statutory_ladder": {
+      "type": "boolean",
+      "title": "Statutory Ladder",
+      "description": "true = the contract states the s37 ladder (1/2/4 weeks by service) instead of one figure",
+      "default": false
+     }
+    },
+    "type": "object",
+    "title": "Notice"
+   },
+   "OfferCheckResponse": {
+    "properties": {
+     "compliance": {
+      "$ref": "#/components/schemas/Compliance"
+     },
+     "consistency": {
+      "$ref": "#/components/schemas/Consistency"
+     }
+    },
+    "type": "object",
+    "required": [
+     "compliance",
+     "consistency"
+    ],
+    "title": "OfferCheckResponse"
+   },
+   "OfferDraft": {
+    "properties": {
+     "drafted_at": {
+      "type": "string",
+      "format": "date-time",
+      "title": "Drafted At"
+     },
+     "offer_letter": {
+      "$ref": "#/components/schemas/Document"
+     },
+     "contract": {
+      "$ref": "#/components/schemas/Document"
+     },
+     "plain_language": {
+      "items": {
+       "$ref": "#/components/schemas/Explanation"
+      },
+      "type": "array",
+      "title": "Plain Language"
+     },
+     "compliance": {
+      "$ref": "#/components/schemas/Compliance"
+     },
+     "consistency": {
+      "$ref": "#/components/schemas/Consistency"
+     },
+     "disclaimer": {
+      "type": "string",
+      "title": "Disclaimer",
+      "default": "Template generated from the agreed terms and checked against the BCEA, NMW Act and LRA rules in compliance-rules.yaml v0.1.0. Not legal advice; the clause library must be reviewed by a labour practitioner before use, and figures marked 'verify' confirmed against the Government Gazette."
+     },
+     "meta": {
+      "$ref": "#/components/schemas/OfferMeta"
+     }
+    },
+    "type": "object",
+    "required": [
+     "drafted_at",
+     "offer_letter",
+     "contract",
+     "plain_language",
+     "compliance",
+     "consistency",
+     "meta"
+    ],
+    "title": "OfferDraft"
+   },
+   "OfferMeta": {
+    "properties": {
+     "mode": {
+      "type": "string",
+      "title": "Mode",
+      "default": "template"
+     },
+     "model": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Model"
+     },
+     "prompt_version": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Prompt Version"
+     },
+     "clauses_version": {
+      "type": "string",
+      "title": "Clauses Version",
+      "default": "0.1.0"
+     },
+     "rules_version": {
+      "type": "string",
+      "title": "Rules Version",
+      "default": "0.1.0"
+     },
+     "usage": {
+      "additionalProperties": {
+       "type": "integer"
+      },
+      "type": "object",
+      "title": "Usage"
+     },
+     "cost_usd": {
+      "type": "number",
+      "title": "Cost Usd",
+      "default": 0.0
+     },
+     "latency_s": {
+      "type": "number",
+      "title": "Latency S"
+     }
+    },
+    "type": "object",
+    "required": [
+     "latency_s"
+    ],
+    "title": "OfferMeta"
+   },
+   "OfferRequest": {
+    "properties": {
+     "brief": {
+      "$ref": "#/components/schemas/HiringBrief"
+     },
+     "terms": {
+      "$ref": "#/components/schemas/Terms"
+     },
+     "offer": {
+      "$ref": "#/components/schemas/OfferTerms"
+     }
+    },
+    "type": "object",
+    "required": [
+     "brief",
+     "terms"
+    ],
+    "title": "OfferRequest"
+   },
+   "OfferTerms": {
+    "properties": {
+     "expires": {
+      "anyOf": [
+       {
+        "type": "string",
+        "format": "date"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Expires"
+     },
+     "contact": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Contact"
+     },
+     "documents_required": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "title": "Documents Required"
+     }
+    },
+    "type": "object",
+    "title": "OfferTerms"
+   },
+   "Pay-Output": {
     "properties": {
      "min": {
       "anyOf": [
@@ -2548,6 +3342,32 @@
      "period"
     ],
     "title": "PayBrief"
+   },
+   "PaymentInKind": {
+    "properties": {
+     "description": {
+      "type": "string",
+      "title": "Description"
+     },
+     "value_zar": {
+      "anyOf": [
+       {
+        "type": "number",
+        "minimum": 0.0
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Value Zar",
+      "description": "BCEA s29(1)(j): the value must be stated"
+     }
+    },
+    "type": "object",
+    "required": [
+     "description"
+    ],
+    "title": "PaymentInKind"
    },
    "Platform": {
     "properties": {
@@ -2852,7 +3672,7 @@
      "spec_version": {
       "type": "string",
       "title": "Spec Version",
-      "default": "0.1.0"
+      "default": "0.1.1"
      },
      "judge_prompt_version": {
       "anyOf": [
@@ -2999,7 +3819,7 @@
      "spec_version": {
       "type": "string",
       "title": "Spec Version",
-      "default": "0.1.0"
+      "default": "0.1.1"
      },
      "ranked_at": {
       "type": "string",
@@ -3056,6 +3876,12 @@
        "does_not_meet_inherent_requirement"
       ],
       "title": "Tier"
+     },
+     "borderline": {
+      "type": "boolean",
+      "title": "Borderline",
+      "description": "score lies within the noise band of a tier threshold; the tier could read one step either way on a re-run",
+      "default": false
      },
      "components": {
       "$ref": "#/components/schemas/Components"
@@ -3263,6 +4089,31 @@
      "of"
     ],
     "title": "RequirementComponent"
+   },
+   "Restraint": {
+    "properties": {
+     "months": {
+      "type": "integer",
+      "exclusiveMinimum": 0.0,
+      "title": "Months"
+     },
+     "area": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Area"
+     }
+    },
+    "type": "object",
+    "required": [
+     "months"
+    ],
+    "title": "Restraint"
    },
    "Salary": {
     "properties": {
@@ -3713,6 +4564,166 @@
     "type": "object",
     "title": "TeamBrief"
    },
+   "Terms": {
+    "properties": {
+     "contract_type": {
+      "type": "string",
+      "enum": [
+       "permanent",
+       "fixed_term",
+       "part_time",
+       "temporary",
+       "learnership",
+       "internship"
+      ],
+      "title": "Contract Type"
+     },
+     "fixed_term": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/FixedTerm"
+       },
+       {
+        "type": "null"
+       }
+      ]
+     },
+     "start_date": {
+      "type": "string",
+      "format": "date",
+      "title": "Start Date"
+     },
+     "probation_months": {
+      "anyOf": [
+       {
+        "type": "integer",
+        "minimum": 0.0
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Probation Months"
+     },
+     "place_of_work": {
+      "type": "string",
+      "minLength": 1,
+      "title": "Place Of Work"
+     },
+     "various_places": {
+      "type": "boolean",
+      "title": "Various Places",
+      "default": false
+     },
+     "hours": {
+      "$ref": "#/components/schemas/Hours"
+     },
+     "pay": {
+      "$ref": "#/components/schemas/job_ad__offer__terms__Pay"
+     },
+     "deductions": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "title": "Deductions"
+     },
+     "leave": {
+      "$ref": "#/components/schemas/Leave"
+     },
+     "notice": {
+      "$ref": "#/components/schemas/Notice"
+     },
+     "sector": {
+      "type": "string",
+      "enum": [
+       "none",
+       "domestic",
+       "farm",
+       "wholesale_retail",
+       "contract_cleaning",
+       "private_security",
+       "hospitality",
+       "taxi",
+       "forestry",
+       "epwp",
+       "learnership"
+      ],
+      "title": "Sector",
+      "default": "none"
+     },
+     "bargaining_council": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Bargaining Council"
+     },
+     "clauses": {
+      "$ref": "#/components/schemas/Clauses"
+     },
+     "employer": {
+      "$ref": "#/components/schemas/Employer"
+     },
+     "earnings_threshold_override": {
+      "anyOf": [
+       {
+        "type": "boolean"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Earnings Threshold Override",
+      "description": "true = treat as above the BCEA s6(3) threshold regardless of pay"
+     },
+     "prior_service": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Prior Service",
+      "description": "BCEA s29(1)(p): previous employment that counts towards service, if any"
+     },
+     "documents": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "title": "Documents",
+      "description": "BCEA s29(1)(q): other documents forming part of the contract"
+     },
+     "employee_is_15_or_older": {
+      "anyOf": [
+       {
+        "type": "boolean"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Employee Is 15 Or Older",
+      "description": "BCEA s43 attestation by the client; no age or date of birth is accepted"
+     }
+    },
+    "type": "object",
+    "required": [
+     "contract_type",
+     "start_date",
+     "place_of_work",
+     "hours",
+     "pay"
+    ],
+    "title": "Terms"
+   },
    "ValidationError": {
     "properties": {
      "loc": {
@@ -3839,6 +4850,166 @@
      "message"
     ],
     "title": "Reason"
+   },
+   "job_ad__metrics__types__Pay": {
+    "properties": {
+     "min": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Min"
+     },
+     "max": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Max"
+     },
+     "currency": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Currency"
+     },
+     "period": {
+      "anyOf": [
+       {
+        "type": "string",
+        "enum": [
+         "year",
+         "month",
+         "hour",
+         "day",
+         "week"
+        ]
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Period"
+     },
+     "basis": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Basis"
+     }
+    },
+    "type": "object",
+    "title": "Pay"
+   },
+   "job_ad__offer__terms__Pay": {
+    "properties": {
+     "amount": {
+      "type": "number",
+      "exclusiveMinimum": 0.0,
+      "title": "Amount"
+     },
+     "period": {
+      "type": "string",
+      "enum": [
+       "hour",
+       "day",
+       "week",
+       "month",
+       "year"
+      ],
+      "title": "Period"
+     },
+     "currency": {
+      "type": "string",
+      "title": "Currency",
+      "default": "ZAR"
+     },
+     "basis": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Basis",
+      "description": "e.g. basic salary; cost to company"
+     },
+     "pay_day": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Pay Day"
+     },
+     "method": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Method"
+     },
+     "overtime_rate": {
+      "anyOf": [
+       {
+        "type": "number",
+        "minimum": 0.0
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Overtime Rate",
+      "description": "multiple of the hourly wage; BCEA s10(2) floor 1.5"
+     },
+     "other_payments": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "title": "Other Payments"
+     },
+     "payments_in_kind": {
+      "items": {
+       "$ref": "#/components/schemas/PaymentInKind"
+      },
+      "type": "array",
+      "title": "Payments In Kind"
+     }
+    },
+    "type": "object",
+    "required": [
+     "amount",
+     "period"
+    ],
+    "title": "Pay"
    },
    "job_ad__shortlist__contract__Reason": {
     "properties": {

@@ -2,7 +2,7 @@
 
 Same loop as before: pre-register, one variable per experiment, frozen baseline, log in `bench/experiments.md` (EXP-400 series).
 
-### Phase 0 — rule engine + clause library + synthetic benchmark (free)
+### Phase 0 — rule engine + clause library + synthetic benchmark (free) — BUILT 2026-11-05; EXP-400 passed 1200/1200, 0 false findings; `/v1/offers/check` and `/v1/offers/template` live
 Build `job_ad/offer/`: `terms.py` (OfferBrief), `rules.py` (loads `compliance-rules.yaml`, evaluates particulars, floors, threshold switch,
 sector selection, consistency), `clauses.py` (clause library with slots), `render.py` (clauses → Markdown with placeholders), `plain.py`
 (Flesch-Kincaid per clause, reused from `metrics/text.py`). `POST /v1/offers/check` is this phase's endpoint: free, no model.

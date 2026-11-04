@@ -58,6 +58,11 @@ placeholders the client merges: `{{employee.full_name}}`, `{{employee.id_number}
 
 `?format=markdown` returns the contract alone as `text/markdown` (headers carry `x-compliance-level`), as `/v1/drafts` does for the ad.
 
+## Template without a model: `POST /v1/offers/template`
+Built in Phase 0. Fills the clause library (`job_ad/offer/clauses.py`, v0.1.0) from the terms and brief, adds a plain-language explanation
+per clause and the compliance report; identity as placeholders. Same `OfferDraft` shape as above with `meta.mode = "template"`,
+`model = null`, `cost_usd = 0`. `?format=markdown` returns the contract alone. Example: `examples-template-response.json`.
+
 ## Pre-draft check: `POST /v1/offers/check`
 Runs the compliance rules on the brief and terms **without** a model call (free, instant). Lets the client fix a below-floor term before
 spending on a draft. Returns the `compliance` and `consistency` objects above.

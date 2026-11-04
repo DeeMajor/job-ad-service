@@ -21,6 +21,7 @@ PORT=4310 .venv/bin/uvicorn job_ad.api.app:app --port 4310   # the service; Open
 | `evals/` | Phase 1+ drafter eval: `build_cases`, `run_drafter`, `cases/briefs.jsonl` |
 | `docs/job-ad-drafter/` | metrics rationale, machine-readable spec, RAG plan, SciDLC plan, service API |
 | `docs/shortlist-ranker/` | shortlist ranker: goal, contract (incl. `AssessmentResult`), ranking metrics + fairness constraints, SciDLC plan, `ranking-spec.yaml` (weights, tiers) |
-| `docs/offer-contract-drafter/` | **planning only, not built** — offer letter + employment contract drafter: contract, BCEA/NMW/LRA rule table with Act references (`compliance-rules.yaml`), SciDLC plan |
+| `docs/offer-contract-drafter/` | offer letter + employment contract drafter: contract, BCEA/NMW/LRA rule table with Act references (`compliance-rules.yaml`), SciDLC plan |
+| `job_ad/offer/` | offer & contract: `terms` (OfferBrief, identity as placeholders), `rules` (statutory engine, Act section on every finding), `clauses` (template library, plain-language per clause), `draft`; endpoints `/v1/offers/check`, `/v1/offers/template`; `bench/offer/` perturbation benchmark |
 | `job_ad/shortlist/` | shortlist ranker: `contract`, `redact` (identifiers out before any model call), `assess` (deterministic test scoring), `judge` (requirement evidence + rubric items), `rank`; endpoints `/v1/shortlists/rank`, `/v1/shortlist-jobs`; `bench/shortlist/` synthetic-pool benchmark |
 | `legacy/ts/` | the original TypeScript implementation (ported to Python 2026-11-04 with exact scorer parity; kept for reference, not maintained) |

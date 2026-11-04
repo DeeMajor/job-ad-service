@@ -1,0 +1,282 @@
+{
+ "drafted_at": "2026-11-04T22:49:53.544253Z",
+ "offer_letter": {
+  "clauses": [
+   {
+    "id": "opening",
+    "heading": "Offer of employment",
+    "text": "Dear {{employee.full_name}},\n\nAcme (Pty) Ltd is pleased to offer you the position of Creditors Clerk, starting on 1 December 2026, based at 14 Loop Street, Cape Town.",
+    "particular": null,
+    "grade": 5.8
+   },
+   {
+    "id": "terms",
+    "heading": "Key terms",
+    "text": "Remuneration: R18,500.00 per month (basic salary). Hours: 40 per week, Mon\u2013Fri 08:00\u201317:00. Probation: 3 month(s). Annual leave: 15 working days. Other benefits: cellphone allowance R500/month. Full particulars are in the attached contract of employment.",
+    "particular": null,
+    "grade": 7.4
+   },
+   {
+    "id": "conditions",
+    "heading": "Conditions and acceptance",
+    "text": "This offer is conditional on the signing of the attached contract.",
+    "particular": null,
+    "grade": 8.0
+   },
+   {
+    "id": "sign",
+    "heading": "Acceptance",
+    "text": "I accept this offer on the terms set out above and in the attached contract.\n\n{{employee.full_name}}  ____________________  Date: {{date_signed}}",
+    "particular": null,
+    "grade": 4.2
+   }
+  ],
+  "markdown": "# Offer of employment \u2014 Creditors Clerk\n\n## 1. Offer of employment\n\nDear {{employee.full_name}},\n\nAcme (Pty) Ltd is pleased to offer you the position of Creditors Clerk, starting on 1 December 2026, based at 14 Loop Street, Cape Town.\n\n## 2. Key terms\n\nRemuneration: R18,500.00 per month (basic salary). Hours: 40 per week, Mon\u2013Fri 08:00\u201317:00. Probation: 3 month(s). Annual leave: 15 working days. Other benefits: cellphone allowance R500/month. Full particulars are in the attached contract of employment.\n\n## 3. Conditions and acceptance\n\nThis offer is conditional on the signing of the attached contract.\n\n## 4. Acceptance\n\nI accept this offer on the terms set out above and in the attached contract.\n\n{{employee.full_name}}  ____________________  Date: {{date_signed}}\n",
+  "placeholders": []
+ },
+ "contract": {
+  "clauses": [
+   {
+    "id": "parties",
+    "heading": "Parties",
+    "text": "This contract of employment is entered into between Acme (Pty) Ltd, of 1 Main Road, Cape Town (the Employer), and {{employee.full_name}}, identity number {{employee.id_number}}, of {{employee.address}} (the Employee).",
+    "particular": "s29(1)(a)-(b)",
+    "grade": 16.8
+   },
+   {
+    "id": "position",
+    "heading": "Position and duties",
+    "text": "The Employer appoints the Employee as Creditors Clerk. The Employee's duties include: Capture supplier invoices in Sage; Reconcile supplier statements. The Employer may reasonably require the Employee to perform other duties consistent with the position.",
+    "particular": "s29(1)(c)",
+    "grade": 12.2
+   },
+   {
+    "id": "term",
+    "heading": "Commencement",
+    "text": "Employment commences on 1 December 2026 on a permanent basis.",
+    "particular": "s29(1)(e)",
+    "grade": 11.1
+   },
+   {
+    "id": "probation",
+    "heading": "Probation",
+    "text": "The first 3 month(s) of employment are a probationary period during which the Employer will assess the Employee's performance against the requirements of the position and give reasonable evaluation, instruction, training, guidance or counselling where needed. Confirmation, extension or termination at the end of probation will follow a fair procedure.",
+    "particular": null,
+    "grade": 16.8
+   },
+   {
+    "id": "place_of_work",
+    "heading": "Place of work",
+    "text": "The Employee's place of work is 14 Loop Street, Cape Town.",
+    "particular": "s29(1)(d)",
+    "grade": 2.5
+   },
+   {
+    "id": "hours",
+    "heading": "Hours of work",
+    "text": "The Employee's ordinary hours of work are 40 hours per week, 8 hours per day over 5 days per week (Mon\u2013Fri 08:00\u201317:00). A meal interval of 60 minutes is taken after no more than five hours of continuous work. The Employee is entitled to a daily rest period of at least 12 consecutive hours and a weekly rest period of at least 36 consecutive hours.",
+    "particular": "s29(1)(f)",
+    "grade": 9.3
+   },
+   {
+    "id": "remuneration",
+    "heading": "Remuneration",
+    "text": "The Employee will be paid R18,500.00 per month (basic salary), equivalent to R106.73 per ordinary hour, payable monthly on the 25th by EFT. Other cash payments: cellphone allowance R500/month. No payments in kind are made.",
+    "particular": "s29(1)(g),(i),(j),(k)",
+    "grade": 7.7
+   },
+   {
+    "id": "overtime",
+    "heading": "Overtime",
+    "text": "Overtime is worked only by agreement and may not exceed ten hours in any week. Overtime is paid at 1.5 times the Employee's ordinary hourly wage, or, by agreement, compensated with paid time off. Work on a Sunday is paid at double the ordinary wage (or one and a half times if the Employee ordinarily works on Sundays), and work on a public holiday at double the ordinary wage.",
+    "particular": "s29(1)(h)",
+    "grade": 11.5
+   },
+   {
+    "id": "deductions",
+    "heading": "Deductions",
+    "text": "The following deductions will be made from the Employee's remuneration: PAYE; UIF 1%. No other deduction will be made without the Employee's written agreement in respect of a specific debt, or as required by law, a court order or an arbitration award.",
+    "particular": "s29(1)(l)",
+    "grade": 12.3
+   },
+   {
+    "id": "leave",
+    "heading": "Leave",
+    "text": "The Employee is entitled to 15 working days of paid annual leave per annual leave cycle of 12 months, to be taken at a time agreed with the Employer and not later than six months after the end of the cycle. Sick leave: 30 days' paid sick leave in every 36-month cycle (during the first six months, one day for every 26 days worked); a medical certificate may be required for absences of more than two consecutive days or on more than two occasions in eight weeks. Maternity leave: at least 4 consecutive months. Parental leave: 10 consecutive days. Adoption and commissioning parental leave as provided in the Act. Family responsibility leave: 3 days' paid leave per year once employed for longer than four months and for at least four days a week.",
+    "particular": "s29(1)(m)",
+    "grade": 10.0
+   },
+   {
+    "id": "termination",
+    "heading": "Termination and notice",
+    "text": "Either party may terminate this contract on written notice of one week if the employee has been employed for six months or less; two weeks if employed for more than six months but not more than one year; four weeks if employed for more than one year. Notice may not be given during any period of leave. Nothing in this clause prevents the Employer from terminating employment summarily for a fair reason following a fair procedure, or the parties from agreeing to waive notice.",
+    "particular": "s29(1)(n)",
+    "grade": 12.3
+   },
+   {
+    "id": "council_or_sd",
+    "heading": "Bargaining council or sectoral determination",
+    "text": "No bargaining council agreement or sectoral determination applies to the Employer's business.",
+    "particular": "s29(1)(o)",
+    "grade": 16.6
+   },
+   {
+    "id": "confidentiality",
+    "heading": "Confidentiality",
+    "text": "The Employee will not, during or after employment, disclose or use any confidential information of the Employer, its clients or suppliers, except as required to perform the Employee's duties or by law.",
+    "particular": null,
+    "grade": 16.8
+   },
+   {
+    "id": "documents",
+    "heading": "Other documents",
+    "text": "No other documents form part of this contract.",
+    "particular": "s29(1)(q)",
+    "grade": 5.2
+   },
+   {
+    "id": "general",
+    "heading": "General",
+    "text": "This contract records the whole agreement between the parties on its subject; any amendment must be in writing and signed by both parties. Where any term is less favourable to the Employee than the Basic Conditions of Employment Act or an applicable sectoral determination or collective agreement, the more favourable provision applies. The Employer will keep these particulars for three years after termination and will explain them to the Employee on request.",
+    "particular": "s29(3)-(4)",
+    "grade": 14.3
+   },
+   {
+    "id": "signatures",
+    "heading": "Signatures",
+    "text": "Signed at ____________ on {{date_signed}}.\n\nFor the Employer: {{employer.signatory}}  ____________________\n\nThe Employee: {{employee.full_name}}  ____________________",
+    "particular": null,
+    "grade": 6.8
+   }
+  ],
+  "markdown": "# Contract of employment \u2014 Creditors Clerk\n\n## 1. Parties\n\nThis contract of employment is entered into between Acme (Pty) Ltd, of 1 Main Road, Cape Town (the Employer), and {{employee.full_name}}, identity number {{employee.id_number}}, of {{employee.address}} (the Employee).\n\n## 2. Position and duties\n\nThe Employer appoints the Employee as Creditors Clerk. The Employee's duties include: Capture supplier invoices in Sage; Reconcile supplier statements. The Employer may reasonably require the Employee to perform other duties consistent with the position.\n\n## 3. Commencement\n\nEmployment commences on 1 December 2026 on a permanent basis.\n\n## 4. Probation\n\nThe first 3 month(s) of employment are a probationary period during which the Employer will assess the Employee's performance against the requirements of the position and give reasonable evaluation, instruction, training, guidance or counselling where needed. Confirmation, extension or termination at the end of probation will follow a fair procedure.\n\n## 5. Place of work\n\nThe Employee's place of work is 14 Loop Street, Cape Town.\n\n## 6. Hours of work\n\nThe Employee's ordinary hours of work are 40 hours per week, 8 hours per day over 5 days per week (Mon\u2013Fri 08:00\u201317:00). A meal interval of 60 minutes is taken after no more than five hours of continuous work. The Employee is entitled to a daily rest period of at least 12 consecutive hours and a weekly rest period of at least 36 consecutive hours.\n\n## 7. Remuneration\n\nThe Employee will be paid R18,500.00 per month (basic salary), equivalent to R106.73 per ordinary hour, payable monthly on the 25th by EFT. Other cash payments: cellphone allowance R500/month. No payments in kind are made.\n\n## 8. Overtime\n\nOvertime is worked only by agreement and may not exceed ten hours in any week. Overtime is paid at 1.5 times the Employee's ordinary hourly wage, or, by agreement, compensated with paid time off. Work on a Sunday is paid at double the ordinary wage (or one and a half times if the Employee ordinarily works on Sundays), and work on a public holiday at double the ordinary wage.\n\n## 9. Deductions\n\nThe following deductions will be made from the Employee's remuneration: PAYE; UIF 1%. No other deduction will be made without the Employee's written agreement in respect of a specific debt, or as required by law, a court order or an arbitration award.\n\n## 10. Leave\n\nThe Employee is entitled to 15 working days of paid annual leave per annual leave cycle of 12 months, to be taken at a time agreed with the Employer and not later than six months after the end of the cycle. Sick leave: 30 days' paid sick leave in every 36-month cycle (during the first six months, one day for every 26 days worked); a medical certificate may be required for absences of more than two consecutive days or on more than two occasions in eight weeks. Maternity leave: at least 4 consecutive months. Parental leave: 10 consecutive days. Adoption and commissioning parental leave as provided in the Act. Family responsibility leave: 3 days' paid leave per year once employed for longer than four months and for at least four days a week.\n\n## 11. Termination and notice\n\nEither party may terminate this contract on written notice of one week if the employee has been employed for six months or less; two weeks if employed for more than six months but not more than one year; four weeks if employed for more than one year. Notice may not be given during any period of leave. Nothing in this clause prevents the Employer from terminating employment summarily for a fair reason following a fair procedure, or the parties from agreeing to waive notice.\n\n## 12. Bargaining council or sectoral determination\n\nNo bargaining council agreement or sectoral determination applies to the Employer's business.\n\n## 13. Confidentiality\n\nThe Employee will not, during or after employment, disclose or use any confidential information of the Employer, its clients or suppliers, except as required to perform the Employee's duties or by law.\n\n## 14. Other documents\n\nNo other documents form part of this contract.\n\n## 15. General\n\nThis contract records the whole agreement between the parties on its subject; any amendment must be in writing and signed by both parties. Where any term is less favourable to the Employee than the Basic Conditions of Employment Act or an applicable sectoral determination or collective agreement, the more favourable provision applies. The Employer will keep these particulars for three years after termination and will explain them to the Employee on request.\n\n## 16. Signatures\n\nSigned at ____________ on {{date_signed}}.\n\nFor the Employer: {{employer.signatory}}  ____________________\n\nThe Employee: {{employee.full_name}}  ____________________\n",
+  "placeholders": [
+   "employee.full_name",
+   "employee.id_number",
+   "employee.address",
+   "employer.signatory",
+   "date_signed"
+  ]
+ },
+ "plain_language": [
+  {
+   "id": "parties",
+   "explanation": "This contract is between Acme (Pty) Ltd and you.",
+   "grade": 2.3
+  },
+  {
+   "id": "position",
+   "explanation": "Your job title is Creditors Clerk. Your main duties are listed here; you may be asked to do other reasonable work that fits the job.",
+   "grade": 4.9
+  },
+  {
+   "id": "term",
+   "explanation": "You start on 1 December 2026.",
+   "grade": 3.7
+  },
+  {
+   "id": "probation",
+   "explanation": "For the first 3 month(s) you are on probation. You will get feedback and support; a decision to confirm, extend or end your employment must follow a fair process.",
+   "grade": 6.7
+  },
+  {
+   "id": "place_of_work",
+   "explanation": "You work at 14 Loop Street, Cape Town.",
+   "grade": -1.1
+  },
+  {
+   "id": "hours",
+   "explanation": "You work 40 hours a week over 5 days, with a meal break and guaranteed daily and weekly rest.",
+   "grade": 6.3
+  },
+  {
+   "id": "remuneration",
+   "explanation": "You earn R18,500.00 per month, paid monthly on the 25th. You also get: cellphone allowance R500/month.",
+   "grade": 3.2
+  },
+  {
+   "id": "overtime",
+   "explanation": "Overtime is voluntary and limited to 10 hours a week. You are paid 1.5 times your normal hourly rate for it, or you can agree to take paid time off instead. Sundays and public holidays pay double.",
+   "grade": 5.8
+  },
+  {
+   "id": "deductions",
+   "explanation": "These amounts come off your pay: PAYE; UIF 1%. Nothing else can be deducted unless you agree in writing to a specific debt, or a court or arbitrator orders it.",
+   "grade": 6.7
+  },
+  {
+   "id": "leave",
+   "explanation": "You get 15 working days of paid annual leave per annual leave cycle of 12 months. You get paid sick leave, maternity leave of at least four months, parental leave of ten days, and family responsibility leave for family emergencies. The exact amounts are in this clause.",
+   "grade": 8.1
+  },
+  {
+   "id": "termination",
+   "explanation": "To end the contract, you or the company must give written notice: one week in your first six months, two weeks up to one year, and four weeks after a year. Notice cannot be given while you are on leave.",
+   "grade": 6.7
+  },
+  {
+   "id": "council_or_sd",
+   "explanation": "Some industries have extra rules from a bargaining council or a sectoral determination. None applies to this job.",
+   "grade": 8.2
+  },
+  {
+   "id": "confidentiality",
+   "explanation": "You must keep company and client information private, during and after your employment, unless your job or the law requires you to share it.",
+   "grade": 11.5
+  },
+  {
+   "id": "documents",
+   "explanation": "No other documents form part of this contract.",
+   "grade": 5.2
+  },
+  {
+   "id": "general",
+   "explanation": "This document is the whole agreement; changes must be in writing. If any part gives you less than the law does, the law wins. You can ask to have anything in it explained.",
+   "grade": 3.4
+  },
+  {
+   "id": "signatures",
+   "explanation": "Both you and the company's representative sign and date the contract.",
+   "grade": 8.0
+  }
+ ],
+ "compliance": {
+  "level": "compliant",
+  "summary": "All BCEA s29 particulars present and every checked floor met. Hourly equivalent R106.73; BCEA hours/overtime sections apply.",
+  "findings": [
+   {
+    "severity": "could_improve",
+    "rule": "plain_language.clause_readability",
+    "message": "Clause text above grade 10: parties, position, term, probation, overtime, deductions, leave, termination, council_or_sd, confidentiality, general; the plain-language explanations cover them.",
+    "evidence": "Flesch-Kincaid; BCEA s29(3)",
+    "clause": null
+   }
+  ],
+  "checked_against": {
+   "rules_version": "0.1.0",
+   "sector": "none",
+   "earnings_threshold_applies": true,
+   "hourly_equivalent_zar": 106.73,
+   "annual_equivalent_zar": 222000.0,
+   "figures_to_verify": []
+  }
+ },
+ "consistency": {
+  "title_matches_ad": true,
+  "pay_in_ad_range": true,
+  "employment_type_matches": null,
+  "location_matches": true,
+  "notes": []
+ },
+ "disclaimer": "Template generated from the agreed terms and checked against the BCEA, NMW Act and LRA rules in compliance-rules.yaml v0.1.0. Not legal advice; the clause library must be reviewed by a labour practitioner before use, and figures marked 'verify' confirmed against the Government Gazette.",
+ "meta": {
+  "mode": "template",
+  "model": null,
+  "prompt_version": null,
+  "clauses_version": "0.1.0",
+  "rules_version": "0.1.0",
+  "usage": {},
+  "cost_usd": 0.0,
+  "latency_s": 0.017
+ }
+}

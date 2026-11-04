@@ -43,6 +43,9 @@ from ..shortlist.contract import RankJobRequest, RankRequest, RankResult
 from ..shortlist.judge import JUDGE_PROMPT_VERSION as SHORTLIST_JUDGE_PROMPT_VERSION, make_claude_judge
 from ..shortlist.rank import rank_pool
 from ..shortlist.spec import RANKING_SPEC_VERSION
+from ..offer.terms import OfferRequest
+from ..offer.rules import RULES_VERSION as OFFER_RULES_VERSION, Compliance as OfferCompliance, Consistency as OfferConsistency, check as offer_check
+from ..offer.draft import OfferDraft, draft_template
 
 # ---- structured JSON logs to stdout (Alloy → Loki); every line carries the version stamps
 class _JsonFormatter(logging.Formatter):
@@ -195,7 +198,7 @@ async def upstream_error(request: Request, exc: anthropic.APIError):
 
 @app.get("/healthz")
 def healthz():
-    return {"ok": True, "versions": {"spec": spec.version, "judge_prompt": JUDGE_PROMPT_VERSION, "drafter_prompt": DRAFTER_PROMPT_VERSION, "brief_schema": BRIEF_SCHEMA_VERSION, "ranking_spec": RANKING_SPEC_VERSION, "shortlist_judge_prompt": SHORTLIST_JUDGE_PROMPT_VERSION},
+    return {"ok": True, "versions": {"spec": spec.version, "judge_prompt": JUDGE_PROMPT_VERSION, "drafter_prompt": DRAFTER_PROMPT_VERSION, "brief_schema": BRIEF_SCHEMA_VERSION, "ranking_spec": RANKING_SPEC_VERSION, "shortlist_judge_prompt": SHORTLIST_JUDGE_PROMPT_VERSION, "offer_rules": OFFER_RULES_VERSION},
             "features": {"enrichment": ENRICH_ENABLED, "jobs_store": store.backend}, "spend": {"today_usd": round(spend_cap.today(), 4), "daily_cap_usd": DAILY_CAP_USD}}
 
 
@@ -424,3 +427,26 @@ def get_shortlist_job(job_id: str):
     if not j:
         raise HTTPException(status_code=404, detail={"error": "job_not_found", "message": "Unknown or expired job id (jobs are kept for 24 hours)."})
     return _rank_job_view(j)
+
+
+# ---- offer & contract (docs/offer-contract-drafter/) — Phase 0: rule engine + template, no model
+
+class OfferCheckResponse(BaseModel):
+    compliance: OfferCompliance
+    consistency: OfferConsistency
+
+
+@app.post("/v1/offers/check", response_model=OfferCheckResponse)
+def post_offer_check(req: OfferRequest):
+    """Statutory check of the terms (BCEA s29 particulars, NMW, hours, leave, notice, LRA s198B) and consistency with the ad's brief. Free, no model call; nothing is gated."""
+    comp, cons = offer_check(req)
+    return OfferCheckResponse(compliance=comp, consistency=cons)
+
+
+@app.post("/v1/offers/template", response_model=OfferDraft, responses={200: {"content": {"text/markdown": {"schema": {"type": "string"}}}, "description": "JSON by default; `?format=markdown` returns the contract alone as text/markdown (header x-compliance-level)."}})
+def post_offer_template(req: OfferRequest, format: Literal["json", "markdown"] = "json"):
+    """Offer letter + contract from the clause library with identity placeholders, plain-language explanation per clause, compliance report. Free, no model call. Template wording pending practitioner review."""
+    d = draft_template(req)
+    if format == "markdown":
+        return Response(content=d.contract.markdown, media_type="text/markdown", headers={"x-compliance-level": d.compliance.level})
+    return d
