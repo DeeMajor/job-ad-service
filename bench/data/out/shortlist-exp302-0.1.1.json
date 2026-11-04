@@ -1,0 +1,1654 @@
+{
+ "brief": "case_003",
+ "tau": 0.9999999999999999,
+ "cost_usd": 0.1676,
+ "calls": 10,
+ "orig": {
+  "spec_version": "0.1.0",
+  "ranked_at": "2026-11-04T22:00:04.068591Z",
+  "shortlist": [
+   {
+    "rank": 1,
+    "candidate_id": "strong_1",
+    "score": 97.5,
+    "tier": "strong",
+    "components": {
+     "requirements": {
+      "score": 0.9444444444444444,
+      "weight": 0.45,
+      "matched": 8,
+      "unclear": 1,
+      "unmet": 0,
+      "of": 9
+     },
+     "skills_test": {
+      "score": 1.0,
+      "weight": 0.4,
+      "points": 20.0,
+      "max": 20.0,
+      "by_skill": {
+       "communication": 1.0,
+       "core": 1.0,
+       "process": 1.0
+      },
+      "judged_items": 1,
+      "ungraded_items": [],
+      "time_limit_s": 1200,
+      "time_used_s": 600,
+      "flags": []
+     },
+     "nice_to_have": {
+      "score": 1.0,
+      "weight": 0.15,
+      "matched": 1,
+      "unclear": 0,
+      "unmet": 0,
+      "of": 1
+     }
+    },
+    "reasons": [
+     {
+      "kind": "requirement_met",
+      "requirement": "A qualification in Islamic Finance, Banking and Law will be critical.",
+      "skill": null,
+      "evidence": "\"I have A qualification in Islamic Finance, Banking and Law will be critical \u2014 used daily for the last three years.\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_met",
+      "requirement": "A relevant Bachelor's degree in Commerce, Finance, Economics, Accounting, Banking, Business or related field.",
+      "skill": null,
+      "evidence": "\"I have A relevant Bachelor's degree in Commerce, Finance, Economics, Accounting, Banking, Business or related field \u2014 used daily for the last three years.\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_met",
+      "requirement": "Strong leadership experience within banking/financial services.",
+      "skill": null,
+      "evidence": "\"Holds: Strong leadership experience within banking/financial services, obtained and current.\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_met",
+      "requirement": "Demonstrable Islamic Banking/Finance expertise.",
+      "skill": null,
+      "evidence": "\"I have Demonstrable Islamic Banking/Finance expertise \u2014 used daily for the last three years.\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_met",
+      "requirement": "Strong commercial and strategic acumen.",
+      "skill": null,
+      "evidence": "\"Holds: Strong commercial and strategic acumen, obtained and current.\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_met",
+      "requirement": "Product and proposition management capability.",
+      "skill": null,
+      "evidence": "\"Holds: Product and proposition management capability, obtained and current.\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_met",
+      "requirement": "Excellent stakeholder management and executive influencing skills.",
+      "skill": null,
+      "evidence": "\"Confirmed Excellent stakeholder management and executive influencing skills (see certificate on request).\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_met",
+      "requirement": "A strong understanding of banking risk, governance and regulatory environments.",
+      "skill": null,
+      "evidence": "\"I have A strong understanding of banking risk, governance and regulatory environments \u2014 used daily for the last three years.\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Postgraduate Degrees and Professional Qualifications (Required)",
+      "skill": null,
+      "evidence": "\"Confirmed An MBA, postgraduate would be advantageous (see certificate on request).\"",
+      "source": "cv_text",
+      "note": "Only an MBA is mentioned as advantageous, not explicitly confirmed as a required postgraduate qualification held."
+     },
+     {
+      "kind": "test_strength",
+      "requirement": null,
+      "skill": "communication",
+      "evidence": "10/10 points",
+      "source": "assessment",
+      "note": null
+     },
+     {
+      "kind": "test_strength",
+      "requirement": null,
+      "skill": "core",
+      "evidence": "5/5 points",
+      "source": "assessment",
+      "note": null
+     },
+     {
+      "kind": "test_strength",
+      "requirement": null,
+      "skill": "process",
+      "evidence": "5/5 points",
+      "source": "assessment",
+      "note": null
+     },
+     {
+      "kind": "test_item_judged",
+      "requirement": null,
+      "skill": "communication",
+      "evidence": "q7: 5/5 \u2014 \"I would check the discrepancy against the purchase order, call the supplier to confirm, and set a follow-up date in writing.\"",
+      "source": "assessment",
+      "note": "The answer identifies the discrepancy, proposes checking it against the PO, and sets a follow-up date, satisfying all rubric elements."
+     },
+     {
+      "kind": "nice_to_have_met",
+      "requirement": "An MBA, postgraduate would be advantageous.",
+      "skill": null,
+      "evidence": "\"Confirmed An MBA, postgraduate would be advantageous (see certificate on request).\"",
+      "source": "cv_text",
+      "note": null
+     }
+    ],
+    "needs_human_check": [
+     "requirement unclear: Postgraduate Degrees and Professional Qualifications (Required)"
+    ],
+    "redactions_applied": 0
+   },
+   {
+    "rank": 2,
+    "candidate_id": "adequate_1",
+    "score": 55.5,
+    "tier": "possible",
+    "components": {
+     "requirements": {
+      "score": 0.6666666666666666,
+      "weight": 0.45,
+      "matched": 4,
+      "unclear": 4,
+      "unmet": 1,
+      "of": 9
+     },
+     "skills_test": {
+      "score": 0.45,
+      "weight": 0.4,
+      "points": 9.0,
+      "max": 20.0,
+      "by_skill": {
+       "communication": 0.3,
+       "core": 0.6,
+       "process": 0.6
+      },
+      "judged_items": 1,
+      "ungraded_items": [],
+      "time_limit_s": 1200,
+      "time_used_s": 700,
+      "flags": []
+     },
+     "nice_to_have": {
+      "score": 0.5,
+      "weight": 0.15,
+      "matched": 0,
+      "unclear": 1,
+      "unmet": 0,
+      "of": 1
+     }
+    },
+    "reasons": [
+     {
+      "kind": "requirement_unmet",
+      "requirement": "A relevant Bachelor's degree in Commerce, Finance, Economics, Accounting, Banking, Business or related field.",
+      "skill": null,
+      "evidence": "",
+      "source": "none",
+      "note": "not listed"
+     },
+     {
+      "kind": "requirement_met",
+      "requirement": "A qualification in Islamic Finance, Banking and Law will be critical.",
+      "skill": null,
+      "evidence": "\"Confirmed A qualification in Islamic Finance, Banking and Law will be critical (see certificate on request).\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_met",
+      "requirement": "Strong leadership experience within banking/financial services.",
+      "skill": null,
+      "evidence": "\"Holds: Strong leadership experience within banking/financial services, obtained and current.\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_met",
+      "requirement": "Strong commercial and strategic acumen.",
+      "skill": null,
+      "evidence": "\"Confirmed Strong commercial and strategic acumen (see certificate on request).\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_met",
+      "requirement": "Excellent stakeholder management and executive influencing skills.",
+      "skill": null,
+      "evidence": "\"Holds: Excellent stakeholder management and executive influencing skills, obtained and current.\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Demonstrable Islamic Banking/Finance expertise.",
+      "skill": null,
+      "evidence": "\"Worked in a related area touching on demonstrable matters.\"",
+      "source": "cv_text",
+      "note": "Vague statement does not explicitly confirm Islamic Banking/Finance expertise."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Product and proposition management capability.",
+      "skill": null,
+      "evidence": "\"Worked in a related area touching on product matters.\"",
+      "source": "cv_text",
+      "note": "Vague reference to 'product matters' does not confirm proposition management capability."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "A strong understanding of banking risk, governance and regulatory environments.",
+      "skill": null,
+      "evidence": "",
+      "source": "none",
+      "note": "No mention of risk, governance or regulatory understanding anywhere in the application."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Postgraduate Degrees and Professional Qualifications (Required)",
+      "skill": null,
+      "evidence": "\"Worked in a related area touching on postgraduate matters.\"",
+      "source": "cv_text",
+      "note": "Vague reference to 'postgraduate matters' does not explicitly confirm a postgraduate degree or professional qualification."
+     },
+     {
+      "kind": "test_gap",
+      "requirement": null,
+      "skill": "communication",
+      "evidence": "3/10 points; q3 1/2, q6 2/3, q7 0/5",
+      "source": "assessment",
+      "note": null
+     },
+     {
+      "kind": "test_item_judged",
+      "requirement": null,
+      "skill": "communication",
+      "evidence": "q7: 0/5 \u2014 \"I would call the supplier and ask about it.\"",
+      "source": "assessment",
+      "note": "The answer does not identify a discrepancy, propose checking against the PO, or set a follow-up date as required by the rubric."
+     },
+     {
+      "kind": "nice_to_have_unclear",
+      "requirement": "An MBA, postgraduate would be advantageous.",
+      "skill": null,
+      "evidence": "\"Worked in a related area touching on postgraduate matters.\"",
+      "source": "cv_text",
+      "note": "Vague mention of postgraduate matters does not confirm an MBA or equivalent postgraduate qualification."
+     }
+    ],
+    "needs_human_check": [
+     "requirement unclear: Demonstrable Islamic Banking/Finance expertise.",
+     "requirement unclear: Product and proposition management capability.",
+     "requirement unclear: A strong understanding of banking risk, governance and regulatory environments.",
+     "requirement unclear: Postgraduate Degrees and Professional Qualifications (Required)"
+    ],
+    "redactions_applied": 0
+   },
+   {
+    "rank": 3,
+    "candidate_id": "adequate_0",
+    "score": 43.5,
+    "tier": "weak",
+    "components": {
+     "requirements": {
+      "score": 0.6111111111111112,
+      "weight": 0.45,
+      "matched": 4,
+      "unclear": 3,
+      "unmet": 2,
+      "of": 9
+     },
+     "skills_test": {
+      "score": 0.4,
+      "weight": 0.4,
+      "points": 8.0,
+      "max": 20.0,
+      "by_skill": {
+       "communication": 0.3,
+       "core": 0.4,
+       "process": 0.6
+      },
+      "judged_items": 1,
+      "ungraded_items": [],
+      "time_limit_s": 1200,
+      "time_used_s": 700,
+      "flags": []
+     },
+     "nice_to_have": {
+      "score": 0.0,
+      "weight": 0.15,
+      "matched": 0,
+      "unclear": 0,
+      "unmet": 1,
+      "of": 1
+     }
+    },
+    "reasons": [
+     {
+      "kind": "requirement_unmet",
+      "requirement": "A relevant Bachelor's degree in Commerce, Finance, Economics, Accounting, Banking, Business or related field.",
+      "skill": null,
+      "evidence": "",
+      "source": "none",
+      "note": "not listed"
+     },
+     {
+      "kind": "requirement_unmet",
+      "requirement": "Postgraduate Degrees and Professional Qualifications (Required)",
+      "skill": null,
+      "evidence": "",
+      "source": "none",
+      "note": "not listed"
+     },
+     {
+      "kind": "requirement_met",
+      "requirement": "A qualification in Islamic Finance, Banking and Law will be critical.",
+      "skill": null,
+      "evidence": "\"A qualification in Islamic Finance, Banking and Law will be critical, obtained and current.\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_met",
+      "requirement": "Strong leadership experience within banking/financial services.",
+      "skill": null,
+      "evidence": "\"Confirmed Strong leadership experience within banking/financial services (see certificate on request).\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_met",
+      "requirement": "Strong commercial and strategic acumen.",
+      "skill": null,
+      "evidence": "\"Holds: Strong commercial and strategic acumen, obtained and current.\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_met",
+      "requirement": "Excellent stakeholder management and executive influencing skills.",
+      "skill": null,
+      "evidence": "\"I have Excellent stakeholder management and executive influencing skills \u2014 used daily for the last three years.\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Demonstrable Islamic Banking/Finance expertise.",
+      "skill": null,
+      "evidence": "\"Worked in a related area touching on demonstrable matters.\"",
+      "source": "cv_text",
+      "note": "Vague phrasing does not explicitly confirm Islamic Banking/Finance expertise."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Product and proposition management capability.",
+      "skill": null,
+      "evidence": "\"Worked in a related area touching on product matters.\"",
+      "source": "cv_text",
+      "note": "Vague reference to product matters does not confirm proposition management capability."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "A strong understanding of banking risk, governance and regulatory environments.",
+      "skill": null,
+      "evidence": "\"Worked in a related area touching on understanding matters.\"",
+      "source": "cv_text",
+      "note": "Vague phrasing does not confirm understanding of risk, governance or regulatory environments."
+     },
+     {
+      "kind": "test_gap",
+      "requirement": null,
+      "skill": "communication",
+      "evidence": "3/10 points; q3 1/2, q6 2/3, q7 0/5",
+      "source": "assessment",
+      "note": null
+     },
+     {
+      "kind": "test_gap",
+      "requirement": null,
+      "skill": "core",
+      "evidence": "2/5 points; q1 0/2, q4 2/3",
+      "source": "assessment",
+      "note": null
+     },
+     {
+      "kind": "test_item_judged",
+      "requirement": null,
+      "skill": "communication",
+      "evidence": "q7: 0/5 \u2014 \"I would call the supplier and ask about it.\"",
+      "source": "assessment",
+      "note": "The answer neither identifies the discrepancy, checks against the PO, nor sets a follow-up date, so it earns no rubric points."
+     },
+     {
+      "kind": "nice_to_have_unmet",
+      "requirement": "An MBA, postgraduate would be advantageous.",
+      "skill": null,
+      "evidence": "",
+      "source": "none",
+      "note": "not listed"
+     }
+    ],
+    "needs_human_check": [
+     "requirement unclear: Demonstrable Islamic Banking/Finance expertise.",
+     "requirement unclear: Product and proposition management capability.",
+     "requirement unclear: A strong understanding of banking risk, governance and regulatory environments."
+    ],
+    "redactions_applied": 0
+   },
+   {
+    "rank": 4,
+    "candidate_id": "weak_1",
+    "score": 34.5,
+    "tier": "weak",
+    "components": {
+     "requirements": {
+      "score": 0.5,
+      "weight": 0.45,
+      "matched": 1,
+      "unclear": 7,
+      "unmet": 1,
+      "of": 9
+     },
+     "skills_test": {
+      "score": 0.3,
+      "weight": 0.4,
+      "points": 6.0,
+      "max": 20.0,
+      "by_skill": {
+       "communication": 0.2,
+       "core": 0.4,
+       "process": 0.4
+      },
+      "judged_items": 1,
+      "ungraded_items": [],
+      "time_limit_s": 1200,
+      "time_used_s": 800,
+      "flags": []
+     },
+     "nice_to_have": {
+      "score": 0.0,
+      "weight": 0.15,
+      "matched": 0,
+      "unclear": 0,
+      "unmet": 1,
+      "of": 1
+     }
+    },
+    "reasons": [
+     {
+      "kind": "requirement_unmet",
+      "requirement": "A relevant Bachelor's degree in Commerce, Finance, Economics, Accounting, Banking, Business or related field.",
+      "skill": null,
+      "evidence": "",
+      "source": "none",
+      "note": "not listed"
+     },
+     {
+      "kind": "requirement_met",
+      "requirement": "A qualification in Islamic Finance, Banking and Law will be critical.",
+      "skill": null,
+      "evidence": "\"Confirmed A qualification in Islamic Finance, Banking and Law will be critical\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Strong leadership experience within banking/financial services.",
+      "skill": null,
+      "evidence": "\"Worked in a related area touching on demonstrable matters.\"",
+      "source": "cv_text",
+      "note": "No leadership experience is explicitly stated, only vague related work."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Demonstrable Islamic Banking/Finance expertise.",
+      "skill": null,
+      "evidence": "\"Some exposure to field through earlier roles.\"",
+      "source": "cv_text",
+      "note": "Only vague exposure is mentioned, not demonstrable expertise."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Strong commercial and strategic acumen.",
+      "skill": null,
+      "evidence": "\"Some exposure to acumen through earlier roles.\"",
+      "source": "cv_text",
+      "note": "Only vague exposure mentioned, not strength in commercial/strategic acumen."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Product and proposition management capability.",
+      "skill": null,
+      "evidence": "\"Some exposure to capability through earlier roles.\"",
+      "source": "cv_text",
+      "note": "Vague mention of capability exposure, not specific to product/proposition management."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Excellent stakeholder management and executive influencing skills.",
+      "skill": null,
+      "evidence": "\"Some exposure to skills through earlier roles.\"",
+      "source": "cv_text",
+      "note": "Vague mention of skills exposure, not stakeholder management specifically."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "A strong understanding of banking risk, governance and regulatory environments.",
+      "skill": null,
+      "evidence": "\"Some exposure to environments through earlier roles.\"",
+      "source": "cv_text",
+      "note": "Vague mention of exposure to environments, not explicitly risk/governance/regulatory understanding."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Postgraduate Degrees and Professional Qualifications (Required)",
+      "skill": null,
+      "evidence": "\"Worked in a related area touching on postgraduate matters.\"",
+      "source": "cv_text",
+      "note": "Vague reference to postgraduate matters, no actual degree or qualification named."
+     },
+     {
+      "kind": "test_gap",
+      "requirement": null,
+      "skill": "communication",
+      "evidence": "2/10 points; q3 1/2, q6 1/3, q7 0/5",
+      "source": "assessment",
+      "note": null
+     },
+     {
+      "kind": "test_gap",
+      "requirement": null,
+      "skill": "core",
+      "evidence": "2/5 points; q1 1/2, q4 1/3",
+      "source": "assessment",
+      "note": null
+     },
+     {
+      "kind": "test_gap",
+      "requirement": null,
+      "skill": "process",
+      "evidence": "2/5 points; q2 1/3, q5 1/2",
+      "source": "assessment",
+      "note": null
+     },
+     {
+      "kind": "test_item_judged",
+      "requirement": null,
+      "skill": "communication",
+      "evidence": "q7: 0/5 \u2014 \"I would ask my manager.\"",
+      "source": "assessment",
+      "note": "The answer does not identify the discrepancy, propose a PO check, or set a follow-up date."
+     },
+     {
+      "kind": "nice_to_have_unmet",
+      "requirement": "An MBA, postgraduate would be advantageous.",
+      "skill": null,
+      "evidence": "",
+      "source": "none",
+      "note": "not listed"
+     }
+    ],
+    "needs_human_check": [
+     "requirement unclear: Strong leadership experience within banking/financial services.",
+     "requirement unclear: Demonstrable Islamic Banking/Finance expertise.",
+     "requirement unclear: Strong commercial and strategic acumen.",
+     "requirement unclear: Product and proposition management capability.",
+     "requirement unclear: Excellent stakeholder management and executive influencing skills.",
+     "requirement unclear: A strong understanding of banking risk, governance and regulatory environments.",
+     "requirement unclear: Postgraduate Degrees and Professional Qualifications (Required)"
+    ],
+    "redactions_applied": 0
+   },
+   {
+    "rank": 5,
+    "candidate_id": "missing_1",
+    "score": 12.0,
+    "tier": "weak",
+    "components": {
+     "requirements": {
+      "score": 0.05555555555555555,
+      "weight": 0.45,
+      "matched": 0,
+      "unclear": 1,
+      "unmet": 8,
+      "of": 9
+     },
+     "skills_test": {
+      "score": 0.05,
+      "weight": 0.4,
+      "points": 1.0,
+      "max": 20.0,
+      "by_skill": {
+       "communication": 0.0,
+       "core": 0.2,
+       "process": 0.0
+      },
+      "judged_items": 0,
+      "ungraded_items": [],
+      "time_limit_s": 1200,
+      "time_used_s": 900,
+      "flags": []
+     },
+     "nice_to_have": {
+      "score": 0.5,
+      "weight": 0.15,
+      "matched": 0,
+      "unclear": 1,
+      "unmet": 0,
+      "of": 1
+     }
+    },
+    "reasons": [
+     {
+      "kind": "requirement_unmet",
+      "requirement": "A qualification in Islamic Finance, Banking and Law will be critical.",
+      "skill": null,
+      "evidence": "\"No a qualification in islamic finance, banking and law will be critical.\"",
+      "source": "cv_text",
+      "note": "Explicitly states no such qualification."
+     },
+     {
+      "kind": "requirement_unmet",
+      "requirement": "A relevant Bachelor's degree in Commerce, Finance, Economics, Accounting, Banking, Business or related field.",
+      "skill": null,
+      "evidence": "\"No a relevant bachelor's degree in commerce, finance, economics, accounting, banking, business or related field.\"",
+      "source": "cv_text",
+      "note": "Explicitly states no such degree."
+     },
+     {
+      "kind": "requirement_unmet",
+      "requirement": "Strong leadership experience within banking/financial services.",
+      "skill": null,
+      "evidence": "\"No strong leadership experience within banking/financial services.\"",
+      "source": "cv_text",
+      "note": "Explicitly states lack of this experience."
+     },
+     {
+      "kind": "requirement_unmet",
+      "requirement": "Demonstrable Islamic Banking/Finance expertise.",
+      "skill": null,
+      "evidence": "\"No demonstrable islamic banking/finance expertise.\"",
+      "source": "cv_text",
+      "note": "Explicitly states lack of this expertise."
+     },
+     {
+      "kind": "requirement_unmet",
+      "requirement": "Strong commercial and strategic acumen.",
+      "skill": null,
+      "evidence": "\"No strong commercial and strategic acumen.\"",
+      "source": "cv_text",
+      "note": "Explicitly states lack of this acumen."
+     },
+     {
+      "kind": "requirement_unmet",
+      "requirement": "Product and proposition management capability.",
+      "skill": null,
+      "evidence": "\"No product and proposition management capability.\"",
+      "source": "cv_text",
+      "note": "Explicitly states lack of this capability."
+     },
+     {
+      "kind": "requirement_unmet",
+      "requirement": "Excellent stakeholder management and executive influencing skills.",
+      "skill": null,
+      "evidence": "\"No excellent stakeholder management and executive influencing skills.\"",
+      "source": "cv_text",
+      "note": "Explicitly states lack of these skills."
+     },
+     {
+      "kind": "requirement_unmet",
+      "requirement": "A strong understanding of banking risk, governance and regulatory environments.",
+      "skill": null,
+      "evidence": "\"No a strong understanding of banking risk, governance and regulatory environments.\"",
+      "source": "cv_text",
+      "note": "Explicitly states lack of this understanding."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Postgraduate Degrees and Professional Qualifications (Required)",
+      "skill": null,
+      "evidence": "\"Worked in a related area touching on postgraduate matters.\"",
+      "source": "cv_text",
+      "note": "Vague reference to postgraduate matters does not confirm an actual postgraduate degree or professional qualification."
+     },
+     {
+      "kind": "test_gap",
+      "requirement": null,
+      "skill": "communication",
+      "evidence": "0/10 points; q3 0/2, q6 0/3, q7 0/5",
+      "source": "assessment",
+      "note": null
+     },
+     {
+      "kind": "test_gap",
+      "requirement": null,
+      "skill": "core",
+      "evidence": "1/5 points; q1 1/2, q4 0/3",
+      "source": "assessment",
+      "note": null
+     },
+     {
+      "kind": "test_gap",
+      "requirement": null,
+      "skill": "process",
+      "evidence": "0/5 points; q2 0/3, q5 0/2",
+      "source": "assessment",
+      "note": null
+     },
+     {
+      "kind": "nice_to_have_unclear",
+      "requirement": "An MBA, postgraduate would be advantageous.",
+      "skill": null,
+      "evidence": "\"Worked in a related area touching on postgraduate matters.\"",
+      "source": "cv_text",
+      "note": "No explicit statement of holding an MBA or postgraduate qualification, only a vague mention of related postgraduate matters."
+     }
+    ],
+    "needs_human_check": [
+     "requirement unclear: Postgraduate Degrees and Professional Qualifications (Required)"
+    ],
+    "redactions_applied": 0
+   }
+  ],
+  "excluded_from_ranking": [],
+  "meta": {
+   "spec_version": "0.1.0",
+   "judge_prompt_version": "0.1.0",
+   "pool_size": 5,
+   "ranked": 5,
+   "judged_candidates": 5,
+   "judged_items": 4,
+   "judge_model": "claude-sonnet-5",
+   "weights": {
+    "requirements": 0.45,
+    "skills_test": 0.4,
+    "nice_to_have": 0.15
+   },
+   "usage": {
+    "input_tokens": 2997,
+    "output_tokens": 8021,
+    "cache_read_input_tokens": 6348,
+    "cache_creation_input_tokens": 1587
+   },
+   "cost_usd": 0.0914,
+   "latency_s": 67.74,
+   "fairness_check": {
+    "ran": true,
+    "redaction_clean": true,
+    "residual_patterns": 0,
+    "note": "protected attributes have no field in the contract; free text is redacted before any model call; time is not scored"
+   }
+  }
+ },
+ "twins": {
+  "spec_version": "0.1.0",
+  "ranked_at": "2026-11-04T22:01:00.316294Z",
+  "shortlist": [
+   {
+    "rank": 1,
+    "candidate_id": "strong_1_twin",
+    "score": 97.5,
+    "tier": "strong",
+    "components": {
+     "requirements": {
+      "score": 0.9444444444444444,
+      "weight": 0.45,
+      "matched": 8,
+      "unclear": 1,
+      "unmet": 0,
+      "of": 9
+     },
+     "skills_test": {
+      "score": 1.0,
+      "weight": 0.4,
+      "points": 20.0,
+      "max": 20.0,
+      "by_skill": {
+       "communication": 1.0,
+       "core": 1.0,
+       "process": 1.0
+      },
+      "judged_items": 1,
+      "ungraded_items": [],
+      "time_limit_s": 1200,
+      "time_used_s": 600,
+      "flags": []
+     },
+     "nice_to_have": {
+      "score": 1.0,
+      "weight": 0.15,
+      "matched": 1,
+      "unclear": 0,
+      "unmet": 0,
+      "of": 1
+     }
+    },
+    "reasons": [
+     {
+      "kind": "requirement_met",
+      "requirement": "A qualification in Islamic Finance, Banking and Law will be critical.",
+      "skill": null,
+      "evidence": "\"I have A qualification in Islamic Finance, Banking and Law will be critical \u2014 used daily for the last three years.\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_met",
+      "requirement": "A relevant Bachelor's degree in Commerce, Finance, Economics, Accounting, Banking, Business or related field.",
+      "skill": null,
+      "evidence": "\"I have A relevant Bachelor's degree in Commerce, Finance, Economics, Accounting, Banking, Business or related field \u2014 used daily for the last three years.\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_met",
+      "requirement": "Strong leadership experience within banking/financial services.",
+      "skill": null,
+      "evidence": "\"Holds: Strong leadership experience within banking/financial services, obtained and current.\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_met",
+      "requirement": "Demonstrable Islamic Banking/Finance expertise.",
+      "skill": null,
+      "evidence": "\"I have Demonstrable Islamic Banking/Finance expertise \u2014 used daily for the last three years.\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_met",
+      "requirement": "Strong commercial and strategic acumen.",
+      "skill": null,
+      "evidence": "\"Holds: Strong commercial and strategic acumen, obtained and current.\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_met",
+      "requirement": "Product and proposition management capability.",
+      "skill": null,
+      "evidence": "\"Holds: Product and proposition management capability, obtained and current.\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_met",
+      "requirement": "Excellent stakeholder management and executive influencing skills.",
+      "skill": null,
+      "evidence": "\"Confirmed Excellent stakeholder management and executive influencing skills (see certificate on request).\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_met",
+      "requirement": "A strong understanding of banking risk, governance and regulatory environments.",
+      "skill": null,
+      "evidence": "\"I have A strong understanding of banking risk, governance and regulatory environments \u2014 used daily for the last three years.\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Postgraduate Degrees and Professional Qualifications (Required)",
+      "skill": null,
+      "evidence": "\"Confirmed An MBA, postgraduate would be advantageous (see certificate on request).\"",
+      "source": "cv_text",
+      "note": "Only an advantageous MBA is mentioned; no explicit statement of required postgraduate degrees or professional qualifications being held."
+     },
+     {
+      "kind": "test_strength",
+      "requirement": null,
+      "skill": "communication",
+      "evidence": "10/10 points",
+      "source": "assessment",
+      "note": null
+     },
+     {
+      "kind": "test_strength",
+      "requirement": null,
+      "skill": "core",
+      "evidence": "5/5 points",
+      "source": "assessment",
+      "note": null
+     },
+     {
+      "kind": "test_strength",
+      "requirement": null,
+      "skill": "process",
+      "evidence": "5/5 points",
+      "source": "assessment",
+      "note": null
+     },
+     {
+      "kind": "test_item_judged",
+      "requirement": null,
+      "skill": "communication",
+      "evidence": "q7: 5/5 \u2014 \"I would check the discrepancy against the purchase order, call the supplier to confirm, and set a follow-up date in writing.\"",
+      "source": "assessment",
+      "note": "The answer identifies the discrepancy, proposes checking it against the PO, and sets a follow-up date, satisfying all rubric elements."
+     },
+     {
+      "kind": "nice_to_have_met",
+      "requirement": "An MBA, postgraduate would be advantageous.",
+      "skill": null,
+      "evidence": "\"Confirmed An MBA, postgraduate would be advantageous (see certificate on request).\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "redaction",
+      "requirement": null,
+      "skill": null,
+      "evidence": "7 identifier(s) removed before evaluation",
+      "source": "none",
+      "note": null
+     }
+    ],
+    "needs_human_check": [
+     "requirement unclear: Postgraduate Degrees and Professional Qualifications (Required)"
+    ],
+    "redactions_applied": 7
+   },
+   {
+    "rank": 2,
+    "candidate_id": "adequate_0_twin",
+    "score": 46.0,
+    "tier": "weak",
+    "components": {
+     "requirements": {
+      "score": 0.6666666666666666,
+      "weight": 0.45,
+      "matched": 4,
+      "unclear": 4,
+      "unmet": 1,
+      "of": 9
+     },
+     "skills_test": {
+      "score": 0.4,
+      "weight": 0.4,
+      "points": 8.0,
+      "max": 20.0,
+      "by_skill": {
+       "communication": 0.3,
+       "core": 0.4,
+       "process": 0.6
+      },
+      "judged_items": 1,
+      "ungraded_items": [],
+      "time_limit_s": 1200,
+      "time_used_s": 700,
+      "flags": []
+     },
+     "nice_to_have": {
+      "score": 0.0,
+      "weight": 0.15,
+      "matched": 0,
+      "unclear": 0,
+      "unmet": 1,
+      "of": 1
+     }
+    },
+    "reasons": [
+     {
+      "kind": "requirement_unmet",
+      "requirement": "A relevant Bachelor's degree in Commerce, Finance, Economics, Accounting, Banking, Business or related field.",
+      "skill": null,
+      "evidence": "",
+      "source": "none",
+      "note": "not listed"
+     },
+     {
+      "kind": "requirement_met",
+      "requirement": "A qualification in Islamic Finance, Banking and Law will be critical.",
+      "skill": null,
+      "evidence": "\"Holds: A qualification in Islamic Finance, Banking and Law will be critical, obtained and current.\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_met",
+      "requirement": "Strong leadership experience within banking/financial services.",
+      "skill": null,
+      "evidence": "\"Confirmed Strong leadership experience within banking/financial services (see certificate on request).\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_met",
+      "requirement": "Strong commercial and strategic acumen.",
+      "skill": null,
+      "evidence": "\"Holds: Strong commercial and strategic acumen, obtained and current.\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_met",
+      "requirement": "Excellent stakeholder management and executive influencing skills.",
+      "skill": null,
+      "evidence": "\"I have Excellent stakeholder management and executive influencing skills \u2014 used daily for the last three years.\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Demonstrable Islamic Banking/Finance expertise.",
+      "skill": null,
+      "evidence": "\"Worked in a related area touching on demonstrable matters.\"",
+      "source": "cv_text",
+      "note": "Vague phrasing does not confirm actual Islamic Banking/Finance expertise."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Product and proposition management capability.",
+      "skill": null,
+      "evidence": "\"Worked in a related area touching on product matters.\"",
+      "source": "cv_text",
+      "note": "Vague mention does not clearly confirm product/proposition management capability."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "A strong understanding of banking risk, governance and regulatory environments.",
+      "skill": null,
+      "evidence": "\"Worked in a related area touching on understanding matters.\"",
+      "source": "cv_text",
+      "note": "Vague phrasing does not confirm understanding of risk, governance or regulatory environments."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Postgraduate Degrees and Professional Qualifications (Required)",
+      "skill": null,
+      "evidence": "\"Worked in a related area touching on postgraduate matters.\"",
+      "source": "cv_text",
+      "note": "Vague mention does not confirm an actual postgraduate degree or professional qualification is held."
+     },
+     {
+      "kind": "test_gap",
+      "requirement": null,
+      "skill": "communication",
+      "evidence": "3/10 points; q3 1/2, q6 2/3, q7 0/5",
+      "source": "assessment",
+      "note": null
+     },
+     {
+      "kind": "test_gap",
+      "requirement": null,
+      "skill": "core",
+      "evidence": "2/5 points; q1 0/2, q4 2/3",
+      "source": "assessment",
+      "note": null
+     },
+     {
+      "kind": "test_item_judged",
+      "requirement": null,
+      "skill": "communication",
+      "evidence": "q7: 0/5 \u2014 \"I would call the supplier and ask about it.\"",
+      "source": "assessment",
+      "note": "The answer does not identify the discrepancy, propose a check against the PO, or set a follow-up date, so none of the rubric elements are met."
+     },
+     {
+      "kind": "nice_to_have_unmet",
+      "requirement": "An MBA, postgraduate would be advantageous.",
+      "skill": null,
+      "evidence": "",
+      "source": "none",
+      "note": "not listed"
+     },
+     {
+      "kind": "redaction",
+      "requirement": null,
+      "skill": null,
+      "evidence": "7 identifier(s) removed before evaluation",
+      "source": "none",
+      "note": null
+     }
+    ],
+    "needs_human_check": [
+     "requirement unclear: Demonstrable Islamic Banking/Finance expertise.",
+     "requirement unclear: Product and proposition management capability.",
+     "requirement unclear: A strong understanding of banking risk, governance and regulatory environments.",
+     "requirement unclear: Postgraduate Degrees and Professional Qualifications (Required)"
+    ],
+    "redactions_applied": 7
+   },
+   {
+    "rank": 3,
+    "candidate_id": "adequate_1_twin",
+    "score": 45.5,
+    "tier": "weak",
+    "components": {
+     "requirements": {
+      "score": 0.6111111111111112,
+      "weight": 0.45,
+      "matched": 4,
+      "unclear": 3,
+      "unmet": 2,
+      "of": 9
+     },
+     "skills_test": {
+      "score": 0.45,
+      "weight": 0.4,
+      "points": 9.0,
+      "max": 20.0,
+      "by_skill": {
+       "communication": 0.3,
+       "core": 0.6,
+       "process": 0.6
+      },
+      "judged_items": 1,
+      "ungraded_items": [],
+      "time_limit_s": 1200,
+      "time_used_s": 700,
+      "flags": []
+     },
+     "nice_to_have": {
+      "score": 0.0,
+      "weight": 0.15,
+      "matched": 0,
+      "unclear": 0,
+      "unmet": 1,
+      "of": 1
+     }
+    },
+    "reasons": [
+     {
+      "kind": "requirement_unmet",
+      "requirement": "A relevant Bachelor's degree in Commerce, Finance, Economics, Accounting, Banking, Business or related field.",
+      "skill": null,
+      "evidence": "",
+      "source": "none",
+      "note": "not listed"
+     },
+     {
+      "kind": "requirement_unmet",
+      "requirement": "Postgraduate Degrees and Professional Qualifications (Required)",
+      "skill": null,
+      "evidence": "",
+      "source": "none",
+      "note": "not listed"
+     },
+     {
+      "kind": "requirement_met",
+      "requirement": "A qualification in Islamic Finance, Banking and Law will be critical.",
+      "skill": null,
+      "evidence": "\"Confirmed A qualification in Islamic Finance, Banking and Law will be critical (see certificate on request).\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_met",
+      "requirement": "Strong leadership experience within banking/financial services.",
+      "skill": null,
+      "evidence": "\"Holds: Strong leadership experience within banking/financial services, obtained and current.\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_met",
+      "requirement": "Strong commercial and strategic acumen.",
+      "skill": null,
+      "evidence": "\"Confirmed Strong commercial and strategic acumen (see certificate on request).\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_met",
+      "requirement": "Excellent stakeholder management and executive influencing skills.",
+      "skill": null,
+      "evidence": "\"Holds: Excellent stakeholder management and executive influencing skills, obtained and current.\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Demonstrable Islamic Banking/Finance expertise.",
+      "skill": null,
+      "evidence": "\"Worked in a related area touching on relevant matters.\"",
+      "source": "cv_text",
+      "note": "Vague phrasing does not explicitly confirm Islamic Banking/Finance expertise."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Product and proposition management capability.",
+      "skill": null,
+      "evidence": "\"Worked in a related area touching on product matters.\"",
+      "source": "cv_text",
+      "note": "No explicit statement of product or proposition management capability."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "A strong understanding of banking risk, governance and regulatory environments.",
+      "skill": null,
+      "evidence": "\"Some exposure to environments through earlier roles.\"",
+      "source": "cv_text",
+      "note": "Vague reference to 'environments' does not confirm understanding of risk, governance and regulatory matters."
+     },
+     {
+      "kind": "test_gap",
+      "requirement": null,
+      "skill": "communication",
+      "evidence": "3/10 points; q3 1/2, q6 2/3, q7 0/5",
+      "source": "assessment",
+      "note": null
+     },
+     {
+      "kind": "test_item_judged",
+      "requirement": null,
+      "skill": "communication",
+      "evidence": "q7: 0/5 \u2014 \"I would call the supplier and ask about it.\"",
+      "source": "assessment",
+      "note": "The answer does not identify the discrepancy, propose a check against the PO, or set a follow-up date, so none of the rubric elements are met."
+     },
+     {
+      "kind": "nice_to_have_unmet",
+      "requirement": "An MBA, postgraduate would be advantageous.",
+      "skill": null,
+      "evidence": "",
+      "source": "none",
+      "note": "not listed"
+     },
+     {
+      "kind": "redaction",
+      "requirement": null,
+      "skill": null,
+      "evidence": "7 identifier(s) removed before evaluation",
+      "source": "none",
+      "note": null
+     }
+    ],
+    "needs_human_check": [
+     "requirement unclear: Demonstrable Islamic Banking/Finance expertise.",
+     "requirement unclear: Product and proposition management capability.",
+     "requirement unclear: A strong understanding of banking risk, governance and regulatory environments."
+    ],
+    "redactions_applied": 7
+   },
+   {
+    "rank": 4,
+    "candidate_id": "weak_1_twin",
+    "score": 34.5,
+    "tier": "weak",
+    "components": {
+     "requirements": {
+      "score": 0.5,
+      "weight": 0.45,
+      "matched": 1,
+      "unclear": 7,
+      "unmet": 1,
+      "of": 9
+     },
+     "skills_test": {
+      "score": 0.3,
+      "weight": 0.4,
+      "points": 6.0,
+      "max": 20.0,
+      "by_skill": {
+       "communication": 0.2,
+       "core": 0.4,
+       "process": 0.4
+      },
+      "judged_items": 1,
+      "ungraded_items": [],
+      "time_limit_s": 1200,
+      "time_used_s": 800,
+      "flags": []
+     },
+     "nice_to_have": {
+      "score": 0.0,
+      "weight": 0.15,
+      "matched": 0,
+      "unclear": 0,
+      "unmet": 1,
+      "of": 1
+     }
+    },
+    "reasons": [
+     {
+      "kind": "requirement_unmet",
+      "requirement": "A relevant Bachelor's degree in Commerce, Finance, Economics, Accounting, Banking, Business or related field.",
+      "skill": null,
+      "evidence": "",
+      "source": "none",
+      "note": "No degree is listed anywhere in the application."
+     },
+     {
+      "kind": "requirement_met",
+      "requirement": "A qualification in Islamic Finance, Banking and Law will be critical.",
+      "skill": null,
+      "evidence": "\"Confirmed A qualification in Islamic Finance, Banking and Law will be critical (see certificate on request).\"",
+      "source": "cv_text",
+      "note": null
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Strong leadership experience within banking/financial services.",
+      "skill": null,
+      "evidence": "\"Worked in a related area touching on demonstrable matters.\"",
+      "source": "cv_text",
+      "note": "Vague reference to related work but no specific leadership experience stated."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Demonstrable Islamic Banking/Finance expertise.",
+      "skill": null,
+      "evidence": "\"Some exposure to field through earlier roles.\"",
+      "source": "cv_text",
+      "note": "Only vague 'some exposure' mentioned, not demonstrable expertise."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Strong commercial and strategic acumen.",
+      "skill": null,
+      "evidence": "\"Some exposure to acumen through earlier roles.\"",
+      "source": "cv_text",
+      "note": "Vague mention of exposure, not evidence of strong acumen."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Product and proposition management capability.",
+      "skill": null,
+      "evidence": "\"Some exposure to capability through earlier roles.\"",
+      "source": "cv_text",
+      "note": "Vague mention of exposure to 'capability', not specific to product/proposition management."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Excellent stakeholder management and executive influencing skills.",
+      "skill": null,
+      "evidence": "\"Some exposure to skills through earlier roles.\"",
+      "source": "cv_text",
+      "note": "Vague generic mention of 'skills', not specific to stakeholder management or influencing."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "A strong understanding of banking risk, governance and regulatory environments.",
+      "skill": null,
+      "evidence": "\"Some exposure to environments through earlier roles.\"",
+      "source": "cv_text",
+      "note": "Vague mention of 'environments', no specific detail on risk, governance or regulation."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Postgraduate Degrees and Professional Qualifications (Required)",
+      "skill": null,
+      "evidence": "\"Worked in a related area touching on postgraduate matters.\"",
+      "source": "cv_text",
+      "note": "Vague reference to 'postgraduate matters' does not confirm an actual postgraduate degree."
+     },
+     {
+      "kind": "test_gap",
+      "requirement": null,
+      "skill": "communication",
+      "evidence": "2/10 points; q3 1/2, q6 1/3, q7 0/5",
+      "source": "assessment",
+      "note": null
+     },
+     {
+      "kind": "test_gap",
+      "requirement": null,
+      "skill": "core",
+      "evidence": "2/5 points; q1 1/2, q4 1/3",
+      "source": "assessment",
+      "note": null
+     },
+     {
+      "kind": "test_gap",
+      "requirement": null,
+      "skill": "process",
+      "evidence": "2/5 points; q2 1/3, q5 1/2",
+      "source": "assessment",
+      "note": null
+     },
+     {
+      "kind": "test_item_judged",
+      "requirement": null,
+      "skill": "communication",
+      "evidence": "q7: 0/5 \u2014 \"I would ask my manager.\"",
+      "source": "assessment",
+      "note": "The answer does not identify the discrepancy, propose checking against the PO, or set a follow-up date."
+     },
+     {
+      "kind": "nice_to_have_unmet",
+      "requirement": "An MBA, postgraduate would be advantageous.",
+      "skill": null,
+      "evidence": "",
+      "source": "none",
+      "note": "No MBA or specific postgraduate qualification listed."
+     },
+     {
+      "kind": "redaction",
+      "requirement": null,
+      "skill": null,
+      "evidence": "7 identifier(s) removed before evaluation",
+      "source": "none",
+      "note": null
+     }
+    ],
+    "needs_human_check": [
+     "requirement unclear: Strong leadership experience within banking/financial services.",
+     "requirement unclear: Demonstrable Islamic Banking/Finance expertise.",
+     "requirement unclear: Strong commercial and strategic acumen.",
+     "requirement unclear: Product and proposition management capability.",
+     "requirement unclear: Excellent stakeholder management and executive influencing skills.",
+     "requirement unclear: A strong understanding of banking risk, governance and regulatory environments.",
+     "requirement unclear: Postgraduate Degrees and Professional Qualifications (Required)"
+    ],
+    "redactions_applied": 7
+   },
+   {
+    "rank": 5,
+    "candidate_id": "missing_1_twin",
+    "score": 12.0,
+    "tier": "weak",
+    "components": {
+     "requirements": {
+      "score": 0.05555555555555555,
+      "weight": 0.45,
+      "matched": 0,
+      "unclear": 1,
+      "unmet": 8,
+      "of": 9
+     },
+     "skills_test": {
+      "score": 0.05,
+      "weight": 0.4,
+      "points": 1.0,
+      "max": 20.0,
+      "by_skill": {
+       "communication": 0.0,
+       "core": 0.2,
+       "process": 0.0
+      },
+      "judged_items": 0,
+      "ungraded_items": [],
+      "time_limit_s": 1200,
+      "time_used_s": 900,
+      "flags": []
+     },
+     "nice_to_have": {
+      "score": 0.5,
+      "weight": 0.15,
+      "matched": 0,
+      "unclear": 1,
+      "unmet": 0,
+      "of": 1
+     }
+    },
+    "reasons": [
+     {
+      "kind": "requirement_unmet",
+      "requirement": "A qualification in Islamic Finance, Banking and Law will be critical.",
+      "skill": null,
+      "evidence": "\"No a qualification in islamic finance, banking and law will be critical.\"",
+      "source": "cv_text",
+      "note": "CV explicitly states this qualification is absent."
+     },
+     {
+      "kind": "requirement_unmet",
+      "requirement": "A relevant Bachelor's degree in Commerce, Finance, Economics, Accounting, Banking, Business or related field.",
+      "skill": null,
+      "evidence": "\"No a relevant bachelor's degree in commerce, finance, economics, accounting, banking, business or related field.\"",
+      "source": "cv_text",
+      "note": "CV explicitly states this degree is absent."
+     },
+     {
+      "kind": "requirement_unmet",
+      "requirement": "Strong leadership experience within banking/financial services.",
+      "skill": null,
+      "evidence": "\"No strong leadership experience within banking/financial services.\"",
+      "source": "cv_text",
+      "note": "CV explicitly states this experience is absent."
+     },
+     {
+      "kind": "requirement_unmet",
+      "requirement": "Demonstrable Islamic Banking/Finance expertise.",
+      "skill": null,
+      "evidence": "\"No demonstrable islamic banking/finance expertise.\"",
+      "source": "cv_text",
+      "note": "CV explicitly states this expertise is absent."
+     },
+     {
+      "kind": "requirement_unmet",
+      "requirement": "Strong commercial and strategic acumen.",
+      "skill": null,
+      "evidence": "\"No strong commercial and strategic acumen.\"",
+      "source": "cv_text",
+      "note": "CV explicitly states this acumen is absent."
+     },
+     {
+      "kind": "requirement_unmet",
+      "requirement": "Product and proposition management capability.",
+      "skill": null,
+      "evidence": "\"No product and proposition management capability.\"",
+      "source": "cv_text",
+      "note": "CV explicitly states this capability is absent."
+     },
+     {
+      "kind": "requirement_unmet",
+      "requirement": "Excellent stakeholder management and executive influencing skills.",
+      "skill": null,
+      "evidence": "\"No excellent stakeholder management and executive influencing skills.\"",
+      "source": "cv_text",
+      "note": "CV explicitly states these skills are absent."
+     },
+     {
+      "kind": "requirement_unmet",
+      "requirement": "A strong understanding of banking risk, governance and regulatory environments.",
+      "skill": null,
+      "evidence": "\"No a strong understanding of banking risk, governance and regulatory environments.\"",
+      "source": "cv_text",
+      "note": "CV explicitly states this understanding is absent."
+     },
+     {
+      "kind": "requirement_unclear",
+      "requirement": "Postgraduate Degrees and Professional Qualifications (Required)",
+      "skill": null,
+      "evidence": "\"Worked in a related area touching on postgraduate matters.\"",
+      "source": "cv_text",
+      "note": "Vague reference to postgraduate matters does not confirm an actual postgraduate degree or professional qualification."
+     },
+     {
+      "kind": "test_gap",
+      "requirement": null,
+      "skill": "communication",
+      "evidence": "0/10 points; q3 0/2, q6 0/3, q7 0/5",
+      "source": "assessment",
+      "note": null
+     },
+     {
+      "kind": "test_gap",
+      "requirement": null,
+      "skill": "core",
+      "evidence": "1/5 points; q1 1/2, q4 0/3",
+      "source": "assessment",
+      "note": null
+     },
+     {
+      "kind": "test_gap",
+      "requirement": null,
+      "skill": "process",
+      "evidence": "0/5 points; q2 0/3, q5 0/2",
+      "source": "assessment",
+      "note": null
+     },
+     {
+      "kind": "nice_to_have_unclear",
+      "requirement": "An MBA, postgraduate would be advantageous.",
+      "skill": null,
+      "evidence": "\"Worked in a related area touching on postgraduate matters.\"",
+      "source": "cv_text",
+      "note": "No explicit mention of an MBA or specific postgraduate qualification."
+     },
+     {
+      "kind": "redaction",
+      "requirement": null,
+      "skill": null,
+      "evidence": "7 identifier(s) removed before evaluation",
+      "source": "none",
+      "note": null
+     }
+    ],
+    "needs_human_check": [
+     "requirement unclear: Postgraduate Degrees and Professional Qualifications (Required)"
+    ],
+    "redactions_applied": 7
+   }
+  ],
+  "excluded_from_ranking": [],
+  "meta": {
+   "spec_version": "0.1.0",
+   "judge_prompt_version": "0.1.0",
+   "pool_size": 5,
+   "ranked": 5,
+   "judged_candidates": 5,
+   "judged_items": 4,
+   "judge_model": "claude-sonnet-5",
+   "weights": {
+    "requirements": 0.45,
+    "skills_test": 0.4,
+    "nice_to_have": 0.15
+   },
+   "usage": {
+    "input_tokens": 3271,
+    "output_tokens": 6812,
+    "cache_read_input_tokens": 7935,
+    "cache_creation_input_tokens": 0
+   },
+   "cost_usd": 0.0762,
+   "latency_s": 56.25,
+   "fairness_check": {
+    "ran": true,
+    "redaction_clean": true,
+    "residual_patterns": 0,
+    "note": "protected attributes have no field in the contract; free text is redacted before any model call; time is not scored"
+   }
+  }
+ }
+}

@@ -286,3 +286,23 @@ rule says only concrete, normally-listed items should be `unmet` when absent —
 Decision: machinery and blindness confirmed at tiny scale; judge consistency on the unmet/unclear boundary is the open risk.
 Next (needs a yes): EXP-302 — prompt 0.1.1 (explicit "absent soft skill → unclear"; integer points unless the rubric names halves) vs 0.1.0,
 same 10-call design, ≈ $0.12 per arm; pass = twin |Δ| ≤ 2 on 5/5 and τ unchanged.
+
+### EXP-302 — judge prompt 0.1.1 vs 0.1.0, same 10-call design — 2026-11-05
+Hypothesis: making the unmet/unclear boundary explicit (absent soft skill → unclear; whole-number points unless the rubric names halves)
+brings every twin pair within 2 points. Same brief (case_003), regenerated texts (generator now covers 8 must-haves), 5 candidates + 5 twins per arm.
+| arm | τ | twin Δ (strong, adequate_1, adequate_0, weak_1, missing_1) | pairs within ±2 | met without quote | cost |
+|---|---|---|---|---|---|
+| 0.1.0 | 1.0 | 0.0, −3.5, 0.0, **−12.5**, 0.0 | 3/5 | 0 | $0.167 |
+| 0.1.1 | 1.0 | 0.0, **−10.0**, +2.5, 0.0, 0.0 | 3/5 | 0 | $0.168 |
+Total $0.335 against a $0.25 quote (output tokens, mostly thinking, ran 7–8k per arm vs the 4.8k seen in EXP-301a).
+Result: **neither arm passes**; 0.1.1 does not beat 0.1.0 on the pre-registered metric → 0.1.0 stays the default, 0.1.1 kept in `PROMPTS` for
+reference. 0.1.1 did do what it was written to do (postgraduate degree absent → unmet; absent soft skills → unclear; strong_1 97.5 vs 95.0),
+and both arms kept order (τ 1.0) and blindness (redaction clean, quotes on every met).
+Diagnosis: the drift is sampling noise on the judge's unmet/unclear verdicts for the generator's deliberately vague "alluded" sentences,
+not identity: the twin text is identical after redaction apart from `[REDACTED]` tokens, flips go both directions, and the same flips
+appear between arms on originals alone. With adaptive thinking the API fixes temperature at 1, so each call is a fresh sample; a 0.5-value
+flip on one requirement moves the score by up to 5–10 points at these weights.
+Next (needs a yes): EXP-303 — judge 0.1.1 with thinking off and temperature 0 (deterministic sampling; cheaper, ~0.3k output tokens
+per call), same 10-call design, ≈ $0.10. Pass = 5/5 twin pairs within 2 and τ 1.0. If that passes, also re-check rubric grading quality
+against the 0.1.0 verdicts before switching the default. Fallback if it fails: run the judge twice per candidate and keep the more
+conservative verdict (2× cost), or lower the unclear value in the spec.
