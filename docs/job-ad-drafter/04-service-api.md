@@ -17,7 +17,10 @@ Client-facing notes: `/v1/drafts` blocks 15–45 s (two model calls); set client
 | POST | `/v1/scores` | score an existing ad (human-written or drafted) | free with `judge:false`; one Sonnet call otherwise |
 | POST | `/v1/briefs/extract` | free-text role description → HiringBrief (verbatim, nothing invented) + missing required fields + questions to ask | one cheap Sonnet call (≈ $0.02) |
 | POST | `/v1/briefs/check` | which metrics a brief can satisfy, its composite ceiling, and which fields to add first | free |
-| POST | `/v1/drafts` | draft an ad from a brief, scored; response also carries `brief_feedback` (the same check) | one Opus call + one Sonnet judge call (measured ≈ $0.09) |
+| POST | `/v1/drafts` | draft an ad from a brief, scored; response also carries `brief_feedback` (the same check); blocks 15–45 s | one Opus call + one Sonnet judge call (measured ≈ $0.09) |
+| POST | `/v1/draft-jobs` | the same, asynchronously: `202 { job_id, status_url }` immediately; optional `callback_url` | same |
+| GET | `/v1/draft-jobs/{id}` | `queued` → `running` → `done` (with the full `/v1/drafts` response in `result`) or `failed`; kept 24 h | free |
+| GET | `/metrics` | Prometheus: drafts, judge calls, tokens, estimated spend, latency, active jobs, cap refusals | free |
 
 Every response carries `x-request-id`. Errors: `422 {detail:[{loc, msg, type}]}` for validation (FastAPI/Pydantic), `404`, `405`, `502 {error:"upstream"}` when the model API fails, `500`.
 
@@ -127,6 +130,21 @@ Extraction copies facts; it never fills gaps. A description that names no duties
 ```
 
 Four fields are required for a brief to be *valid*; this endpoint says what it would be *worth*. `would_be_not_ready` means the draft would come back `not_ready` with must-fix reasons (today: a designated employer without an EE statement) and `/v1/drafts` would refuse it unless `options.allow_not_ready` is set. `estimated_ceiling` is the best composite the brief can reach if the drafter does everything right; `suggestions` are ranked by how many composite points each missing field would unlock. Deterministic, no model call — safe to call on every form change.
+
+## Async drafting, spend cap, operations
+
+```jsonc
+POST /v1/draft-jobs  { "brief": {...}, "options": {...}, "callback_url": "https://frontend.example/hooks/draft" }
+→ 202 { "job_id": "…", "status": "queued", "status_url": "/v1/draft-jobs/…", "created_at": 1762277000.1 }
+GET  /v1/draft-jobs/{id}
+→ 200 { "job_id": "…", "status": "done", "started_at": …, "finished_at": …, "result": { /* the /v1/drafts response */ } }
+```
+
+Pre-flight is identical to `/v1/drafts` (enrichment switch, `brief_not_ready` refusal, spend cap), so a job that is accepted will run. Drafting happens in a bounded pool inside the service (`MAX_CONCURRENT_DRAFTS`); job state lives in Redis (`REDIS_URL`, TTL 24 h) or in memory when Redis is absent. If the service restarts mid-job, the job is marked `failed` with "service restarted" — re-submit. `callback_url` receives `{ job_id, status, result, error }` once, best effort; polling is the reliable path.
+
+**Spend cap.** The service estimates USD per draft from token usage and refuses new drafts with `429 { detail: { error: "daily_spend_cap" } }` once `DAILY_SPEND_CAP_USD` is reached for the UTC day (default 20; 0 disables). `/healthz` shows `spend.today_usd`. This is a guard against a looping client, not a billing system.
+
+**Observability.** `/metrics` (Prometheus) and JSON logs on stdout, every line stamped with spec, drafter-prompt and judge-prompt versions. Internal service: no authentication; bind to the VPN interface, never a public one.
 
 ## `/v1/scores`
 

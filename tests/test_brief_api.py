@@ -85,7 +85,7 @@ class TestApi:
     def test_enrichment_disabled_by_default(self):
         r = client.post("/v1/drafts", json={"brief": {"title": "Clerk", "company": {"name": "Acme"}, "responsibilities": ["Capture invoices"], "must_have": ["Sage"]}, "options": {"enrich": True}})
         assert r.status_code == 400 and r.json()["detail"]["error"] == "enrichment_disabled"
-        assert client.get("/healthz").json()["features"] == {"enrichment": False}
+        assert client.get("/healthz").json()["features"]["enrichment"] is False
 
     def test_openapi(self):
         j = client.get("/openapi.json").json()

@@ -13,6 +13,8 @@ dependencies = [
   "scikit-learn",
   "pandas",
   "numpy",
+  "redis",
+  "prometheus-client",
 ]
 
 [project.optional-dependencies]

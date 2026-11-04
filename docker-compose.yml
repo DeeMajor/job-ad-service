@@ -1,0 +1,33 @@
+# Internal deployment: API + Redis. Bind the API to the WireGuard/VPN address of the host, not a public interface.
+#   cp .env.example .env   (ANTHROPIC_API_KEY, ALLOWED_ORIGINS, …)
+#   BIND_ADDR=10.8.0.2 docker compose up -d
+services:
+  api:
+    image: ghcr.io/deemajor/job-ad-service:${IMAGE_TAG:-latest}
+    build: .
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      REDIS_URL: redis://redis:6379/0
+      PORT: "4310"
+    ports:
+      - "${BIND_ADDR:-127.0.0.1}:4310:4310"
+    depends_on:
+      redis:
+        condition: service_healthy
+    logging:
+      driver: json-file
+      options: { max-size: "20m", max-file: "5" }
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    command: ["redis-server", "--save", "60", "1", "--appendonly", "no", "--maxmemory", "128mb", "--maxmemory-policy", "allkeys-lru"]
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+volumes:
+  redis-data:
