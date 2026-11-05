@@ -2,7 +2,9 @@ from fastapi.testclient import TestClient
 
 from job_ad.api import app as appmod
 from job_ad.offer.draft import draft_template
-from job_ad.offer.rules import check, hourly_equivalent
+from datetime import date
+
+from job_ad.offer.rules import _figure, check, hourly_equivalent
 from job_ad.offer.terms import OfferRequest
 
 BRIEF = {"title": "Creditors Clerk", "company": {"name": "Acme (Pty) Ltd"}, "responsibilities": ["Capture supplier invoices in Sage"], "must_have": ["Sage"],
@@ -29,7 +31,7 @@ def test_compliant_terms_pass_and_arithmetic():
 
 def test_floors_and_particulars_detected():
     comp, _ = check(req(pay={**TERMS["pay"], "amount": 20, "period": "hour"}))
-    assert comp.level == "not_compliant" and any(f.rule == "pay.nmw_hourly" and "28.79" in f.evidence for f in comp.findings)
+    assert comp.level == "not_compliant" and any(f.rule == "pay.nmw_hourly" and "30.23" in f.evidence for f in comp.findings)
     comp, _ = check(req(hours={**TERMS["hours"], "per_week": 48, "per_day": 9.6}))
     assert any(f.rule == "hours.ordinary_hours_week" and f.severity == "must_fix" for f in comp.findings)
     comp, _ = check(req(leave={**TERMS["leave"], "annual_days": 20, "annual_basis": "consecutive_days"}))
@@ -38,6 +40,27 @@ def test_floors_and_particulars_detected():
     assert any(f.rule == "termination.notice_gt_12_months" and "s37" in f.evidence for f in comp.findings)
     comp, _ = check(req(employer={}))
     assert any(f.rule == "particulars.employer_name_address" for f in comp.findings)
+
+
+def test_2026_minimum_wage_applies_from_march():
+    # R5,000 a month at 40 hours is R28.85 an hour: above the 2025 rate, below the 2026 one.
+    comp, _ = check(req(pay={**TERMS["pay"], "amount": 5000}))
+    assert any(f.rule == "pay.nmw_hourly" and f.severity == "must_fix" for f in comp.findings)
+
+
+def test_figure_follows_its_effective_date():
+    rule = {"ref": "r", "min": {"value": 28.79, "effective_from": "2025-03-01", "status": "confirmed"},
+            "next": {"value": 30.23, "effective_from": "2026-03-01", "status": "verify"}}
+    assert _figure(rule, today=date(2026, 2, 28))[0] == 28.79
+    assert _figure(rule, today=date(2026, 3, 1))[0] == 30.23
+
+
+def test_due_but_blank_figure_is_not_confirmed():
+    rule = {"ref": "r", "min": {"value": 28.79, "effective_from": "2025-03-01", "status": "confirmed"},
+            "next": {"value": None, "effective_from": "2026-03-01", "status": "verify"}}
+    assert _figure(rule, today=date(2026, 2, 1))[2] == "confirmed"
+    val, _, status = _figure(rule, today=date(2026, 6, 1))
+    assert val == 28.79 and status == "verify"
 
 
 def test_threshold_switches_hours_rules_off():

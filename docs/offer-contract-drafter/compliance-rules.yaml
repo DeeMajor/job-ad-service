@@ -55,7 +55,7 @@ floors:                         # term below the floor → must_fix; floor appli
     - { id: severance, ref: "BCEA s41(2)", min: 1, unit: week's pay per completed year, when: "dismissal for operational requirements" }
   pay:
     - { id: nmw_hourly, ref: "NMWA s4(1), Schedule 1", min: { value: 28.79, currency: ZAR, unit: per hour, effective_from: "2025-03-01", source: "GN 5998 GG 52083, Feb 2025", status: confirmed },
-        next: { value: null, effective_from: "2026-03-01", source: "annual NMW Commission adjustment — fill from the 2026 gazette", status: verify },
+        next: { value: 30.23, currency: ZAR, unit: per hour, effective_from: "2026-03-01", source: "GG 54075, 3 Feb 2026, as reported by PaySpace, WageIndicator and Sage; gazette text not read", status: verify },
         note: "farm and domestic workers at 100% of NMW since 2022; the NMW is a floor on the ordinary hours wage, excluding allowances, bonuses, tips, payments in kind (s5)" }
     - { id: nmw_epwp, ref: "NMWA Schedule 1 item 2", min: { value: null, unit: per hour, status: verify }, when: sector == epwp }
     - { id: nmw_learnership, ref: "NMWA Schedule 2", min: "allowance table by NQF level and credits", status: verify, when: contract_type == learnership }
