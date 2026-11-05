@@ -6,6 +6,7 @@ from __future__ import annotations
 
 import json
 import re
+from datetime import date
 from functools import lru_cache
 from pathlib import Path
 from typing import Literal, Optional
@@ -112,12 +113,30 @@ def consecutive_leave_days(t: Terms) -> Optional[float]:
     return lv.annual_days * 21 / (18 if t.hours.days_per_week >= 6 else 15)
 
 
-def _figure(rule: dict, key: str = "min"):
-    """Return (value, evidence, status) for a figure-bearing rule: uses `next` when it has a value, else the current one."""
+def _in_force(effective_from, today: Optional[date] = None) -> bool:
+    """True when a figure's effective date has arrived (or it has none)."""
+    if not effective_from:
+        return True
+    try:
+        return date.fromisoformat(str(effective_from)) <= (today or date.today())
+    except ValueError:
+        return False
+
+
+def _figure(rule: dict, key: str = "min", today: Optional[date] = None):
+    """Return (value, evidence, status) for a figure-bearing rule.
+
+    Uses `next` once its effective date has arrived and it has a value. When `next` is due but
+    still blank, the current figure is out of date: it is returned with status `verify`, so an
+    old rate is never reported as confirmed.
+    """
     cur = rule[key] if isinstance(rule.get(key), dict) else {"value": rule.get(key), "status": "confirmed"}
     nxt = rule.get("next") or {}
-    if nxt.get("value") is not None or nxt.get("amount") is not None:
+    has_next = nxt.get("value") is not None or nxt.get("amount") is not None
+    if has_next and _in_force(nxt.get("effective_from"), today):
         cur = nxt
+    elif not has_next and nxt.get("effective_from") and _in_force(nxt.get("effective_from"), today):
+        cur = {**cur, "status": "verify"}
     val = cur.get("value", cur.get("amount"))
     ev = f"{rule['ref']}; {val} {cur.get('unit', rule.get('unit', ''))} effective {cur.get('effective_from', '?')} ({cur.get('source', 'no source')}; status: {cur.get('status', 'verify')})"
     return val, ev, cur.get("status", "verify")
